@@ -1,0 +1,381 @@
+{% extends "base.html" %}
+{% load i18n static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Register" %} - FeastFlow{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="register-page">
+    <!-- Animated Background -->
+    <div class="animated-backdrop">
+        <div class="backdrop-wave"></div>
+        <div class="backdrop-wave"></div>
+        <div class="backdrop-wave"></div>
+    </div>
+    
+    <div class="register-container">
+        <!-- Header Section -->
+        <div class="form-header">
+            <div class="logo-section">
+                <div class="logo-container">
+                    <img src="{% static 'img/favicon/logo.png' %}" alt="FeastFlow" class="brand-logo">
+                </div>
+                <h1 class="brand-name">FeastFlow</h1>
+            </div>
+            
+            <div class="header-content">
+                <h2 class="register-title">{% trans "Create Your Account" %}</h2>
+                <p class="register-subtitle">{% trans "Join the community and start organizing amazing events" %}</p> 
+            </div>
+        </div>
+        
+        <!-- Multi-step Registration Form -->
+        <div class="form-container">
+            <div class="form-progress">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-indicator">
+                        <div class="step-icon">
+                            <i class="fas fa-user-tag"></i>
+                        </div>
+                        <div class="step-number">1</div>
+                    </div>
+                    <div class="step-text">{% trans "Account Type" %}</div>
+                </div>
+                
+                <div class="progress-connector"></div>
+                
+                <div class="progress-step" data-step="2">
+                    <div class="step-indicator">
+                        <div class="step-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="step-number">2</div>
+                    </div>
+                    <div class="step-text">{% trans "Profile Details" %}</div>
+                </div>
+                
+                <div class="progress-connector"></div>
+                
+                <div class="progress-step" data-step="3">
+                    <div class="step-indicator">
+                        <div class="step-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="step-number">3</div>
+                    </div>
+                    <div class="step-text">{% trans "Security" %}</div>
+                </div>
+            </div>
+            
+            <!-- Registration Form -->
+            <form method="post" class="registration-form" id="registrationForm">
+                {% csrf_token %}
+                
+                <!-- Step 1: Account Type Selection -->
+                <div class="form-step active" id="step1">
+                    <div class="step-header">
+                        <h3>{% trans "Choose Your Account Type" %}</h3>
+                        <p>{% trans "Select the role that best fits your needs" %}</p>
+                    </div>
+                    
+                    <div class="account-type-selection">
+                        {% for radio in form.role %}
+                        <div class="account-type-option">
+                            {{ radio.tag }}
+                            <label for="{{ radio.id_for_label }}" class="account-type-card {% if radio.choice_value == 'organizer' %}organizer-card{% else %}contributor-card{% endif %}">
+                                <div class="card-backdrop">
+                                    <div class="card-bg-icon">
+                                        {% if radio.choice_value == 'organizer' %}
+                                            <i class="fas fa-calendar-plus"></i>
+                                        {% else %}
+                                            <i class="fas fa-hands-helping"></i>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                
+                                <div class="card-header">
+                                    <div class="card-icon">
+                                        {% if radio.choice_value == 'organizer' %}
+                                            <i class="fas fa-calendar-plus"></i>
+                                        {% else %}
+                                            <i class="fas fa-hands-helping"></i>
+                                        {% endif %}
+                                    </div>
+                                    <h4 class="card-title">{{ radio.choice_label }}</h4> 
+                                </div>
+                                
+                                <div class="card-content">
+                                    <p class="card-description">
+                                        {% if radio.choice_value == 'organizer' %}
+                                            {% trans "Plan and host community gatherings, create contribution categories, and manage RSVPs for your potluck events." %}
+                                        {% else %}
+                                            {% trans "Browse local events, sign up to bring dishes or supplies, and connect with your community through shared meals." %}
+                                        {% endif %}
+                                    </p>
+                                    
+                                    <ul class="card-features">
+                                        {% if radio.choice_value == 'organizer' %}
+                                            <li><i class="fas fa-check"></i> {% trans "Create and schedule potluck events" %}</li>
+                                            <li><i class="fas fa-check"></i> {% trans "Organize needed items by category" %}</li>
+                                            <li><i class="fas fa-check"></i> {% trans "Track contributions and communicate with guests" %}</li>
+                                        {% else %}
+                                            <li><i class="fas fa-check"></i> {% trans "Find community events near you" %}</li>
+                                            <li><i class="fas fa-check"></i> {% trans "Sign up to bring requested items" %}</li>
+                                            <li><i class="fas fa-check"></i> {% trans "Build a contribution history and reputation" %}</li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                
+                                <div class="card-select">
+                                    <span class="select-btn">{% trans "Select" %}</span>
+                                    <span class="selected-icon"><i class="fas fa-check-circle"></i></span>
+                                </div>
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    {% if form.role.errors %}
+                    <div class="form-error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        {{ form.role.errors }}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="step-actions">
+                        <button type="button" class="btn primary-btn next-step" data-to-step="2">
+                            <span>{% trans "Continue" %}</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Profile Information -->
+                <div class="form-step" id="step2">
+                    <div class="step-header">
+                        <h3>{% trans "Profile Information" %}</h3>
+                        <p>{% trans "Tell us a little about yourself" %}</p>
+                    </div>
+                    
+                    <div class="form-fields">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="{{ form.first_name.id_for_label }}">
+                                    <i class="fas fa-user"></i>
+                                    {% trans "First Name" %}
+                                </label>
+                                <input type="text" name="{{ form.first_name.html_name }}" id="{{ form.first_name.id_for_label }}" 
+                                       class="form-input" placeholder="{% trans 'Enter your first name' %}" 
+                                       {% if form.first_name.value %}value="{{ form.first_name.value }}"{% endif %}>
+                                {% if form.first_name.errors %}
+                                <div class="field-error">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    {{ form.first_name.errors }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="{{ form.last_name.id_for_label }}">
+                                    <i class="fas fa-user"></i>
+                                    {% trans "Last Name" %}
+                                </label>
+                                <input type="text" name="{{ form.last_name.html_name }}" id="{{ form.last_name.id_for_label }}" 
+                                       class="form-input" placeholder="{% trans 'Enter your last name' %}" 
+                                       {% if form.last_name.value %}value="{{ form.last_name.value }}"{% endif %}>
+                                {% if form.last_name.errors %}
+                                <div class="field-error">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    {{ form.last_name.errors }}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.username.id_for_label }}">
+                                <i class="fas fa-id-badge"></i>
+                                {% trans "Username" %} <span class="required-mark">*</span>
+                            </label>
+                            <input type="text" name="{{ form.username.html_name }}" id="{{ form.username.id_for_label }}" 
+                                class="form-input {% if form.username.errors %}error-field{% endif %}" 
+                                placeholder="{% trans 'Choose a unique username' %}" required 
+                                {% if form.username.value %}value="{{ form.username.value }}"{% endif %}>
+                            {% if form.username.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                {{ form.username.errors }}
+                            </div>
+                            {% else %}
+                            <div class="field-hint">
+                                {% trans "Username should be unique, and contain only letters, numbers, and underscores." %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.email.id_for_label }}">
+                                <i class="fas fa-envelope"></i>
+                                {% trans "Email Address" %} <span class="required-mark">*</span>
+                            </label>
+                            <input type="email" name="{{ form.email.html_name }}" id="{{ form.email.id_for_label }}" 
+                                class="form-input {% if form.email.errors %}error-field{% endif %}" 
+                                placeholder="{% trans 'Enter your email address' %}" required 
+                                {% if form.email.value %}value="{{ form.email.value }}"{% endif %}>
+                            {% if form.email.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                {{ form.email.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="step-actions">
+                        <button type="button" class="btn secondary-btn prev-step" data-to-step="1">
+                            <i class="fas fa-arrow-left"></i>
+                            <span>{% trans "Back" %}</span>
+                        </button>
+                        <button type="button" class="btn primary-btn next-step" data-to-step="3">
+                            <span>{% trans "Continue" %}</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Security -->
+                <div class="form-step" id="step3">
+                    <div class="step-header">
+                        <h3>{% trans "Security" %}</h3>
+                        <p>{% trans "Set up a secure password for your account" %}</p>
+                    </div>
+                    
+                    <div class="form-fields">
+                        <div class="form-group">
+                            <label for="{{ form.password1.id_for_label }}">
+                                <i class="fas fa-lock"></i>
+                                {% trans "Password" %} <span class="required-mark">*</span>
+                            </label>
+                            <div class="password-field">
+                                <input type="password" name="{{ form.password1.html_name }}" id="{{ form.password1.id_for_label }}" 
+                                       class="form-input" placeholder="{% trans 'Enter your password' %}" required>
+                                <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            
+                            {% if form.password1.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                {{ form.password1.errors }}
+                            </div>
+                            {% endif %}
+                            
+                            <div class="password-strength">
+                                <div class="strength-meter">
+                                    <div class="strength-bar"></div>
+                                </div>
+                                <div class="strength-text">
+                                    <span class="strength-label">{% trans "Password strength:" %}</span>
+                                    <span class="strength-value">{% trans "Too weak" %}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="password-requirements">
+                                <h5>{% trans "Password Requirements:" %}</h5>
+                                <ul>
+                                    <li class="requirement" data-requirement="length">
+                                        <i class="fas fa-circle"></i>
+                                        {% trans "At least 8 characters long" %}
+                                    </li>
+                                    <li class="requirement" data-requirement="uppercase">
+                                        <i class="fas fa-circle"></i>
+                                        {% trans "At least one uppercase letter" %}
+                                    </li>
+                                    <li class="requirement" data-requirement="lowercase">
+                                        <i class="fas fa-circle"></i>
+                                        {% trans "At least one lowercase letter" %}
+                                    </li>
+                                    <li class="requirement" data-requirement="number">
+                                        <i class="fas fa-circle"></i>
+                                        {% trans "At least one number" %}
+                                    </li>
+                                    <li class="requirement" data-requirement="special">
+                                        <i class="fas fa-circle"></i>
+                                        {% trans "At least one special character" %}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.password2.id_for_label }}">
+                                <i class="fas fa-lock"></i>
+                                {% trans "Confirm Password" %} <span class="required-mark">*</span>
+                            </label>
+                            <div class="password-field">
+                                <input type="password" name="{{ form.password2.html_name }}" id="{{ form.password2.id_for_label }}" 
+                                       class="form-input" placeholder="{% trans 'Confirm your password' %}" required>
+                                <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            
+                            {% if form.password2.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                {{ form.password2.errors }}
+                            </div>
+                            {% endif %}
+                            
+                            <div class="password-match">
+                                <i class="fas fa-circle"></i>
+                                <span>{% trans "Passwords match" %}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group terms-group">
+                            <div class="checkbox-field">
+                                <input type="checkbox" id="terms-checkbox" name="terms_agreed" class="custom-checkbox" required>
+                                <label for="terms-checkbox">
+                                    {% trans "I agree to the" %} <a href="#" class="terms-link">{% trans "Terms of Service" %}</a> {% trans "and" %} <a href="#" class="terms-link">{% trans "Privacy Policy" %}</a>
+                                </label>
+                            </div>
+                            {% if form.terms_agreed.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                {{ form.terms_agreed.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="step-actions">
+                        <button type="button" class="btn secondary-btn prev-step" data-to-step="2">
+                            <i class="fas fa-arrow-left"></i>
+                            <span>{% trans "Back" %}</span>
+                        </button>
+                        <button type="submit" class="btn primary-btn submit-btn">
+                            <span>{% trans "Create Account" %}</span>
+                            <i class="fas fa-user-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="form-footer">
+                <p>{% trans "Already have an account?" %} <a href="{% url 'accounts:login' %}">{% trans "Sign in" %}</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/register.js' %}"></script>
+{% endblock %}

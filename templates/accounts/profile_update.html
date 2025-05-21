@@ -1,0 +1,257 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Update Profile" %} - FeastFlow{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile_update.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="profile-update-page">
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="shape-blob primary-blob"></div>
+        <div class="shape-blob secondary-blob"></div>
+        <div class="shape-blob accent-blob"></div>
+        <div class="pattern-overlay"></div>
+    </div>
+    
+    <div class="update-container">
+        <!-- Header Section -->
+        <div class="update-header">
+            <div class="header-content">
+                <div class="back-link">
+                    <a href="{% url 'accounts:profile' %}" class="back-button">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>{% trans "Back to Profile" %}</span>
+                    </a>
+                </div>
+                
+                <h1 class="update-title">{% trans "Update Your Profile" %}</h1>
+                <p class="update-subtitle">{% trans "Personalize your FeastFlow experience" %}</p>
+            </div>
+        </div>
+        
+        <!-- Update Form -->
+        <div class="update-form-container">
+            <form method="post" enctype="multipart/form-data" class="update-form">
+                {% csrf_token %}
+                
+                <!-- Profile Picture Section -->
+                <div class="profile-picture-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-image"></i>
+                        {% trans "Profile Picture" %}
+                    </h2>
+                    
+                    <div class="picture-upload-container">
+                        <div class="picture-preview-wrapper">
+                            <div class="picture-preview">
+                                {% if user.profile.profile_picture %}
+                                    <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture" id="previewImage">
+                                {% else %}
+                                    <div class="preview-placeholder">
+                                        <i class="fas fa-user"></i>
+                                        <span>{{ user.get_full_name|default:user.username|slice:":1"|upper }}</span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="account-badge {% if user.is_organizer %}organizer-badge{% else %}contributor-badge{% endif %}">
+                                <i class="fas {% if user.is_organizer %}fa-calendar-plus{% else %}fa-hands-helping{% endif %}"></i>
+                                {% if user.is_organizer %}
+                                    {% trans "Event Organizer" %}
+                                {% else %}
+                                    {% trans "Contributor" %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="upload-controls">
+                            <div class="custom-file-upload">
+                                <label for="{{ form.profile_picture.id_for_label }}" class="upload-btn">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>{% trans "Choose Image" %}</span>
+                                </label>
+                                {{ form.profile_picture }}
+                                <div class="file-info">
+                                    <span class="file-name">{% trans "No file selected" %}</span>
+                                    <span class="file-size"></span>
+                                </div>
+                                
+                                {% if form.profile_picture.errors %}
+                                <div class="field-error">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    {{ form.profile_picture.errors }}
+                                </div>
+                                {% endif %}
+                                
+                                {% if form.profile_picture.help_text %}
+                                <div class="field-hint">
+                                    {{ form.profile_picture.help_text }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="picture-actions">
+                                <button type="button" class="action-btn remove-btn" id="removeImage">
+                                    <i class="fas fa-trash-alt"></i>
+                                    <span>{% trans "Remove" %}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Divider -->
+                <div class="form-divider">
+                    <span>{% trans "Basic Information" %}</span>
+                </div>
+                
+                <!-- Basic Information Section -->
+                <div class="form-section basic-info-section">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="{{ form.username.id_for_label }}">
+                                <i class="fas fa-user"></i>
+                                {% trans "Username" %}
+                            </label>
+                            {{ form.username }}
+                            {% if form.username.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                {{ form.username.errors }}
+                            </div>
+                            {% endif %}
+                            {% if form.username.help_text %}
+                            <div class="field-hint">
+                                {{ form.username.help_text }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.email.id_for_label }}">
+                                <i class="fas fa-envelope"></i>
+                                {% trans "Email Address" %}
+                            </label>
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                {{ form.email.errors }}
+                            </div>
+                            {% endif %}
+                            {% if form.email.help_text %}
+                            <div class="field-hint">
+                                {{ form.email.help_text }}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="{{ form.first_name.id_for_label }}">
+                                <i class="fas fa-id-card"></i>
+                                {% trans "First Name" %}
+                            </label>
+                            {{ form.first_name }}
+                            {% if form.first_name.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                {{ form.first_name.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.last_name.id_for_label }}">
+                                <i class="fas fa-id-card"></i>
+                                {% trans "Last Name" %}
+                            </label>
+                            {{ form.last_name }}
+                            {% if form.last_name.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                {{ form.last_name.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Divider -->
+                <div class="form-divider">
+                    <span>{% trans "Additional Information" %}</span>
+                </div>
+                
+                <!-- Additional Information Section -->
+                <div class="form-section additional-info-section">
+                    <div class="form-group">
+                        <label for="{{ form.location.id_for_label }}">
+                            <i class="fas fa-map-marker-alt"></i>
+                            {% trans "Location" %}
+                        </label>
+                        {{ form.location }}
+                        {% if form.location.errors %}
+                        <div class="field-error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            {{ form.location.errors }}
+                        </div>
+                        {% endif %}
+                        {% if form.location.help_text %}
+                        <div class="field-hint">
+                            {{ form.location.help_text }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.bio.id_for_label }}">
+                            <i class="fas fa-comment-alt"></i>
+                            {% trans "Bio" %}
+                        </label>
+                        {{ form.bio }}
+                        <div class="textarea-counter">
+                            <span id="bioCounter">0</span> / <span id="bioMax">300</span> {% trans "characters" %}
+                        </div>
+                        {% if form.bio.errors %}
+                        <div class="field-error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            {{ form.bio.errors }}
+                        </div>
+                        {% endif %}
+                        {% if form.bio.help_text %}
+                        <div class="field-hint">
+                            {{ form.bio.help_text }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <a href="{% url 'accounts:profile' %}" class="btn secondary-btn">
+                        <i class="fas fa-times"></i>
+                        <span>{% trans "Cancel" %}</span>
+                    </a>
+                    <button type="submit" class="btn primary-btn">
+                        <i class="fas fa-save"></i>
+                        <span>{% trans "Save Changes" %}</span>
+                    </button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/profile_update.js' %}"></script>
+{% endblock %}

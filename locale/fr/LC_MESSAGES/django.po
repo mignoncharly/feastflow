@@ -1,0 +1,4976 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-19 12:55+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\apps\accounts\forms.py:17 .\templates\accounts\login.html:96
+msgid "Username or Email"
+msgstr ""
+
+#: .\apps\accounts\forms.py:18
+msgid "Enter your username or email"
+msgstr ""
+
+#: .\apps\accounts\forms.py:46 .\templates\accounts\profile.html:147
+#: .\templates\accounts\register.html:47
+msgid "Account Type"
+msgstr ""
+
+#: .\apps\accounts\forms.py:56 .\apps\accounts\forms.py:103
+msgid "A user with that email already exists."
+msgstr ""
+
+#: .\apps\accounts\forms.py:63
+msgid ""
+"Choose your account type. Event Organizers can create and manage events. "
+"Contributors can only participate in events."
+msgstr ""
+
+#: .\apps\accounts\forms.py:76
+msgid "Upload a profile picture (optional)"
+msgstr ""
+
+#: .\apps\accounts\forms.py:82
+msgid "Tell others a bit about yourself"
+msgstr ""
+
+#: .\apps\accounts\mixins.py:11
+msgid "You must be an Event Organizer to access this page."
+msgstr ""
+
+#: .\apps\accounts\models.py:18 .\templates\accounts\dashboard.html:39
+#: .\templates\accounts\profile.html:40 .\templates\accounts\profile.html:152
+#: .\templates\accounts\profile_update.html:67
+msgid "Event Organizer"
+msgstr ""
+
+#: .\apps\accounts\models.py:19
+#: .\templates\accounts\components\user_card.html:27
+#: .\templates\accounts\dashboard.html:44 .\templates\accounts\profile.html:45
+#: .\templates\accounts\profile.html:157
+#: .\templates\accounts\profile_update.html:69 .\templates\base.html:210
+#: .\templates\events\event_contributors.html:104
+#: .\templates\events\item_form.html:240
+msgid "Contributor"
+msgstr ""
+
+#: .\apps\accounts\models.py:22
+msgid "email address"
+msgstr ""
+
+#: .\apps\accounts\models.py:24
+msgid "Role"
+msgstr ""
+
+#: .\apps\accounts\models.py:34
+msgid "user"
+msgstr ""
+
+#: .\apps\accounts\models.py:35
+msgid "users"
+msgstr ""
+
+#: .\apps\accounts\models.py:91 .\apps\contributions\models.py:18
+#: .\templates\core\terms-of-service.html:82
+msgid "User"
+msgstr ""
+
+#: .\apps\accounts\models.py:96
+msgid "Profile picture"
+msgstr ""
+
+#: .\apps\accounts\models.py:100 .\apps\events\models.py:56
+#: .\templates\accounts\profile.html:136
+#: .\templates\accounts\profile_update.html:198
+#: .\templates\events\contribution_link_detail.html:152
+msgid "Location"
+msgstr ""
+
+#: .\apps\accounts\models.py:101 .\templates\accounts\profile_update.html:217
+msgid "Bio"
+msgstr ""
+
+#: .\apps\accounts\models.py:103
+msgid "Language"
+msgstr ""
+
+#: .\apps\accounts\models.py:107
+msgid "Preferred language for the interface"
+msgstr ""
+
+#: .\apps\accounts\models.py:111
+#: .\templates\contributions\user_contributions.html:54
+msgid "Contribution Streak"
+msgstr ""
+
+#: .\apps\accounts\models.py:112
+msgid "Last Contribution Date"
+msgstr ""
+
+#: .\apps\accounts\models.py:113
+#: .\templates\contributions\user_contributions.html:32
+msgid "Total Contributions"
+msgstr ""
+
+#: .\apps\accounts\models.py:114
+msgid "Total Events"
+msgstr ""
+
+#: .\apps\accounts\models.py:117 .\apps\accounts\models.py:121
+msgid "Profile"
+msgstr ""
+
+#: .\apps\accounts\models.py:118
+msgid "Profiles"
+msgstr ""
+
+#: .\apps\accounts\views.py:38
+msgid "Login successful! Welcome to FeastFlow."
+msgstr ""
+
+#: .\apps\accounts\views.py:52
+msgid "Registration successful! Welcome to FeastFlow."
+msgstr ""
+
+#: .\apps\accounts\views.py:94
+msgid "Profile updated successfully."
+msgstr ""
+
+#: .\apps\accounts\views.py:192
+msgid "You are not logged in."
+msgstr ""
+
+#: .\apps\accounts\views.py:197
+msgid "You have been successfully logged out."
+msgstr ""
+
+#: .\apps\contributions\forms.py:14
+msgid "Any additional information..."
+msgstr ""
+
+#: .\apps\contributions\forms.py:17
+msgid "Your name"
+msgstr ""
+
+#: .\apps\contributions\forms.py:20
+msgid "your@email.com"
+msgstr ""
+
+#: .\apps\contributions\forms.py:49
+msgid "Optional: your@email.com"
+msgstr ""
+
+#: .\apps\contributions\forms.py:58 .\apps\events\forms.py:193
+msgid "Quantity must be greater than zero."
+msgstr ""
+
+#: .\apps\contributions\models.py:8 .\apps\events\models.py:18
+msgid "Created at"
+msgstr ""
+
+#: .\apps\contributions\models.py:9 .\apps\events\models.py:19
+msgid "Updated at"
+msgstr ""
+
+#: .\apps\contributions\models.py:27 .\apps\events\models.py:315
+#: .\apps\events\models.py:407 .\templates\accounts\profile.html:277
+#: .\templates\events\category_detail.html:86
+#: .\templates\events\event_contributors.html:154
+msgid "Item"
+msgstr ""
+
+#: .\apps\contributions\models.py:31 .\apps\events\models.py:48
+#: .\apps\events\models.py:266 .\apps\events\models.py:309
+#: .\apps\events\models.py:364 .\apps\events\models.py:411
+#: .\templates\events\generate_link.html:100
+msgid "Name"
+msgstr ""
+
+#: .\apps\contributions\models.py:32 .\templates\accounts\profile.html:125
+msgid "Email"
+msgstr ""
+
+#: .\apps\contributions\models.py:33 .\templates\accounts\profile.html:278
+#: .\templates\contributions\contribute.html:184
+#: .\templates\contributions\contribution_thanks.html:72
+#: .\templates\contributions\user_contributions.html:97
+#: .\templates\events\category_form.html:213
+#: .\templates\events\event_contributors.html:156
+#: .\templates\events\item_form.html:241
+msgid "Quantity"
+msgstr ""
+
+#: .\apps\contributions\models.py:34
+#: .\templates\contributions\contribute.html:208
+#: .\templates\events\event_contributors.html:158
+#: .\templates\events\item_form.html:243
+msgid "Comment"
+msgstr ""
+
+#: .\apps\contributions\models.py:37
+#: .\templates\contributions\contribution_thanks.html:62
+msgid "Contribution"
+msgstr ""
+
+#: .\apps\contributions\models.py:38 .\templates\accounts\dashboard.html:91
+#: .\templates\accounts\profile.html:76
+#: .\templates\contributions\user_contributions.html:152
+#: .\templates\core\search_results.html:94
+#: .\templates\events\event_contributors.html:58
+#: .\templates\events\event_contributors.html:105
+msgid "Contributions"
+msgstr ""
+
+#: .\apps\contributions\views.py:31
+msgid "This event has ended and is no longer accepting contributions."
+msgstr ""
+
+#: .\apps\contributions\views.py:35
+msgid "You don't have permission to contribute to this event."
+msgstr ""
+
+#: .\apps\contributions\views.py:75
+msgid "Thank you for your contribution!"
+msgstr ""
+
+#: .\apps\events\admin.py:52
+msgid "Thumbnail"
+msgstr ""
+
+#: .\apps\events\fields.py:36
+msgid "Upload your own image"
+msgstr ""
+
+#: .\apps\events\fields.py:44 .\apps\events\forms.py:15
+#: .\apps\events\forms.py:111 .\apps\events\forms.py:159
+msgid "Select from gallery"
+msgstr ""
+
+#: .\apps\events\forms.py:32
+msgid "Leave blank to auto-generate"
+msgstr ""
+
+#: .\apps\events\forms.py:37
+msgid "Select the type of event you are organizing"
+msgstr ""
+
+#: .\apps\events\forms.py:38
+msgid "Choose who can contribute to this event"
+msgstr ""
+
+#: .\apps\events\forms.py:39
+msgid ""
+"Required if \"Code Required\" is selected. Leave blank to auto-generate."
+msgstr ""
+
+#: .\apps\events\forms.py:40 .\apps\events\forms.py:127
+#: .\apps\events\forms.py:172
+msgid "Upload your own image or select from gallery below"
+msgstr ""
+
+#: .\apps\events\forms.py:84
+msgid "End date must be after start date"
+msgstr ""
+
+#: .\apps\events\forms.py:90
+msgid "Access code must be at least 4 characters"
+msgstr ""
+
+#: .\apps\events\forms.py:121
+msgid "URL-friendly name (leave empty to auto-generate)"
+msgstr ""
+
+#: .\apps\events\forms.py:126
+msgid "Select the type of category you are creating"
+msgstr ""
+
+#: .\apps\events\forms.py:209
+msgid "Optional: Name this link (e.g. \"Facebook friends\", \"Email\")"
+msgstr ""
+
+#: .\apps\events\forms.py:217 .\apps\events\models.py:86
+#: .\templates\events\access_code_form.html:85
+#: .\templates\events\event_detail.html:331
+msgid "Access Code"
+msgstr ""
+
+#: .\apps\events\forms.py:221
+msgid "Enter access code"
+msgstr ""
+
+#: .\apps\events\forms.py:234
+msgid "Event not found"
+msgstr ""
+
+#: .\apps\events\forms.py:237
+msgid "This event does not require an access code"
+msgstr ""
+
+#: .\apps\events\forms.py:240
+msgid "Invalid access code"
+msgstr ""
+
+#: .\apps\events\models.py:28 .\templates\accounts\dashboard.html:171
+#: .\templates\contributions\user_contributions.html:144
+#: .\templates\core\home.html:314 .\templates\core\search_results.html:62
+#: .\templates\events\event_list.html:58 .\templates\events\event_list.html:71
+#: .\templates\events\event_list.html:123
+msgid "Ongoing"
+msgstr ""
+
+#: .\apps\events\models.py:29 .\templates\accounts\dashboard.html:174
+#: .\templates\contributions\user_contributions.html:146
+#: .\templates\core\home.html:204 .\templates\core\search_results.html:64
+#: .\templates\events\event_list.html:62 .\templates\events\event_list.html:72
+#: .\templates\events\event_list.html:125
+msgid "Upcoming"
+msgstr ""
+
+#: .\apps\events\models.py:30 .\templates\accounts\dashboard.html:177
+#: .\templates\contributions\user_contributions.html:148
+#: .\templates\core\search_results.html:66
+#: .\templates\events\category_detail.html:126
+#: .\templates\events\category_detail.html:139
+#: .\templates\events\event_list.html:66 .\templates\events\event_list.html:73
+#: .\templates\events\event_list.html:127
+msgid "Completed"
+msgstr ""
+
+#: .\apps\events\models.py:34
+msgid "Public - Anyone can contribute"
+msgstr ""
+
+#: .\apps\events\models.py:35
+msgid "Code Required - Require an access code to contribute"
+msgstr ""
+
+#: .\apps\events\models.py:36
+msgid "Invite Only - Only people with invite links can contribute"
+msgstr ""
+
+#: .\apps\events\models.py:40
+msgid "Association"
+msgstr ""
+
+#: .\apps\events\models.py:41
+msgid "Grill/BBQ"
+msgstr ""
+
+#: .\apps\events\models.py:42
+msgid "Church Community"
+msgstr ""
+
+#: .\apps\events\models.py:43
+msgid "Wedding"
+msgstr ""
+
+#: .\apps\events\models.py:44
+msgid "Birthday"
+msgstr ""
+
+#: .\apps\events\models.py:45
+msgid "Corporate Event"
+msgstr ""
+
+#: .\apps\events\models.py:49 .\apps\events\models.py:267
+msgid "Slug"
+msgstr ""
+
+#: .\apps\events\models.py:50 .\apps\events\models.py:268
+msgid "Description"
+msgstr ""
+
+#: .\apps\events\models.py:51
+msgid "Start date"
+msgstr ""
+
+#: .\apps\events\models.py:52
+msgid "End date"
+msgstr ""
+
+#: .\apps\events\models.py:53
+msgid "Start time"
+msgstr ""
+
+#: .\apps\events\models.py:54
+msgid "End time"
+msgstr ""
+
+#: .\apps\events\models.py:55 .\apps\events\models.py:269
+#: .\apps\events\models.py:312 .\apps\events\models.py:412
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:420
+msgid "Image"
+msgstr ""
+
+#: .\apps\events\models.py:57
+msgid "Timezone"
+msgstr ""
+
+#: .\apps\events\models.py:59
+msgid "Event Type"
+msgstr ""
+
+#: .\apps\events\models.py:65 .\templates\events\event_list.html:49
+msgid "Status"
+msgstr ""
+
+#: .\apps\events\models.py:70 .\templates\events\event_detail.html:116
+msgid "Popularity"
+msgstr ""
+
+#: .\apps\events\models.py:73 .\templates\accounts\components\user_card.html:25
+#: .\templates\base.html:208
+#: .\templates\events\contribution_link_detail.html:162
+#: .\templates\events\event_detail.html:105
+msgid "Organizer"
+msgstr ""
+
+#: .\apps\events\models.py:79
+msgid "Access Mode"
+msgstr ""
+
+#: .\apps\events\models.py:83
+msgid "Control who can contribute to this event"
+msgstr ""
+
+#: .\apps\events\models.py:89
+msgid "Access code required to contribute to this event"
+msgstr ""
+
+#: .\apps\events\models.py:93 .\apps\events\models.py:262
+#: .\apps\events\models.py:354 .\apps\events\models.py:405
+#: .\templates\accounts\profile.html:276
+#: .\templates\contributions\contribution_thanks.html:52
+#: .\templates\contributions\user_contributions.html:87
+msgid "Event"
+msgstr ""
+
+#: .\apps\events\models.py:94 .\apps\events\models.py:442
+#: .\templates\accounts\profile.html:87 .\templates\base.html:115
+#: .\templates\base.html:325 .\templates\events\access_code_form.html:23
+#: .\templates\events\category_detail.html:22
+#: .\templates\events\category_form.html:27
+#: .\templates\events\category_form.html:145
+#: .\templates\events\event_detail.html:23
+#: .\templates\events\event_form.html:46 .\templates\events\event_form.html:175
+#: .\templates\events\event_list.html:4
+#: .\templates\events\generate_link.html:26
+#: .\templates\events\item_form.html:32 .\templates\events\item_form.html:155
+msgid "Events"
+msgstr ""
+
+#: .\apps\events\models.py:157
+#, python-brace-format
+msgid "{days} days, {hours} hours"
+msgstr ""
+
+#: .\apps\events\models.py:159
+#, python-brace-format
+msgid "{hours} hours"
+msgstr ""
+
+#: .\apps\events\models.py:247
+msgid "Side Dish"
+msgstr ""
+
+#: .\apps\events\models.py:248
+msgid "Cutlery"
+msgstr ""
+
+#: .\apps\events\models.py:249
+msgid "Dessert"
+msgstr ""
+
+#: .\apps\events\models.py:250
+msgid "Meat"
+msgstr ""
+
+#: .\apps\events\models.py:251
+msgid "Fruits"
+msgstr ""
+
+#: .\apps\events\models.py:252
+msgid "Vegetables"
+msgstr ""
+
+#: .\apps\events\models.py:253
+msgid "Drinks"
+msgstr ""
+
+#: .\apps\events\models.py:254
+msgid "Grill Accessories"
+msgstr ""
+
+#: .\apps\events\models.py:255
+msgid "Good Vibes"
+msgstr ""
+
+#: .\apps\events\models.py:256
+msgid "Salad"
+msgstr ""
+
+#: .\apps\events\models.py:257
+msgid "Sauce"
+msgstr ""
+
+#: .\apps\events\models.py:271
+msgid "Category Type"
+msgstr ""
+
+#: .\apps\events\models.py:278 .\apps\events\models.py:305
+#: .\apps\events\models.py:406 .\templates\contributions\contribute.html:99
+#: .\templates\contributions\user_contributions.html:93
+#: .\templates\events\event_contributors.html:155
+msgid "Category"
+msgstr ""
+
+#: .\apps\events\models.py:279 .\apps\events\models.py:444
+#: .\templates\events\category_form.html:146
+#: .\templates\events\contribution_link_detail.html:75
+#: .\templates\events\event_detail.html:148
+#: .\templates\events\event_detail.html:166
+#: .\templates\events\event_form.html:176 .\templates\events\item_form.html:156
+msgid "Categories"
+msgstr ""
+
+#: .\apps\events\models.py:310
+msgid "Required quantity"
+msgstr ""
+
+#: .\apps\events\models.py:311
+msgid "Comments"
+msgstr ""
+
+#: .\apps\events\models.py:316 .\apps\events\models.py:446
+#: .\templates\events\category_form.html:147
+#: .\templates\events\event_contributors.html:69
+#: .\templates\events\event_contributors.html:106
+#: .\templates\events\event_form.html:177 .\templates\events\item_form.html:157
+msgid "Items"
+msgstr ""
+
+#: .\apps\events\models.py:359
+msgid "Code"
+msgstr ""
+
+#: .\apps\events\models.py:365 .\apps\events\models.py:420
+msgid "Active"
+msgstr ""
+
+#: .\apps\events\models.py:368
+msgid "Contribution Link"
+msgstr ""
+
+#: .\apps\events\models.py:369
+msgid "Contribution Links"
+msgstr ""
+
+#: .\apps\events\models.py:408
+msgid "All Types"
+msgstr ""
+
+#: .\apps\events\models.py:414
+msgid "Image Type"
+msgstr ""
+
+#: .\apps\events\models.py:418
+msgid "Type of content this image can be used for"
+msgstr ""
+
+#: .\apps\events\models.py:423
+msgid "Predefined Image"
+msgstr ""
+
+#: .\apps\events\models.py:424
+msgid "Predefined Images"
+msgstr ""
+
+#: .\apps\events\models.py:448
+msgid "General"
+msgstr ""
+
+#: .\apps\events\views.py:167 .\apps\events\views.py:170
+msgid "Event created successfully!"
+msgstr ""
+
+#: .\apps\events\views.py:203 .\apps\events\views.py:206
+msgid "Event updated successfully!"
+msgstr ""
+
+#: .\apps\events\views.py:241 .\apps\events\views.py:244
+msgid "Category created successfully!"
+msgstr ""
+
+#: .\apps\events\views.py:289 .\apps\events\views.py:292
+msgid "Category updated successfully!"
+msgstr ""
+
+#: .\apps\events\views.py:333 .\apps\events\views.py:338
+msgid "Item created successfully!"
+msgstr ""
+
+#: .\apps\events\views.py:386 .\apps\events\views.py:391
+msgid "Item updated successfully!"
+msgstr ""
+
+#: .\apps\events\views.py:416
+msgid "Contribution link generated successfully!"
+msgstr ""
+
+#: .\apps\events\views.py:456
+msgid ""
+"Access code verified successfully. You can now contribute to this event!"
+msgstr ""
+
+#: .\apps\events\views.py:465
+msgid "Invalid access code. Please try again."
+msgstr ""
+
+#: .\apps\events\views.py:483
+msgid "This contribution link is no longer active."
+msgstr ""
+
+#: .\apps\events\widgets.py:64
+msgid "All Images"
+msgstr ""
+
+#: .\apps\events\widgets.py:65
+msgid "Event Images"
+msgstr ""
+
+#: .\apps\events\widgets.py:66
+msgid "Category Images"
+msgstr ""
+
+#: .\apps\events\widgets.py:67
+msgid "Item Images"
+msgstr ""
+
+#: .\config\settings\base.py:131
+msgid "English"
+msgstr ""
+
+#: .\config\settings\base.py:132
+msgid "French"
+msgstr ""
+
+#: .\config\settings\base.py:133
+msgid "Spanish"
+msgstr ""
+
+#: .\config\settings\base.py:134
+msgid "German"
+msgstr ""
+
+#: .\templates\accounts\components\user_card.html:35
+#: .\templates\events\event_detail.html:117
+msgid "contributions"
+msgstr ""
+
+#: .\templates\accounts\components\user_card.html:38
+#: .\templates\accounts\profile.html:50
+msgid "Member since"
+msgstr ""
+
+#: .\templates\accounts\components\user_card.html:45
+msgid "View Profile"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:5
+msgid "My Dashboard"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:7
+msgid "View your events, contributions, and activity in one place."
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:34
+msgid "Welcome"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:48
+msgid "Here's your personalized FeastFlow experience"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:55
+#: .\templates\accounts\dashboard.html:475 .\templates\core\home.html:43
+#: .\templates\core\home.html:238 .\templates\core\home.html:348
+#: .\templates\core\home.html:379 .\templates\events\event_form.html:21
+#: .\templates\events\event_form.html:51 .\templates\events\event_form.html:302
+#: .\templates\events\event_list.html:26 .\templates\events\event_list.html:201
+msgid "Create Event"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:60
+msgid "Find Events"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:65
+#: .\templates\accounts\dashboard.html:490 .\templates\accounts\profile.html:5
+#: .\templates\base.html:224
+msgid "My Profile"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:80
+#: .\templates\accounts\dashboard.html:129
+#: .\templates\accounts\profile.html:265
+msgid "My Events"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:102 .\templates\accounts\profile.html:98
+msgid "Day Streak"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:113
+msgid "Events Joined"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:135
+msgid "Create"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:140
+#: .\templates\accounts\dashboard.html:239
+#: .\templates\accounts\dashboard.html:321 .\templates\core\home.html:181
+#: .\templates\core\home.html:291
+msgid "View All"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:187
+msgid "View"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:196
+msgid "View Contributors"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:208
+msgid "View All Events"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:218
+#: .\templates\accounts\profile.html:400
+msgid "No Events Created Yet"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:219
+msgid "Start organizing your first event with FeastFlow"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:221
+#: .\templates\accounts\profile.html:403
+msgid "Create Your First Event"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:235
+#: .\templates\contributions\user_contributions.html:67
+msgid "Recent Contributions"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:258
+#: .\templates\accounts\dashboard.html:440
+#: .\templates\contributions\user_contributions.html:83
+msgid "ago"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:290
+#: .\templates\accounts\profile.html:314
+msgid "View All Contributions"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:300
+#: .\templates\accounts\profile.html:323
+msgid "No Contributions Yet"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:301
+msgid "Start contributing to events in your community"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:303
+msgid "Find Events to Join"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:317
+msgid "Upcoming Events You Might Like"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:367 .\templates\core\home.html:221
+#: .\templates\core\home.html:331 .\templates\core\search_results.html:105
+#: .\templates\events\event_list.html:163
+msgid "View Details"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:396 .\templates\core\home.html:233
+msgid "No Upcoming Events"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:397
+msgid "Check back later for events in your community!"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:413
+msgid "Activity Feed"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:451
+msgid "Your activity history will appear here as you use FeastFlow."
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:464
+msgid "Quick Actions"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:483
+#: .\templates\contributions\contribution_thanks.html:135
+#: .\templates\contributions\user_contributions.html:119
+#: .\templates\core\home.html:38 .\templates\core\home.html:383
+msgid "Browse Events"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:497 .\templates\base.html:230
+msgid "Settings"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:510
+msgid "Pro Tips"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:522
+msgid "Clear Descriptions"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:523
+msgid ""
+"Be specific about what items are needed for your event to increase "
+"contribution rates."
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:532
+msgid "Organize Categories"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:533
+msgid ""
+"Group similar items into logical categories to make your event more "
+"manageable."
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:542
+msgid "Share Widely"
+msgstr ""
+
+#: .\templates\accounts\dashboard.html:543
+msgid ""
+"Share your event link across social media and with friends to reach more "
+"contributors."
+msgstr ""
+
+#: .\templates\accounts\login.html:5 .\templates\base.html:242
+msgid "Login"
+msgstr ""
+
+#: .\templates\accounts\login.html:30
+msgid "FeastFlow"
+msgstr ""
+
+#: .\templates\accounts\login.html:31
+msgid "Organize community potlucks and events with ease"
+msgstr ""
+
+#: .\templates\accounts\login.html:39
+msgid "Create Events"
+msgstr ""
+
+#: .\templates\accounts\login.html:40
+msgid "Organize community gatherings and manage contributions"
+msgstr ""
+
+#: .\templates\accounts\login.html:49
+msgid "Collaborate"
+msgstr ""
+
+#: .\templates\accounts\login.html:50
+msgid "Invite friends and family to contribute to your events"
+msgstr ""
+
+#: .\templates\accounts\login.html:59
+#: .\templates\contributions\contribute.html:65
+#: .\templates\events\category_detail.html:130
+msgid "Contribute"
+msgstr ""
+
+#: .\templates\accounts\login.html:60
+msgid "Sign up to bring items to community events"
+msgstr ""
+
+#: .\templates\accounts\login.html:71
+msgid "Welcome Back"
+msgstr ""
+
+#: .\templates\accounts\login.html:72
+msgid "Sign in to continue to your account"
+msgstr ""
+
+#: .\templates\accounts\login.html:84
+msgid "Please check your username and password and try again."
+msgstr ""
+
+#: .\templates\accounts\login.html:111 .\templates\accounts\register.html:260
+msgid "Password"
+msgstr ""
+
+#: .\templates\accounts\login.html:132
+msgid "Remember me"
+msgstr ""
+
+#: .\templates\accounts\login.html:137
+msgid "Forgot password?"
+msgstr ""
+
+#: .\templates\accounts\login.html:146
+msgid "Sign In"
+msgstr ""
+
+#: .\templates\accounts\login.html:152
+#: .\venv\Lib\site-packages\django\utils\text.py:278
+msgid "or"
+msgstr ""
+
+#: .\templates\accounts\login.html:158
+msgid "Continue with Google"
+msgstr ""
+
+#: .\templates\accounts\login.html:163
+msgid "Continue with Facebook"
+msgstr ""
+
+#: .\templates\accounts\login.html:169
+msgid "Don't have an account?"
+msgstr ""
+
+#: .\templates\accounts\login.html:170
+msgid "Create account"
+msgstr ""
+
+#: .\templates\accounts\logout.html:5 .\templates\accounts\logout.html:13
+#: .\templates\base.html:236
+msgid "Logout"
+msgstr ""
+
+#: .\templates\accounts\logout.html:19
+msgid "Are you sure you want to logout?"
+msgstr ""
+
+#: .\templates\accounts\logout.html:25
+#: .\templates\accounts\profile_update.html:241
+#: .\templates\events\category_form.html:174
+#: .\templates\events\event_form.html:332
+#: .\templates\events\generate_link.html:83
+#: .\templates\events\item_form.html:185
+msgid "Cancel"
+msgstr ""
+
+#: .\templates\accounts\logout.html:28
+msgid "Yes, Logout"
+msgstr ""
+
+#: .\templates\accounts\password_reset.html:7
+msgid "Reset Password"
+msgstr ""
+
+#: .\templates\accounts\password_reset.html:40
+#: .\templates\registration\password_reset_email.html:250
+msgid "Reset Your Password"
+msgstr ""
+
+#: .\templates\accounts\password_reset.html:41
+msgid "We'll help you regain access to your account"
+msgstr ""
+
+#: .\templates\accounts\password_reset.html:51
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email you "
+"instructions for setting a new one."
+msgstr ""
+
+#: .\templates\accounts\password_reset.html:62
+#: .\templates\accounts\profile_update.html:140
+#: .\templates\accounts\register.html:223
+#: .\templates\contributions\contribute.html:157
+#: .\templates\core\contact.html:102
+msgid "Email Address"
+msgstr ""
+
+#: .\templates\accounts\password_reset.html:91
+#: .\templates\registration\password_reset_email.html:265
+msgid "Reset My Password"
+msgstr ""
+
+#: .\templates\accounts\password_reset.html:100
+msgid "Back to login"
+msgstr ""
+
+#: .\templates\accounts\password_reset.html:115
+msgid "Security Tip"
+msgstr ""
+
+#: .\templates\accounts\password_reset.html:116
+msgid ""
+"Create a strong password that includes uppercase letters, numbers, and "
+"special characters. Never reuse passwords across multiple sites."
+msgstr ""
+
+#: .\templates\accounts\password_reset.html:127
+#: .\templates\accounts\password_reset_complete.html:92
+msgid "Need Help?"
+msgstr ""
+
+#: .\templates\accounts\password_reset.html:128
+msgid ""
+"If you're still having trouble accessing your account, our support team is "
+"ready to assist you."
+msgstr ""
+
+#: .\templates\accounts\password_reset.html:129
+#: .\templates\accounts\password_reset_complete.html:94
+#: .\templates\accounts\password_reset_confirm.html:226
+#: .\templates\accounts\password_reset_done.html:103
+#: .\templates\core\500.html:40
+msgid "Contact Support"
+msgstr ""
+
+#: .\templates\accounts\password_reset_complete.html:6
+#: .\templates\accounts\password_reset_complete.html:41
+msgid "Password Reset Complete"
+msgstr ""
+
+#: .\templates\accounts\password_reset_complete.html:42
+msgid ""
+"Your password has been set successfully. You can now log in with your new "
+"password."
+msgstr ""
+
+#: .\templates\accounts\password_reset_complete.html:51
+msgid "Account Secured"
+msgstr ""
+
+#: .\templates\accounts\password_reset_complete.html:52
+msgid "Your account is now protected with your new password."
+msgstr ""
+
+#: .\templates\accounts\password_reset_complete.html:64
+msgid "Log In Now"
+msgstr ""
+
+#: .\templates\accounts\password_reset_complete.html:79
+msgid "Privacy Tip"
+msgstr ""
+
+#: .\templates\accounts\password_reset_complete.html:80
+msgid ""
+"Remember to use a unique password for every account to maximize your online "
+"security."
+msgstr ""
+
+#: .\templates\accounts\password_reset_complete.html:93
+msgid ""
+"If you encounter any issues while logging in, please contact our support "
+"team."
+msgstr ""
+
+#: .\templates\accounts\password_reset_confirm.html:7
+msgid "Set New Password"
+msgstr ""
+
+#: .\templates\accounts\password_reset_confirm.html:39
+msgid "Create Your New Password"
+msgstr ""
+
+#: .\templates\accounts\password_reset_confirm.html:40
+msgid "Choose a strong, unique password to secure your account"
+msgstr ""
+
+#: .\templates\accounts\password_reset_confirm.html:50
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: .\templates\accounts\password_reset_confirm.html:124
+msgid "Tips for a Strong Password"
+msgstr ""
+
+#: .\templates\accounts\password_reset_confirm.html:181
+msgid "Change My Password"
+msgstr ""
+
+#: .\templates\accounts\password_reset_confirm.html:198
+msgid "Password Reset Link Invalid"
+msgstr ""
+
+#: .\templates\accounts\password_reset_confirm.html:199
+msgid "We couldn't verify your password reset request"
+msgstr ""
+
+#: .\templates\accounts\password_reset_confirm.html:204
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used or has expired. Please request a new password reset to continue."
+msgstr ""
+
+#: .\templates\accounts\password_reset_confirm.html:214
+msgid "Request New Password Reset"
+msgstr ""
+
+#: .\templates\accounts\password_reset_confirm.html:225
+msgid ""
+"Need help? Contact our support team or visit our help center for assistance."
+msgstr ""
+
+#: .\templates\accounts\password_reset_done.html:6
+msgid "Password Reset Email Sent"
+msgstr ""
+
+#: .\templates\accounts\password_reset_done.html:52
+msgid "Check Your Email"
+msgstr ""
+
+#: .\templates\accounts\password_reset_done.html:53
+msgid "We've sent instructions to reset your password"
+msgstr ""
+
+#: .\templates\accounts\password_reset_done.html:56
+msgid ""
+"We've emailed you instructions for setting your password. You should receive "
+"them shortly."
+msgstr ""
+
+#: .\templates\accounts\password_reset_done.html:57
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+
+#: .\templates\accounts\password_reset_done.html:66
+msgid "Still having trouble? Contact our support team for assistance."
+msgstr ""
+
+#: .\templates\accounts\password_reset_done.html:77
+msgid "Back to Login"
+msgstr ""
+
+#: .\templates\accounts\password_reset_done.html:86
+msgid "Return to Home"
+msgstr ""
+
+#: .\templates\accounts\password_reset_done.html:101
+msgid "We're Here to Help"
+msgstr ""
+
+#: .\templates\accounts\password_reset_done.html:102
+msgid ""
+"If you need any assistance with your account, our friendly support team is "
+"ready to help."
+msgstr ""
+
+#: .\templates\accounts\password_reset_done.html:114
+msgid "Read Our Privacy Policy"
+msgstr ""
+
+#: .\templates\accounts\password_reset_done.html:115
+msgid ""
+"Learn how we protect your personal information and maintain the security of "
+"your account."
+msgstr ""
+
+#: .\templates\accounts\password_reset_done.html:116
+msgid "View Privacy Policy"
+msgstr ""
+
+#: .\templates\accounts\profile.html:58 .\templates\base.html:218
+msgid "Dashboard"
+msgstr ""
+
+#: .\templates\accounts\profile.html:62
+#: .\templates\contributions\contribution_thanks.html:159
+msgid "Edit Profile"
+msgstr ""
+
+#: .\templates\accounts\profile.html:115 .\templates\accounts\register.html:59
+msgid "Profile Details"
+msgstr ""
+
+#: .\templates\accounts\profile.html:169
+msgid "About Me"
+msgstr ""
+
+#: .\templates\accounts\profile.html:182
+msgid "Change Password"
+msgstr ""
+
+#: .\templates\accounts\profile.html:194
+msgid "Achievements"
+msgstr ""
+
+#: .\templates\accounts\profile.html:204
+msgid "First Contribution"
+msgstr ""
+
+#: .\templates\accounts\profile.html:205
+msgid "Made your first contribution"
+msgstr ""
+
+#: .\templates\accounts\profile.html:221
+msgid "Regular Helper"
+msgstr ""
+
+#: .\templates\accounts\profile.html:222
+msgid "Made 10+ contributions"
+msgstr ""
+
+#: .\templates\accounts\profile.html:238
+msgid "On Fire"
+msgstr ""
+
+#: .\templates\accounts\profile.html:239
+msgid "7+ day contribution streak"
+msgstr ""
+
+#: .\templates\accounts\profile.html:261
+#: .\templates\contributions\user_contributions.html:4
+#: .\templates\contributions\user_contributions.html:18
+msgid "My Contributions"
+msgstr ""
+
+#: .\templates\accounts\profile.html:279
+#: .\templates\events\event_contributors.html:157
+#: .\templates\events\item_form.html:242
+msgid "Date"
+msgstr ""
+
+#: .\templates\accounts\profile.html:324
+msgid "You haven't made any contributions yet. Start helping out at events!"
+msgstr ""
+
+#: .\templates\accounts\profile.html:326
+msgid "Browse Events to Contribute"
+msgstr ""
+
+#: .\templates\accounts\profile.html:390
+msgid "View All My Events"
+msgstr ""
+
+#: .\templates\accounts\profile.html:401
+msgid "You haven't organized any events yet. Create your first event!"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:6
+msgid "Update Profile"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:30
+msgid "Back to Profile"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:34
+#: .\templates\contributions\contribution_thanks.html:156
+msgid "Update Your Profile"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:35
+msgid "Personalize your FeastFlow experience"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:48
+msgid "Profile Picture"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:78
+msgid "Choose Image"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:82
+msgid "No file selected"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:103
+msgid "Remove"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:112
+#: .\templates\events\event_form.html:103
+msgid "Basic Information"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:121
+#: .\templates\accounts\register.html:203
+msgid "Username"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:161
+#: .\templates\accounts\register.html:170
+msgid "First Name"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:175
+#: .\templates\accounts\register.html:186
+msgid "Last Name"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:190
+msgid "Additional Information"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:221
+msgid "characters"
+msgstr ""
+
+#: .\templates\accounts\profile_update.html:245
+#: .\templates\events\category_form.html:180
+#: .\templates\events\event_form.html:300 .\templates\events\item_form.html:190
+msgid "Save Changes"
+msgstr ""
+
+#: .\templates\accounts\register.html:5 .\templates\base.html:243
+msgid "Register"
+msgstr ""
+
+#: .\templates\accounts\register.html:32
+msgid "Create Your Account"
+msgstr ""
+
+#: .\templates\accounts\register.html:33
+msgid "Join the community and start organizing amazing events"
+msgstr ""
+
+#: .\templates\accounts\register.html:71 .\templates\accounts\register.html:252
+msgid "Security"
+msgstr ""
+
+#: .\templates\accounts\register.html:82
+msgid "Choose Your Account Type"
+msgstr ""
+
+#: .\templates\accounts\register.html:83
+msgid "Select the role that best fits your needs"
+msgstr ""
+
+#: .\templates\accounts\register.html:115
+msgid ""
+"Plan and host community gatherings, create contribution categories, and "
+"manage RSVPs for your potluck events."
+msgstr ""
+
+#: .\templates\accounts\register.html:117
+msgid ""
+"Browse local events, sign up to bring dishes or supplies, and connect with "
+"your community through shared meals."
+msgstr ""
+
+#: .\templates\accounts\register.html:123
+msgid "Create and schedule potluck events"
+msgstr ""
+
+#: .\templates\accounts\register.html:124
+msgid "Organize needed items by category"
+msgstr ""
+
+#: .\templates\accounts\register.html:125
+msgid "Track contributions and communicate with guests"
+msgstr ""
+
+#: .\templates\accounts\register.html:127
+msgid "Find community events near you"
+msgstr ""
+
+#: .\templates\accounts\register.html:128
+msgid "Sign up to bring requested items"
+msgstr ""
+
+#: .\templates\accounts\register.html:129
+msgid "Build a contribution history and reputation"
+msgstr ""
+
+#: .\templates\accounts\register.html:135
+msgid "Select"
+msgstr ""
+
+#: .\templates\accounts\register.html:152
+#: .\templates\accounts\register.html:243
+msgid "Continue"
+msgstr ""
+
+#: .\templates\accounts\register.html:161
+msgid "Profile Information"
+msgstr ""
+
+#: .\templates\accounts\register.html:162
+msgid "Tell us a little about yourself"
+msgstr ""
+
+#: .\templates\accounts\register.html:173
+msgid "Enter your first name"
+msgstr ""
+
+#: .\templates\accounts\register.html:189
+msgid "Enter your last name"
+msgstr ""
+
+#: .\templates\accounts\register.html:206
+msgid "Choose a unique username"
+msgstr ""
+
+#: .\templates\accounts\register.html:215
+msgid ""
+"Username should be unique, and contain only letters, numbers, and "
+"underscores."
+msgstr ""
+
+#: .\templates\accounts\register.html:226
+msgid "Enter your email address"
+msgstr ""
+
+#: .\templates\accounts\register.html:240
+#: .\templates\accounts\register.html:353
+msgid "Back"
+msgstr ""
+
+#: .\templates\accounts\register.html:253
+msgid "Set up a secure password for your account"
+msgstr ""
+
+#: .\templates\accounts\register.html:264
+msgid "Enter your password"
+msgstr ""
+
+#: .\templates\accounts\register.html:282
+msgid "Password strength:"
+msgstr ""
+
+#: .\templates\accounts\register.html:283
+msgid "Too weak"
+msgstr ""
+
+#: .\templates\accounts\register.html:288
+msgid "Password Requirements:"
+msgstr ""
+
+#: .\templates\accounts\register.html:292
+msgid "At least 8 characters long"
+msgstr ""
+
+#: .\templates\accounts\register.html:296
+msgid "At least one uppercase letter"
+msgstr ""
+
+#: .\templates\accounts\register.html:300
+msgid "At least one lowercase letter"
+msgstr ""
+
+#: .\templates\accounts\register.html:304
+msgid "At least one number"
+msgstr ""
+
+#: .\templates\accounts\register.html:308
+msgid "At least one special character"
+msgstr ""
+
+#: .\templates\accounts\register.html:317
+msgid "Confirm Password"
+msgstr ""
+
+#: .\templates\accounts\register.html:321
+msgid "Confirm your password"
+msgstr ""
+
+#: .\templates\accounts\register.html:336
+msgid "Passwords match"
+msgstr ""
+
+#: .\templates\accounts\register.html:344
+msgid "I agree to the"
+msgstr ""
+
+#: .\templates\accounts\register.html:344 .\templates\base.html:335
+#: .\templates\base.html:346 .\templates\core\terms-of-service.html:6
+#: .\templates\core\terms-of-service.html:18
+msgid "Terms of Service"
+msgstr ""
+
+#: .\templates\accounts\register.html:344
+#: .\venv\Lib\site-packages\django\db\models\base.py:1600
+#: .\venv\Lib\site-packages\django\forms\models.py:908
+msgid "and"
+msgstr ""
+
+#: .\templates\accounts\register.html:344 .\templates\base.html:334
+#: .\templates\base.html:345 .\templates\core\privacy-policy.html:6
+#: .\templates\core\privacy-policy.html:18
+msgid "Privacy Policy"
+msgstr ""
+
+#: .\templates\accounts\register.html:356
+msgid "Create Account"
+msgstr ""
+
+#: .\templates\accounts\register.html:364
+msgid "Already have an account?"
+msgstr ""
+
+#: .\templates\accounts\register.html:364
+msgid "Sign in"
+msgstr ""
+
+#: .\templates\admin\base_site.html:5
+msgid "FeastFlow Admin"
+msgstr ""
+
+#: .\templates\admin\base_site.html:11
+msgid "FeastFlow Administration"
+msgstr ""
+
+#: .\templates\base.html:11 .\templates\base.html:18 .\templates\base.html:24
+#: .\templates\core\home.html:6
+msgid "Event Organization Made Easy"
+msgstr ""
+
+#: .\templates\base.html:12
+msgid ""
+"FeastFlow helps you organize and track contributions for your events "
+"effortlessly. Create events, manage categories, and track contributions with "
+"ease."
+msgstr ""
+
+#: .\templates\base.html:13
+msgid ""
+"event organization, potluck, contribution tracking, event management, "
+"volunteering"
+msgstr ""
+
+#: .\templates\base.html:19 .\templates\base.html:25
+#: .\templates\core\about.html:10 .\templates\core\home.html:415
+msgid ""
+"FeastFlow helps you organize and track contributions for your events "
+"effortlessly."
+msgstr ""
+
+#: .\templates\base.html:109 .\templates\base.html:324
+#: .\templates\contributions\contribute.html:32
+#: .\templates\events\generate_link.html:25
+#: .\templates\events\item_form.html:31
+#: .\templates\registration\password_reset_email.html:290
+msgid "Home"
+msgstr ""
+
+#: .\templates\base.html:121 .\templates\base.html:326
+#: .\templates\events\contribution_link_detail.html:173
+msgid "Contact"
+msgstr ""
+
+#: .\templates\base.html:130
+msgid "Search..."
+msgstr ""
+
+#: .\templates\base.html:306
+msgid ""
+"Simplifying event organization and contribution tracking for communities, "
+"teams, and friends."
+msgstr ""
+
+#: .\templates\base.html:322
+msgid "Quick Links"
+msgstr ""
+
+#: .\templates\base.html:331
+msgid "Resources"
+msgstr ""
+
+#: .\templates\base.html:333
+msgid "Blog"
+msgstr ""
+
+#: .\templates\base.html:343
+msgid "All rights reserved."
+msgstr ""
+
+#: .\templates\contributions\contribute.html:6 .\templates\core\home.html:97
+msgid "Make a Contribution"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:8
+msgid "Contribute to an event by adding items or volunteering."
+msgstr ""
+
+#: .\templates\contributions\contribute.html:78
+msgid "Access Granted"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:81
+msgid "You were invited to contribute to this event."
+msgstr ""
+
+#: .\templates\contributions\contribute.html:83
+msgid "You have verified the access code for this event."
+msgstr ""
+
+#: .\templates\contributions\contribute.html:94
+msgid "About this item"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:107
+msgid "Required Quantity"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:116
+msgid "Notes"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:130
+msgid "Make Your Contribution"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:142
+#: .\templates\core\contact.html:97
+msgid "Your Name"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:161
+#: .\templates\contributions\contribute.html:209
+msgid "optional"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:172
+msgid "Your email is only used for contribution notifications"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:174
+msgid "Optional: Your email will only be used for contribution notifications"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:219
+msgid "Add any details about your contribution"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:227
+msgid "Back to Category"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:231
+msgid "Submit Contribution"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:248
+msgid "Event Access"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:260
+msgid "Access Type"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:262
+#: .\templates\events\event_detail.html:130
+msgid "Public"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:264
+msgid "Code Required"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:266
+#: .\templates\events\event_detail.html:134
+#: .\templates\events\event_form.html:284
+msgid "Invite Only"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:273
+msgid "Start Date"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:282
+msgid "End Date"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:292
+msgid "Organized by"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:302
+#: .\templates\events\access_code_form.html:124
+#: .\templates\events\event_contributors.html:32
+#: .\templates\events\generate_link.html:66
+msgid "Back to Event"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:314
+msgid "Current Contributors"
+msgstr ""
+
+#: .\templates\contributions\contribute.html:345
+msgid "No contributions yet. Be the first to contribute!"
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:5
+msgid "Thank You"
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:7
+msgid "Thank you for your contribution to the event."
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:43
+#: .\templates\core\contact.html:233
+msgid "Thank You!"
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:44
+msgid "Your contribution has been successfully recorded"
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:80
+msgid "Thank you for helping to make this event a success!"
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:86
+msgid "Return to Event"
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:90
+msgid "View My Contributions"
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:95
+msgid "Share your contribution"
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:124
+msgid "What's Next?"
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:132
+msgid "Explore More Events"
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:133
+msgid "Discover other events in your community that need contributions."
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:144
+msgid "Track Your Contributions"
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:145
+msgid "Keep track of all your contributions across different events."
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:147
+msgid "View History"
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:157
+msgid "Complete your profile to get personalized event recommendations."
+msgstr ""
+
+#: .\templates\contributions\contribution_thanks.html:174
+msgid "Link copied to clipboard!"
+msgstr ""
+
+#: .\templates\contributions\user_contributions.html:6
+msgid "View all your contributions to various events."
+msgstr ""
+
+#: .\templates\contributions\user_contributions.html:43
+msgid "Events Contributed"
+msgstr ""
+
+#: .\templates\contributions\user_contributions.html:56
+msgid "days"
+msgstr ""
+
+#: .\templates\contributions\user_contributions.html:116
+msgid "You haven't made any contributions yet."
+msgstr ""
+
+#: .\templates\contributions\user_contributions.html:131
+msgid "Event Participations"
+msgstr ""
+
+#: .\templates\contributions\user_contributions.html:168
+msgid "You're not participating in any events yet."
+msgstr ""
+
+#: .\templates\contributions\user_contributions.html:171
+msgid "Join Events"
+msgstr ""
+
+#: .\templates\contributions\user_contributions.html:185
+#: .\templates\events\event_list.html:217
+msgid "Page navigation"
+msgstr ""
+
+#: .\templates\core\403.html:6 .\templates\core\403.html:24
+msgid "Access Denied"
+msgstr ""
+
+#: .\templates\core\403.html:25
+msgid "Sorry, you don't have permission to access this page."
+msgstr ""
+
+#: .\templates\core\403.html:26
+msgid ""
+"Please log in with an appropriate account or contact your administrator."
+msgstr ""
+
+#: .\templates\core\403.html:33 .\templates\core\404.html:33
+#: .\templates\core\500.html:34
+msgid "Return Home"
+msgstr ""
+
+#: .\templates\core\403.html:40 .\templates\core\home.html:392
+#: .\templates\registration\password_reset_email.html:291
+msgid "Log In"
+msgstr ""
+
+#: .\templates\core\404.html:6 .\templates\core\404.html:24
+msgid "Page Not Found"
+msgstr ""
+
+#: .\templates\core\404.html:25
+msgid ""
+"Sorry, we couldn't find the page you're looking for. It might have been "
+"moved or doesn't exist."
+msgstr ""
+
+#: .\templates\core\404.html:26
+msgid "Please check the URL or navigate back to our homepage."
+msgstr ""
+
+#: .\templates\core\404.html:39 .\templates\core\search_results.html:129
+msgid "Go Back"
+msgstr ""
+
+#: .\templates\core\500.html:6 .\templates\core\500.html:25
+msgid "Server Error"
+msgstr ""
+
+#: .\templates\core\500.html:26
+msgid ""
+"Sorry, something went wrong on our server. Our team has been notified of the "
+"issue."
+msgstr ""
+
+#: .\templates\core\500.html:27
+msgid "Please try again later or contact support if the problem persists."
+msgstr ""
+
+#: .\templates\core\about.html:4
+msgid "About"
+msgstr ""
+
+#: .\templates\core\about.html:9
+msgid "About FeastFlow"
+msgstr ""
+
+#: .\templates\core\about.html:12
+msgid "More content will go here..."
+msgstr ""
+
+#: .\templates\core\contact.html:7 .\templates\core\contact.html:87
+#: .\templates\core\privacy-policy.html:41
+#: .\templates\core\privacy-policy.html:187
+#: .\templates\core\privacy-policy.html:199
+#: .\templates\core\terms-of-service.html:45
+#: .\templates\core\terms-of-service.html:246
+#: .\templates\core\terms-of-service.html:258
+msgid "Contact Us"
+msgstr ""
+
+#: .\templates\core\contact.html:19
+msgid "We'd Love to Hear From You"
+msgstr ""
+
+#: .\templates\core\contact.html:20
+msgid "Report bugs, suggest features, or get help from our team"
+msgstr ""
+
+#: .\templates\core\contact.html:43
+msgid "Report a Bug"
+msgstr ""
+
+#: .\templates\core\contact.html:44
+msgid "Found something not working correctly? Let us know so we can fix it."
+msgstr ""
+
+#: .\templates\core\contact.html:46
+msgid "Report Bug"
+msgstr ""
+
+#: .\templates\core\contact.html:56
+msgid "Request a Feature"
+msgstr ""
+
+#: .\templates\core\contact.html:57
+msgid "Have an idea to make our product better? We're all ears!"
+msgstr ""
+
+#: .\templates\core\contact.html:59
+msgid "Suggest Feature"
+msgstr ""
+
+#: .\templates\core\contact.html:69
+msgid "General Support"
+msgstr ""
+
+#: .\templates\core\contact.html:70
+msgid ""
+"Need help using the platform or have other questions? We're here to help."
+msgstr ""
+
+#: .\templates\core\contact.html:72
+msgid "Get Support"
+msgstr ""
+
+#: .\templates\core\contact.html:89
+msgid "Fill out the form below and we'll get back to you as soon as possible."
+msgstr ""
+
+#: .\templates\core\contact.html:107
+msgid "Subject"
+msgstr ""
+
+#: .\templates\core\contact.html:114
+msgid "URL Where Bug Occurred"
+msgstr ""
+
+#: .\templates\core\contact.html:119
+msgid "Steps to Reproduce"
+msgstr ""
+
+#: .\templates\core\contact.html:120
+msgid "1. Go to...\\n2. Click on...\\n3. Observe..."
+msgstr ""
+
+#: .\templates\core\contact.html:124
+msgid "Expected Behavior"
+msgstr ""
+
+#: .\templates\core\contact.html:132
+msgid "What problem would this feature solve?"
+msgstr ""
+
+#: .\templates\core\contact.html:137
+msgid "Proposed solution or implementation"
+msgstr ""
+
+#: .\templates\core\contact.html:143
+msgid "Message"
+msgstr ""
+
+#: .\templates\core\contact.html:149
+msgid "I have screenshots or files to share"
+msgstr ""
+
+#: .\templates\core\contact.html:151
+msgid ""
+"After submitting this form, we'll email you with instructions to share your "
+"attachments."
+msgstr ""
+
+#: .\templates\core\contact.html:157
+msgid "Submit"
+msgstr ""
+
+#: .\templates\core\contact.html:170
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: .\templates\core\contact.html:176
+msgid "How quickly will you respond to my request?"
+msgstr ""
+
+#: .\templates\core\contact.html:181
+msgid ""
+"We typically respond to all inquiries within 24-48 hours during business "
+"days. Bug reports are prioritized based on their severity, and feature "
+"requests are reviewed by our product team regularly."
+msgstr ""
+
+#: .\templates\core\contact.html:189
+msgid "What information should I include in a bug report?"
+msgstr ""
+
+#: .\templates\core\contact.html:194
+msgid ""
+"For the most helpful bug reports, please include: the specific steps to "
+"reproduce the issue, what you expected to happen, what actually happened, "
+"and any error messages you received. Screenshots or screen recordings are "
+"extremely helpful when available."
+msgstr ""
+
+#: .\templates\core\contact.html:202
+msgid "How do you determine which feature requests to implement?"
+msgstr ""
+
+#: .\templates\core\contact.html:207
+msgid ""
+"We evaluate feature requests based on several factors including how many "
+"users would benefit, alignment with our product roadmap, technical "
+"feasibility, and overall impact on the user experience. We appreciate "
+"detailed feature requests that explain the problem you're trying to solve."
+msgstr ""
+
+#: .\templates\core\contact.html:215
+msgid "Can I follow up on the status of my request?"
+msgstr ""
+
+#: .\templates\core\contact.html:220
+msgid ""
+"Absolutely! When you submit a request, you'll receive a confirmation email "
+"with a reference number. You can reply to that email at any time to check on "
+"the status or provide additional information."
+msgstr ""
+
+#: .\templates\core\contact.html:242
+msgid ""
+"Your message has been sent successfully. We'll get back to you as soon as "
+"possible."
+msgstr ""
+
+#: .\templates\core\contact.html:243
+msgid "Reference:"
+msgstr ""
+
+#: .\templates\core\contact.html:246 .\templates\events\generate_link.html:154
+msgid "Close"
+msgstr ""
+
+#: .\templates\core\home.html:8
+msgid ""
+"FeastFlow helps you organize and track contributions for your events "
+"effortlessly. Create potlucks, parties, and gatherings with easy "
+"contribution tracking."
+msgstr ""
+
+#: .\templates\core\home.html:31
+msgid "FEASTFLOW"
+msgstr ""
+
+#: .\templates\core\home.html:32
+msgid "ORGANIZE EVENTS WITH EASE"
+msgstr ""
+
+#: .\templates\core\home.html:34
+msgid ""
+"FeastFlow helps you organize and track contributions for your next event "
+"effortlessly. Plan gatherings, coordinate contributions, and ensure "
+"everyone's on the same page."
+msgstr ""
+
+#: .\templates\core\home.html:48 .\templates\core\home.html:388
+msgid "Sign Up"
+msgstr ""
+
+#: .\templates\core\home.html:57
+msgid "Event Organization"
+msgstr ""
+
+#: .\templates\core\home.html:75
+msgid "How It Works"
+msgstr ""
+
+#: .\templates\core\home.html:76
+msgid "Using FeastFlow is simple and intuitive"
+msgstr ""
+
+#: .\templates\core\home.html:86
+msgid "Select an Event"
+msgstr ""
+
+#: .\templates\core\home.html:87
+msgid ""
+"Browse available events and select one you'd like to contribute to. Filter "
+"by category, date, or search for specific events."
+msgstr ""
+
+#: .\templates\core\home.html:98
+msgid ""
+"Choose what you can provide from the list of needed items or services and "
+"make your contribution commitment."
+msgstr ""
+
+#: .\templates\core\home.html:108
+msgid "Track Progress"
+msgstr ""
+
+#: .\templates\core\home.html:109
+msgid ""
+"Monitor the overall event progress in real-time and see what else is needed. "
+"Get updates when new contributions are made."
+msgstr ""
+
+#: .\templates\core\home.html:126
+msgid "Key Features"
+msgstr ""
+
+#: .\templates\core\home.html:127
+msgid "Everything you need to organize successful events"
+msgstr ""
+
+#: .\templates\core\home.html:136
+msgid "Track Contributions"
+msgstr ""
+
+#: .\templates\core\home.html:137
+msgid ""
+"Keep track of all contributions in real-time to ensure your event has "
+"everything it needs."
+msgstr ""
+
+#: .\templates\core\home.html:146
+msgid "Multiple Contributors"
+msgstr ""
+
+#: .\templates\core\home.html:147
+msgid ""
+"Invite friends and family to contribute to your events with an easy-to-share "
+"link."
+msgstr ""
+
+#: .\templates\core\home.html:156
+msgid "Event Updates"
+msgstr ""
+
+#: .\templates\core\home.html:157
+msgid "Get instant notifications on new contributions and event changes."
+msgstr ""
+
+#: .\templates\core\home.html:166
+msgid "Event Templates"
+msgstr ""
+
+#: .\templates\core\home.html:167
+msgid ""
+"Use pre-made templates for common events like potlucks, birthdays, and BBQs."
+msgstr ""
+
+#: .\templates\core\home.html:179
+msgid "Upcoming Events"
+msgstr ""
+
+#: .\templates\core\home.html:234
+msgid "There are no upcoming events scheduled at the moment."
+msgstr ""
+
+#: .\templates\core\home.html:289
+msgid "Ongoing Events"
+msgstr ""
+
+#: .\templates\core\home.html:312
+msgid "Ends in"
+msgstr ""
+
+#: .\templates\core\home.html:343
+msgid "No Ongoing Events"
+msgstr ""
+
+#: .\templates\core\home.html:344
+msgid "There are no events currently in progress."
+msgstr ""
+
+#: .\templates\core\home.html:372
+msgid "Ready to Get Started?"
+msgstr ""
+
+#: .\templates\core\home.html:373
+msgid "Join FeastFlow today and make your next event a success!"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:19
+#: .\templates\core\terms-of-service.html:19
+msgid "Last Updated: May 10, 2025"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:29
+#: .\templates\core\terms-of-service.html:29
+msgid "Table of Contents"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:32
+#: .\templates\core\privacy-policy.html:49
+#: .\templates\core\terms-of-service.html:32
+#: .\templates\core\terms-of-service.html:53
+msgid "Introduction"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:33
+#: .\templates\core\privacy-policy.html:59
+msgid "Information We Collect"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:34
+#: .\templates\core\privacy-policy.html:86
+msgid "How We Use Your Information"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:35
+#: .\templates\core\privacy-policy.html:105
+msgid "Information Sharing"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:36
+#: .\templates\core\privacy-policy.html:121
+msgid "Data Security"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:37
+#: .\templates\core\privacy-policy.html:131
+msgid "Your Rights"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:38
+#: .\templates\core\privacy-policy.html:150
+msgid "Cookies Policy"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:39
+#: .\templates\core\privacy-policy.html:169
+msgid "Children's Privacy"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:40
+#: .\templates\core\privacy-policy.html:177
+msgid "Changes to This Policy"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:52
+msgid ""
+"Welcome to FeastFlow. We respect your privacy and are committed to "
+"protecting your personal data. This privacy policy explains how we collect, "
+"use, disclose, and safeguard your information when you use our service."
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:54
+msgid ""
+"By using FeastFlow, you agree to the collection and use of information in "
+"accordance with this policy. We will not use or share your information with "
+"anyone except as described in this Privacy Policy."
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:62
+msgid "Personal Information"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:63
+msgid ""
+"We may collect personal information that you provide directly to us, such as:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:66
+msgid "Account information (name, email address, password)"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:67
+msgid "Profile information (profile picture, biographical information)"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:68
+msgid "Content you create, upload, or share through our service"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:69
+msgid "Communications with us (questions, feedback, responses to surveys)"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:70
+msgid "Payment and billing information"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:73
+msgid "Usage Information"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:74
+msgid "We automatically collect certain information when you use our service:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:77
+msgid "Log data (IP address, browser type, pages visited, time spent)"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:78
+msgid "Device information (hardware model, operating system version)"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:79
+msgid "Usage patterns and preferences"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:80
+msgid "Cookies and similar tracking technologies"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:89
+msgid "We use the information we collect for various purposes, including to:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:92
+msgid "Provide, maintain, and improve our services"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:93
+msgid "Process transactions and send related information"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:94
+msgid "Send administrative messages, updates, and security alerts"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:95
+msgid "Respond to your comments, questions, and requests"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:96
+msgid ""
+"Personalize your experience and deliver content relevant to your interests"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:97
+msgid ""
+"Monitor and analyze trends, usage, and activities in connection with our "
+"service"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:98
+msgid ""
+"Detect, investigate, and prevent fraudulent transactions and other illegal "
+"activities"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:99
+msgid "Comply with legal obligations"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:108
+msgid "We may share your personal information in the following situations:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:111
+msgid "With Service Providers:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:111
+msgid ""
+"We may share your information with third-party vendors, service providers, "
+"contractors, or agents who perform services for us."
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:112
+msgid "Business Transfers:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:112
+msgid ""
+"If we are involved in a merger, acquisition, or sale of all or a portion of "
+"our assets, your information may be transferred as part of that transaction."
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:113
+msgid "With Your Consent:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:113
+msgid ""
+"We may share your information when you give us specific consent to do so."
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:114
+msgid "Legal Requirements:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:114
+msgid ""
+"We may disclose your information if required to do so by law or in response "
+"to valid requests by public authorities."
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:115
+msgid "To Protect Rights:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:115
+msgid ""
+"We may disclose your information to protect the rights, property, or safety "
+"of FeastFlow, our users, or others."
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:124
+#, python-format
+msgid ""
+"The security of your data is important to us. We implement appropriate "
+"technical and organizational measures to protect the personal information we "
+"collect and process. However, no method of transmission over the Internet or "
+"method of electronic storage is 100%% secure."
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:126
+msgid ""
+"While we strive to use commercially acceptable means to protect your "
+"personal information, we cannot guarantee its absolute security. You are "
+"responsible for maintaining the secrecy of any credentials used to access "
+"your FeastFlow account, and you should notify us immediately of any "
+"unauthorized use of your account."
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:134
+msgid ""
+"Depending on your location, you may have certain rights regarding your "
+"personal information, including:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:137
+msgid "The right to access the personal information we have about you"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:138
+msgid "The right to request correction of inaccurate personal information"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:139
+msgid "The right to request deletion of your personal information"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:140
+msgid ""
+"The right to object to or restrict processing of your personal information"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:141
+msgid "The right to data portability"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:142
+msgid "The right to withdraw consent"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:145
+msgid ""
+"To exercise any of these rights, please contact us using the information "
+"provided in the \\"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:153
+msgid ""
+"We use cookies and similar tracking technologies to track activity on our "
+"service and hold certain information. Cookies are files with a small amount "
+"of data that may include an anonymous unique identifier."
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:155
+msgid "Types of cookies we use:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:158
+msgid "Essential Cookies:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:158
+msgid "Necessary for the operation of our service"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:159
+msgid "Analytical/Performance Cookies:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:159
+msgid ""
+"Allow us to recognize and count the number of visitors and see how visitors "
+"move around our website"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:160
+msgid "Functionality Cookies:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:160
+msgid ""
+"Recognize you when you return to our website and enable personalized features"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:161
+msgid "Targeting Cookies:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:161
+msgid ""
+"Record your visit to our website, the pages you have visited, and the links "
+"you have followed"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:164
+msgid ""
+"You can instruct your browser to refuse all cookies or to indicate when a "
+"cookie is being sent. However, if you do not accept cookies, you may not be "
+"able to use some portions of our service."
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:172
+msgid ""
+"Our service is not intended for use by children under the age of 13. We do "
+"not knowingly collect personally identifiable information from children "
+"under 13. If you are a parent or guardian and you are aware that your child "
+"has provided us with personal information, please contact us. If we become "
+"aware that we have collected personal information from children without "
+"verification of parental consent, we take steps to remove that information "
+"from our servers."
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:180
+msgid ""
+"We may update our Privacy Policy from time to time. We will notify you of "
+"any changes by posting the new Privacy Policy on this page and updating the "
+"\\"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:182
+msgid ""
+"You are advised to review this Privacy Policy periodically for any changes. "
+"Changes to this Privacy Policy are effective when they are posted on this "
+"page."
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:190
+msgid "If you have any questions about this Privacy Policy, please contact us:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:193
+#: .\templates\core\terms-of-service.html:252
+msgid "Email:"
+msgstr ""
+
+#: .\templates\core\privacy-policy.html:194
+#: .\templates\core\terms-of-service.html:253
+msgid "Address:"
+msgstr ""
+
+#: .\templates\core\search_results.html:5
+#: .\templates\core\search_results.html:20
+msgid "Search Results"
+msgstr ""
+
+#: .\templates\core\search_results.html:7
+msgid "Search results for your query."
+msgstr ""
+
+#: .\templates\core\search_results.html:41
+msgid "Events Found"
+msgstr ""
+
+#: .\templates\core\search_results.html:120
+msgid "No results found"
+msgstr ""
+
+#: .\templates\core\search_results.html:121
+msgid "We couldn't find any events matching your search criteria."
+msgstr ""
+
+#: .\templates\core\search_results.html:125
+msgid "Browse All Events"
+msgstr ""
+
+#: .\templates\core\search_results.html:133
+msgid "Try searching for:"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:33
+#: .\templates\core\terms-of-service.html:75
+msgid "Definitions"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:34
+#: .\templates\core\terms-of-service.html:91
+msgid "User Accounts"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:35
+#: .\templates\core\terms-of-service.html:103
+msgid "Use of Service"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:36
+#: .\templates\core\terms-of-service.html:131
+msgid "User Content"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:37
+#: .\templates\core\terms-of-service.html:151
+msgid "Payments"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:38
+#: .\templates\core\terms-of-service.html:174
+msgid "Proprietary Rights"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:39
+#: .\templates\core\terms-of-service.html:184
+msgid "Disclaimers"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:40
+#: .\templates\core\terms-of-service.html:194
+msgid "Limitation of Liability"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:41
+#: .\templates\core\terms-of-service.html:206
+msgid "Indemnification"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:42
+#: .\templates\core\terms-of-service.html:214
+msgid "Termination"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:43
+#: .\templates\core\terms-of-service.html:226
+msgid "Changes to Terms"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:44
+#: .\templates\core\terms-of-service.html:236
+msgid "Governing Law"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:56
+msgid "Welcome to FeastFlow. Please read these Terms of Service (\\"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:58
+msgid ""
+"By accessing or using the Service, you agree to be bound by these Terms. If "
+"you disagree with any part of the terms, then you may not access the Service."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:68
+msgid ""
+"These Terms constitute a legally binding agreement between you and "
+"FeastFlow. You must be at least 18 years old to use our Service."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:78
+msgid "For the purposes of these Terms of Service:"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:81
+msgid "Service"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:81
+msgid ""
+"refers to the FeastFlow website, applications, and all related services."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:82
+msgid ""
+"refers to the individual accessing or using the Service, or the company or "
+"other legal entity on behalf of which such individual is accessing or using "
+"the Service."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:83
+msgid "Account"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:83
+msgid "refers to a unique account created for a User to access our Service."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:84
+msgid "Content"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:84
+msgid ""
+"refers to data, text, information, graphics, images, videos, or any other "
+"materials that Users may create, upload, submit, post, or transmit through "
+"the Service."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:85
+msgid "Personal Data"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:85
+msgid ""
+"refers to information that can be used on its own or with other information "
+"to identify, contact, or locate a single person, or to identify an "
+"individual in context."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:94
+msgid ""
+"When you create an account with us, you must provide information that is "
+"accurate, complete, and current at all times. Failure to do so constitutes a "
+"breach of the Terms, which may result in immediate termination of your "
+"account on our Service."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:96
+msgid ""
+"You are responsible for safeguarding the password that you use to access the "
+"Service and for any activities or actions under your password. You agree not "
+"to disclose your password to any third party. You must notify us immediately "
+"upon becoming aware of any breach of security or unauthorized use of your "
+"account."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:98
+msgid ""
+"You may not use as a username the name of another person or entity or that "
+"is not lawfully available for use, or a name or trademark that is subject to "
+"any rights of another person or entity without appropriate authorization. "
+"You may not use a username that is offensive, vulgar, or obscene."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:106
+msgid ""
+"You agree to use the Service only for lawful purposes and in accordance with "
+"these Terms. You agree not to use the Service:"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:109
+msgid ""
+"In any way that violates any applicable local, state, national, or "
+"international law or regulation."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:110
+msgid ""
+"To engage in any conduct that restricts or inhibits anyone's use or "
+"enjoyment of the Service."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:111
+msgid "To exploit, harm, or attempt to exploit or harm minors in any way."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:112
+msgid ""
+"To transmit or procure the sending of any advertising or promotional "
+"material, including any \\"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:113
+msgid ""
+"To impersonate or attempt to impersonate the company, a company employee, "
+"another user, or any other person or entity."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:114
+msgid ""
+"To engage in any activity that could disable, overburden, damage, or impair "
+"the Service or interfere with any other party's use of the Service."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:124
+msgid ""
+"We reserve the right to terminate or suspend your account immediately, "
+"without prior notice or liability, for any reason, including if you breach "
+"the Terms."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:134
+msgid ""
+"Our Service allows you to create, upload, submit, post, or transmit content. "
+"You retain all rights to your content, but you grant us a license to use, "
+"copy, modify, distribute, and display the content in connection with the "
+"operation of the Service."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:136
+msgid ""
+"You are solely responsible for the content you submit through the Service. "
+"By submitting content, you warrant that:"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:139
+msgid ""
+"You own or have the necessary rights to the content and the right to grant "
+"the license to us."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:140
+msgid ""
+"The content does not violate the rights of any third party, including "
+"copyright, trademark, privacy, or other personal or proprietary rights."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:141
+msgid ""
+"The content does not contain material that is defamatory, obscene, indecent, "
+"abusive, offensive, harassing, violent, hateful, inflammatory, or otherwise "
+"objectionable."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:142
+msgid ""
+"The content does not promote sexually explicit material, violence, or "
+"discrimination based on race, sex, religion, nationality, disability, sexual "
+"orientation, or age."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:143
+msgid "The content does not violate any applicable law or regulation."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:146
+msgid ""
+"We reserve the right to remove any content that violates these Terms or that "
+"we determine is objectionable or harmful to others."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:154
+msgid ""
+"Some aspects of the Service may be provided for a fee. If you elect to use "
+"paid features of the Service, you agree to pay the applicable fees and any "
+"taxes as described on the Service. All payments are non-refundable except as "
+"required by law or as explicitly stated in these Terms."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:156
+msgid ""
+"You agree to provide accurate and complete billing information, including "
+"full name, address, state, zip code, telephone number, and valid payment "
+"method information. By submitting payment information, you authorize us to "
+"charge that payment method for the fees associated with your account."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:158
+msgid ""
+"For subscription-based services, your subscription will automatically renew "
+"unless you cancel it before the renewal date. You can cancel your "
+"subscription at any time through your account settings."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:167
+msgid ""
+"We may change our fees at any time by posting the changes on the Service or "
+"by notifying you directly. Continued use of the Service after a fee change "
+"constitutes your acceptance of the new fees."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:177
+msgid ""
+"The Service and its original content (excluding user-submitted content), "
+"features, and functionality are and will remain the exclusive property of "
+"FeastFlow and its licensors. The Service is protected by copyright, "
+"trademark, and other laws of both the United States and foreign countries."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:179
+msgid ""
+"Our trademarks and trade dress may not be used in connection with any "
+"product or service without the prior written consent of FeastFlow."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:187
+msgid ""
+"YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED ON AN "
+"\\"
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:189
+msgid ""
+"WE DO NOT WARRANT THAT (A) THE SERVICE WILL FUNCTION UNINTERRUPTED, SECURE, "
+"OR AVAILABLE AT ANY PARTICULAR TIME OR LOCATION; (B) ANY ERRORS OR DEFECTS "
+"WILL BE CORRECTED; (C) THE SERVICE IS FREE OF VIRUSES OR OTHER HARMFUL "
+"COMPONENTS; OR (D) THE RESULTS OF USING THE SERVICE WILL MEET YOUR "
+"REQUIREMENTS."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:197
+msgid ""
+"TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE "
+"COMPANY, ITS AFFILIATES, DIRECTORS, EMPLOYEES, AGENTS, OR LICENSORS BE "
+"LIABLE FOR ANY INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR "
+"EXEMPLARY DAMAGES, INCLUDING DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, "
+"DATA, OR OTHER INTANGIBLE LOSSES, THAT RESULT FROM THE USE OF, OR INABILITY "
+"TO USE, THE SERVICE."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:199
+msgid ""
+"IN NO EVENT WILL THE COMPANY'S TOTAL LIABILITY TO YOU FOR ALL DAMAGES, "
+"LOSSES, OR CAUSES OF ACTION EXCEED THE AMOUNT YOU HAVE PAID TO THE COMPANY "
+"IN THE LAST SIX (6) MONTHS, OR, IF GREATER, ONE HUNDRED DOLLARS ($100)."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:201
+msgid ""
+"THESE LIMITATIONS OF LIABILITY APPLY EVEN IF THE COMPANY HAS BEEN EXPRESSLY "
+"ADVISED OF THE POTENTIAL LOSS."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:209
+msgid ""
+"You agree to defend, indemnify, and hold harmless the Company, its "
+"affiliates, licensors, and service providers, and its and their respective "
+"officers, directors, employees, contractors, agents, licensors, suppliers, "
+"successors, and assigns from and against any claims, liabilities, damages, "
+"judgments, awards, losses, costs, expenses, or fees (including reasonable "
+"attorneys' fees) arising out of or relating to your violation of these Terms "
+"or your use of the Service, including, but not limited to, your User "
+"Content, any use of the Service's content, services, and products other than "
+"as expressly authorized in these Terms."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:217
+msgid ""
+"We may terminate or suspend your account immediately, without prior notice "
+"or liability, for any reason whatsoever, including without limitation if you "
+"breach the Terms."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:219
+msgid ""
+"Upon termination, your right to use the Service will immediately cease. If "
+"you wish to terminate your account, you may simply discontinue using the "
+"Service or delete your account within the Service."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:221
+msgid ""
+"All provisions of the Terms which by their nature should survive termination "
+"shall survive termination, including, without limitation, ownership "
+"provisions, warranty disclaimers, indemnity, and limitations of liability."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:229
+msgid ""
+"We reserve the right, at our sole discretion, to modify or replace these "
+"Terms at any time. If a revision is material, we will try to provide at "
+"least 30 days' notice prior to any new terms taking effect. What constitutes "
+"a material change will be determined at our sole discretion."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:231
+msgid ""
+"By continuing to access or use our Service after those revisions become "
+"effective, you agree to be bound by the revised terms. If you do not agree "
+"to the new terms, please stop using the Service."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:239
+msgid ""
+"These Terms shall be governed and construed in accordance with the laws of "
+"the State of Delaware, United States, without regard to its conflict of law "
+"provisions."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:241
+msgid ""
+"Our failure to enforce any right or provision of these Terms will not be "
+"considered a waiver of those rights. If any provision of these Terms is held "
+"to be invalid or unenforceable by a court, the remaining provisions of these "
+"Terms will remain in effect."
+msgstr ""
+
+#: .\templates\core\terms-of-service.html:249
+msgid "If you have any questions about these Terms, please contact us:"
+msgstr ""
+
+#: .\templates\events\access_code_form.html:5
+#: .\templates\events\access_code_form.html:98
+msgid "Verify Access Code"
+msgstr ""
+
+#: .\templates\events\access_code_form.html:7
+msgid "Enter the access code to contribute to this event."
+msgstr ""
+
+#: .\templates\events\access_code_form.html:25
+#: .\templates\events\access_code_form.html:30
+msgid "Verify Access"
+msgstr ""
+
+#: .\templates\events\access_code_form.html:77
+msgid "Private Event"
+msgstr ""
+
+#: .\templates\events\access_code_form.html:78
+msgid "This event requires an access code to contribute"
+msgstr ""
+
+#: .\templates\events\access_code_form.html:93
+msgid "Enter the access code provided by the event organizer."
+msgstr ""
+
+#: .\templates\events\access_code_form.html:109
+msgid "Don't have an access code?"
+msgstr ""
+
+#: .\templates\events\access_code_form.html:110
+msgid "Contact the event organizer to request access."
+msgstr ""
+
+#: .\templates\events\category_detail.html:6
+msgid "View items needed for"
+msgstr ""
+
+#: .\templates\events\category_detail.html:6
+msgid "at"
+msgstr ""
+
+#: .\templates\events\category_detail.html:32
+#: .\templates\events\category_form.html:41
+#: .\templates\events\category_form.html:61
+msgid "Edit Category"
+msgstr ""
+
+#: .\templates\events\category_detail.html:39
+msgid "Part of"
+msgstr ""
+
+#: .\templates\events\category_detail.html:62
+#: .\templates\events\event_detail.html:183
+msgid "Restricted Access"
+msgstr ""
+
+#: .\templates\events\category_detail.html:63
+msgid ""
+"This event requires an access code to contribute. You can browse items, but "
+"you'll need the code to contribute."
+msgstr ""
+
+#: .\templates\events\category_detail.html:65
+#: .\templates\events\event_detail.html:187
+#: .\templates\events\event_detail.html:304
+msgid "Enter Access Code"
+msgstr ""
+
+#: .\templates\events\category_detail.html:74
+msgid "Items Needed"
+msgstr ""
+
+#: .\templates\events\category_detail.html:77
+#: .\templates\events\category_form.html:201
+#: .\templates\events\item_form.html:8 .\templates\events\item_form.html:38
+msgid "Add Item"
+msgstr ""
+
+#: .\templates\events\category_detail.html:87
+#: .\templates\events\item_form.html:227
+msgid "Required"
+msgstr ""
+
+#: .\templates\events\category_detail.html:88
+#: .\templates\events\item_form.html:231
+msgid "Contributed"
+msgstr ""
+
+#: .\templates\events\category_detail.html:89
+#: .\templates\events\contribution_link_detail.html:116
+msgid "Progress"
+msgstr ""
+
+#: .\templates\events\category_detail.html:90
+msgid "Action"
+msgstr ""
+
+#: .\templates\events\category_detail.html:135
+msgid "Enter Code"
+msgstr ""
+
+#: .\templates\events\category_detail.html:151
+msgid "No items available yet"
+msgstr ""
+
+#: .\templates\events\category_detail.html:154
+msgid "Add the first item"
+msgstr ""
+
+#: .\templates\events\category_detail.html:165
+msgid "Other Categories"
+msgstr ""
+
+#: .\templates\events\category_form.html:7
+#: .\templates\events\category_form.html:31
+#: .\templates\events\category_form.html:223
+#: .\templates\events\event_form.html:21 .\templates\events\event_form.html:49
+#: .\templates\events\item_form.html:8 .\templates\events\item_form.html:36
+msgid "Edit"
+msgstr ""
+
+#: .\templates\events\category_form.html:7
+#: .\templates\events\category_form.html:33
+#: .\templates\events\category_form.html:43
+#: .\templates\events\event_detail.html:57
+#: .\templates\events\event_detail.html:170
+msgid "Add Category"
+msgstr ""
+
+#: .\templates\events\category_form.html:9
+msgid "Edit category details for"
+msgstr ""
+
+#: .\templates\events\category_form.html:9
+msgid "Add a new category to"
+msgstr ""
+
+#: .\templates\events\category_form.html:63
+msgid "Add Category to Event"
+msgstr ""
+
+#: .\templates\events\category_form.html:86
+#: .\templates\events\event_form.html:116 .\templates\events\item_form.html:96
+msgid "Upload Image"
+msgstr ""
+
+#: .\templates\events\category_form.html:90
+#: .\templates\events\event_form.html:120 .\templates\events\item_form.html:100
+msgid "Choose from Gallery"
+msgstr ""
+
+#: .\templates\events\category_form.html:101
+#: .\templates\events\event_form.html:131 .\templates\events\item_form.html:111
+msgid "Drag & drop your image here"
+msgstr ""
+
+#: .\templates\events\category_form.html:104
+#: .\templates\events\event_form.html:134 .\templates\events\item_form.html:114
+msgid "or click to browse files"
+msgstr ""
+
+#: .\templates\events\category_form.html:115
+#: .\templates\events\event_form.html:145 .\templates\events\item_form.html:125
+msgid "Change image"
+msgstr ""
+
+#: .\templates\events\category_form.html:131
+#: .\templates\events\event_form.html:161 .\templates\events\item_form.html:141
+msgid "Select an image for your event"
+msgstr ""
+
+#: .\templates\events\category_form.html:133
+#: .\templates\events\event_form.html:163 .\templates\events\item_form.html:143
+msgid "Select an image for your category"
+msgstr ""
+
+#: .\templates\events\category_form.html:135
+#: .\templates\events\event_form.html:165 .\templates\events\item_form.html:145
+msgid "Select an image for your item"
+msgstr ""
+
+#: .\templates\events\category_form.html:137
+#: .\templates\events\event_form.html:167 .\templates\events\item_form.html:147
+msgid "Select an image from the gallery"
+msgstr ""
+
+#: .\templates\events\category_form.html:144
+#: .\templates\events\event_form.html:174 .\templates\events\event_list.html:54
+#: .\templates\events\event_list.html:70 .\templates\events\item_form.html:154
+msgid "All"
+msgstr ""
+
+#: .\templates\events\category_form.html:163
+#: .\templates\events\event_form.html:193 .\templates\events\item_form.html:173
+#: .\templates\events\tags\image_gallery.html:18
+#: .\templates\events\widgets\gallery_tabs_widget.html:52
+msgid "No predefined images available"
+msgstr ""
+
+#: .\templates\events\category_form.html:182
+msgid "Create Category"
+msgstr ""
+
+#: .\templates\events\category_form.html:197
+msgid "Category Items"
+msgstr ""
+
+#: .\templates\events\category_form.html:227
+#: .\venv\Lib\site-packages\django\forms\formsets.py:499
+msgid "Delete"
+msgstr ""
+
+#: .\templates\events\category_form.html:238
+msgid "No items in this category yet."
+msgstr ""
+
+#: .\templates\events\category_form.html:241
+msgid "Add First Item"
+msgstr ""
+
+#: .\templates\events\category_form.html:257
+msgid "Tips for Creating Categories"
+msgstr ""
+
+#: .\templates\events\category_form.html:261
+msgid "Use clear, descriptive names for your categories"
+msgstr ""
+
+#: .\templates\events\category_form.html:265
+msgid ""
+"Add a detailed description to help contributors understand what items belong "
+"in this category"
+msgstr ""
+
+#: .\templates\events\category_form.html:269
+msgid "Upload an image related to the category to make it visually distinctive"
+msgstr ""
+
+#: .\templates\events\category_form.html:273
+msgid "Group similar items together in the same category"
+msgstr ""
+
+#: .\templates\events\contribution_link_detail.html:4
+msgid "Contribute to this Event"
+msgstr ""
+
+#: .\templates\events\contribution_link_detail.html:6
+msgid "Contribute to "
+msgstr ""
+
+#: .\templates\events\contribution_link_detail.html:66
+msgid "You've been invited to contribute"
+msgstr ""
+
+#: .\templates\events\contribution_link_detail.html:67
+msgid ""
+"Thank you for joining this event! Below you'll find different categories of "
+"items needed. Choose a category to see specific items you can contribute."
+msgstr ""
+
+#: .\templates\events\contribution_link_detail.html:122
+#: .\templates\events\event_detail.html:216
+msgid "View Items"
+msgstr ""
+
+#: .\templates\events\contribution_link_detail.html:134
+#: .\templates\events\event_detail.html:228
+msgid "No categories available"
+msgstr ""
+
+#: .\templates\events\contribution_link_detail.html:135
+msgid ""
+"There are no categories available for this event yet. Please check back "
+"later as the organizer may add categories soon."
+msgstr ""
+
+#: .\templates\events\contribution_link_detail.html:144
+#: .\templates\events\event_detail.html:78
+#: .\templates\events\event_form.html:82
+msgid "Event Details"
+msgstr ""
+
+#: .\templates\events\contribution_link_detail.html:180
+msgid "Share this event"
+msgstr ""
+
+#: .\templates\events\contribution_link_detail.html:182
+#: .\templates\events\event_detail.html:357
+msgid "Copy link"
+msgstr ""
+
+#: .\templates\events\contribution_link_detail.html:185
+#: .\templates\events\contribution_link_detail.html:188
+msgid "Contribute to"
+msgstr ""
+
+#: .\templates\events\contribution_link_detail.html:185
+msgid "I thought you might want to contribute to this event:"
+msgstr ""
+
+#: .\templates\events\contribution_link_detail.html:185
+#: .\templates\events\event_detail.html:360
+msgid "Share by email"
+msgstr ""
+
+#: .\templates\events\contribution_link_detail.html:188
+#: .\templates\events\event_detail.html:363
+msgid "Share on WhatsApp"
+msgstr ""
+
+#: .\templates\events\event_contributors.html:6
+#: .\templates\events\event_contributors.html:47
+#: .\templates\events\event_detail.html:155
+msgid "Contributors"
+msgstr ""
+
+#: .\templates\events\event_contributors.html:83
+msgid "Event Contributors"
+msgstr ""
+
+#: .\templates\events\event_contributors.html:88
+msgid "Search contributors..."
+msgstr ""
+
+#: .\templates\events\event_contributors.html:95
+msgid "All Contributors"
+msgstr ""
+
+#: .\templates\events\event_contributors.html:96
+msgid "Registered Users"
+msgstr ""
+
+#: .\templates\events\event_contributors.html:97
+msgid "Anonymous Users"
+msgstr ""
+
+#: .\templates\events\event_contributors.html:107
+#: .\templates\events\generate_link.html:103
+msgid "Actions"
+msgstr ""
+
+#: .\templates\events\event_contributors.html:128
+msgid "Registered User"
+msgstr ""
+
+#: .\templates\events\event_contributors.html:131
+msgid "Anonymous User"
+msgstr ""
+
+#: .\templates\events\event_contributors.html:187
+msgid "No Contributors Yet"
+msgstr ""
+
+#: .\templates\events\event_contributors.html:188
+msgid ""
+"There are no contributions to this event yet. Share your event to get people "
+"involved!"
+msgstr ""
+
+#: .\templates\events\event_contributors.html:191
+msgid "Generate Invite Link"
+msgstr ""
+
+#: .\templates\events\event_detail.html:53
+#: .\templates\events\event_form.html:59
+msgid "Edit Event"
+msgstr ""
+
+#: .\templates\events\event_detail.html:61
+msgid "Manage Invite Links"
+msgstr ""
+
+#: .\templates\events\event_detail.html:85
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2534
+msgid "Time"
+msgstr ""
+
+#: .\templates\events\event_detail.html:95
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1868
+msgid "Duration"
+msgstr ""
+
+#: .\templates\events\event_detail.html:127
+#: .\templates\events\event_form.html:324
+msgid "Access"
+msgstr ""
+
+#: .\templates\events\event_detail.html:132
+#: .\templates\events\event_form.html:274
+msgid "Access Code Required"
+msgstr ""
+
+#: .\templates\events\event_detail.html:185
+msgid ""
+"This event requires an access code to contribute. You can still browse "
+"categories and items, but you'll need the code to contribute."
+msgstr ""
+
+#: .\templates\events\event_detail.html:190
+msgid ""
+"This event is invite-only. You need an invitation link from the organizer to "
+"contribute."
+msgstr ""
+
+#: .\templates\events\event_detail.html:229
+msgid "There are no categories available for this event yet."
+msgstr ""
+
+#: .\templates\events\event_detail.html:233
+msgid "Add the first category"
+msgstr ""
+
+#: .\templates\events\event_detail.html:244
+msgid "Similar Events"
+msgstr ""
+
+#: .\templates\events\event_detail.html:264
+msgid "View Event"
+msgstr ""
+
+#: .\templates\events\event_detail.html:292
+msgid "Contribute Now"
+msgstr ""
+
+#: .\templates\events\event_detail.html:299
+msgid "This event requires an access code to contribute."
+msgstr ""
+
+#: .\templates\events\event_detail.html:310
+msgid ""
+"This event is invite-only. You need a special invite link to contribute."
+msgstr ""
+
+#: .\templates\events\event_detail.html:314
+msgid "Contact the event organizer for an invitation."
+msgstr ""
+
+#: .\templates\events\event_detail.html:327
+msgid "Organizer Info"
+msgstr ""
+
+#: .\templates\events\event_detail.html:335
+msgid "Copy to clipboard"
+msgstr ""
+
+#: .\templates\events\event_detail.html:341
+msgid ""
+"Share this code with people you want to allow to contribute to your event."
+msgstr ""
+
+#: .\templates\events\event_detail.html:352
+msgid "Share This Event"
+msgstr ""
+
+#: .\templates\events\event_detail.html:360
+#: .\templates\events\event_detail.html:363
+msgid "Check out this event"
+msgstr ""
+
+#: .\templates\events\event_detail.html:360
+msgid "I thought you might be interested in this event"
+msgstr ""
+
+#: .\templates\events\event_detail.html:366
+msgid "Share on Facebook"
+msgstr ""
+
+#: .\templates\events\event_form.html:23
+msgid "Edit event details for"
+msgstr ""
+
+#: .\templates\events\event_form.html:23
+msgid "Create a new event and start collecting contributions."
+msgstr ""
+
+#: .\templates\events\event_form.html:61
+msgid "Create New Event"
+msgstr ""
+
+#: .\templates\events\event_form.html:80
+msgid "Edit Event Details"
+msgstr ""
+
+#: .\templates\events\event_form.html:87
+msgid "Update the details of your event"
+msgstr ""
+
+#: .\templates\events\event_form.html:89
+msgid "Fill in the details to create a new event"
+msgstr ""
+
+#: .\templates\events\event_form.html:203
+msgid "Next: Date & Time"
+msgstr ""
+
+#: .\templates\events\event_form.html:212
+#: .\templates\events\event_form.html:319
+msgid "Date & Time"
+msgstr ""
+
+#: .\templates\events\event_form.html:238
+#: .\templates\events\event_form.html:294
+msgid "Previous"
+msgstr ""
+
+#: .\templates\events\event_form.html:241
+msgid "Next: Location & Access"
+msgstr ""
+
+#: .\templates\events\event_form.html:250
+msgid "Location & Access Settings"
+msgstr ""
+
+#: .\templates\events\event_form.html:264
+msgid "Public Event"
+msgstr ""
+
+#: .\templates\events\event_form.html:265
+msgid "Anyone can view and contribute to your event."
+msgstr ""
+
+#: .\templates\events\event_form.html:275
+msgid "Only people with the access code can contribute."
+msgstr ""
+
+#: .\templates\events\event_form.html:285
+msgid "Only people with an invitation link can contribute."
+msgstr ""
+
+#: .\templates\events\event_form.html:314
+msgid "Basic Info"
+msgstr ""
+
+#: .\templates\events\event_form.html:345
+msgid "Tips for Creating Events"
+msgstr ""
+
+#: .\templates\events\event_form.html:354
+msgid "Choose a Clear Name"
+msgstr ""
+
+#: .\templates\events\event_form.html:355
+msgid "Select a name that clearly conveys the purpose of your event."
+msgstr ""
+
+#: .\templates\events\event_form.html:364
+msgid "Describe in Detail"
+msgstr ""
+
+#: .\templates\events\event_form.html:365
+msgid ""
+"Provide a detailed description of what your event is for and what "
+"contributions you need."
+msgstr ""
+
+#: .\templates\events\event_form.html:375
+msgid "Choose the Right Access Level"
+msgstr ""
+
+#: .\templates\events\event_form.html:376
+msgid ""
+"Public events are best for wide participation, while code or invite-only "
+"events provide more control."
+msgstr ""
+
+#: .\templates\events\event_form.html:385
+msgid "FeastFlow Features"
+msgstr ""
+
+#: .\templates\events\event_form.html:391
+msgid "Real-time progress tracking"
+msgstr ""
+
+#: .\templates\events\event_form.html:396
+msgid "Easy contribution management"
+msgstr ""
+
+#: .\templates\events\event_form.html:401
+msgid "Automated notifications"
+msgstr ""
+
+#: .\templates\events\event_form.html:406
+msgid "Simple sharing options"
+msgstr ""
+
+#: .\templates\events\event_list.html:6
+msgid "Browse all events and find opportunities to contribute."
+msgstr ""
+
+#: .\templates\events\event_list.html:19
+msgid "Discover Events"
+msgstr ""
+
+#: .\templates\events\event_list.html:21
+msgid "Find events that need your contributions"
+msgstr ""
+
+#: .\templates\events\event_list.html:41
+msgid "Search"
+msgstr ""
+
+#: .\templates\events\event_list.html:43
+msgid "Search for events..."
+msgstr ""
+
+#: .\templates\events\event_list.html:80
+msgid "Apply Filters"
+msgstr ""
+
+#: .\templates\events\event_list.html:85 .\templates\events\event_list.html:194
+msgid "Clear Filters"
+msgstr ""
+
+#: .\templates\events\event_list.html:98
+msgid "events found"
+msgstr ""
+
+#: .\templates\events\event_list.html:177
+msgid "No events found matching your filters."
+msgstr ""
+
+#: .\templates\events\event_list.html:179
+msgid "No events available yet."
+msgstr ""
+
+#: .\templates\events\event_list.html:184
+msgid "Try adjusting your filters or create your own event."
+msgstr ""
+
+#: .\templates\events\event_list.html:186
+msgid "Be the first to create an event and start collecting contributions."
+msgstr ""
+
+#: .\templates\events\event_list.html:214
+msgid "Page"
+msgstr ""
+
+#: .\templates\events\event_list.html:214
+msgid "of"
+msgstr ""
+
+#: .\templates\events\generate_link.html:7
+#: .\templates\events\generate_link.html:37
+msgid "Generate Contribution Link"
+msgstr ""
+
+#: .\templates\events\generate_link.html:28
+#: .\templates\events\generate_link.html:86
+msgid "Generate Link"
+msgstr ""
+
+#: .\templates\events\generate_link.html:44
+msgid ""
+"Create a shareable link that allows people to contribute to your event "
+"without logging in."
+msgstr ""
+
+#: .\templates\events\generate_link.html:53
+msgid "Link Generated Successfully!"
+msgstr ""
+
+#: .\templates\events\generate_link.html:54
+msgid ""
+"Your contribution link has been created. Copy and share it with potential "
+"contributors:"
+msgstr ""
+
+#: .\templates\events\generate_link.html:59
+msgid "Copy"
+msgstr ""
+
+#: .\templates\events\generate_link.html:70
+msgid "Show QR Code"
+msgstr ""
+
+#: .\templates\events\generate_link.html:95
+msgid "Existing Contribution Links"
+msgstr ""
+
+#: .\templates\events\generate_link.html:101
+msgid "Created"
+msgstr ""
+
+#: .\templates\events\generate_link.html:102
+msgid "Link"
+msgstr ""
+
+#: .\templates\events\generate_link.html:142
+msgid "QR Code for Your Event"
+msgstr ""
+
+#: .\templates\events\generate_link.html:150
+msgid "Scan this QR code to access the contribution page"
+msgstr ""
+
+#: .\templates\events\generate_link.html:156
+msgid "Download QR Code"
+msgstr ""
+
+#: .\templates\events\item_form.html:60
+msgid "Edit Item"
+msgstr ""
+
+#: .\templates\events\item_form.html:62
+msgid "Add Item to"
+msgstr ""
+
+#: .\templates\events\item_form.html:65
+msgid "Complete the form below to create or update an item for your event."
+msgstr ""
+
+#: .\templates\events\item_form.html:193
+msgid "Create Item"
+msgstr ""
+
+#: .\templates\events\item_form.html:209
+msgid "Item Contributions"
+msgstr ""
+
+#: .\templates\events\item_form.html:210
+msgid "Track who's bringing what to your event"
+msgstr ""
+
+#: .\templates\events\item_form.html:272
+msgid "No contributions for this item yet."
+msgstr ""
+
+#: .\templates\events\item_form.html:279
+msgid "Add Contribution"
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:9
+msgid "Password Reset"
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:251
+msgid "Follow the instructions to create a new password"
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:261
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:262
+msgid "Please click the button below to create a new password:"
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:268
+msgid ""
+"If the button above doesn't work, copy and paste this link into your browser:"
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:277
+msgid "Account Information"
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:279
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:286
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:287
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: .\templates\registration\password_reset_email.html:292
+msgid "Help"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
+msgid "Messages"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\staticfiles\apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\syndication\apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: .\venv\Lib\site-packages\django\core\paginator.py:30
+msgid "…"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:32
+msgid "That page number is not an integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:33
+msgid "That page number is less than 1"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:34
+msgid "That page contains no results"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:22
+msgid "Enter a valid value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:70
+msgid "Enter a valid domain name."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:153
+#: .\venv\Lib\site-packages\django\forms\fields.py:775
+msgid "Enter a valid URL."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:200
+msgid "Enter a valid integer."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:211
+msgid "Enter a valid email address."
+msgstr ""
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: .\venv\Lib\site-packages\django\core\validators.py:289
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:297
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:309
+#: .\venv\Lib\site-packages\django\core\validators.py:318
+#: .\venv\Lib\site-packages\django\core\validators.py:332
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2220
+#, python-format
+msgid "Enter a valid %(protocol)s address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:311
+msgid "IPv4"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:320
+#: .\venv\Lib\site-packages\django\utils\ipv6.py:43
+msgid "IPv6"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:334
+msgid "IPv4 or IPv6"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:375
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:381
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:416
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:425
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:434
+#, python-format
+msgid "Ensure this value is a multiple of step size %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:441
+#, python-format
+msgid ""
+"Ensure this value is a multiple of step size %(limit_value)s, starting from "
+"%(offset)s, e.g. %(offset)s, %(valid_value1)s, %(valid_value2)s, and so on."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:473
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:491
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:514
+#: .\venv\Lib\site-packages\django\forms\fields.py:366
+#: .\venv\Lib\site-packages\django\forms\fields.py:405
+msgid "Enter a number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:516
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:521
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:526
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:597
+#, python-format
+msgid ""
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:659
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\base.py:1602
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\constraints.py:22
+#, python-format
+msgid "Constraint “%(name)s” is violated."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:134
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:135
+msgid "This field cannot be null."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:136
+msgid "This field cannot be blank."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:137
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or
+#. 'month'. Eg: "Title must be unique for pub_date year"
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:141
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:180
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1162
+#, python-format
+msgid "“%(value)s” value must be either True or False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1163
+#, python-format
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1165
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1215
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1217
+msgid "String (unlimited)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1326
+msgid "Comma-separated integers"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1427
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1431
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1566
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1435
+msgid "Date (without time)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1562
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ] format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1570
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1575
+msgid "Date (with time)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1702
+#, python-format
+msgid "“%(value)s” value must be a decimal number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1704
+msgid "Decimal number"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1864
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in [DD] "
+"[[HH:]MM:]ss[.uuuuuu] format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1920
+msgid "Email address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1945
+msgid "File path"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2023
+#, python-format
+msgid "“%(value)s” value must be a float."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2025
+msgid "Floating point number"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2065
+#, python-format
+msgid "“%(value)s” value must be an integer."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2067
+msgid "Integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2163
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2180
+msgid "Small integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2188
+msgid "IPv4 address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2219
+msgid "IP address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2310
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2311
+#, python-format
+msgid "“%(value)s” value must be either None, True or False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2313
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2364
+msgid "Positive big integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2379
+msgid "Positive integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2394
+msgid "Positive small integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2410
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2446
+msgid "Text"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2526
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2530
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2642
+msgid "URL"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2666
+msgid "Raw binary data"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2731
+#, python-format
+msgid "“%(value)s” is not a valid UUID."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2733
+msgid "Universally unique identifier"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:244
+msgid "File"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\json.py:24
+msgid "A JSON object"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\json.py:26
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:978
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r is not a valid choice."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:981
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1275
+msgid "One-to-one relationship"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1332
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1334
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1382
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: .\venv\Lib\site-packages\django\forms\boundfield.py:185
+msgid ":?.!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:95
+msgid "This field is required."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:315
+msgid "Enter a whole number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:486
+#: .\venv\Lib\site-packages\django\forms\fields.py:1267
+msgid "Enter a valid date."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:509
+#: .\venv\Lib\site-packages\django\forms\fields.py:1268
+msgid "Enter a valid time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:536
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:570
+msgid "Enter a valid duration."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:571
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:640
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:641
+msgid "No file was submitted."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:642
+msgid "The submitted file is empty."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:644
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:649
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:717
+#: .\venv\Lib\site-packages\sorl\thumbnail\fields.py:42
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:889
+#: .\venv\Lib\site-packages\django\forms\fields.py:975
+#: .\venv\Lib\site-packages\django\forms\models.py:1592
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:977
+#: .\venv\Lib\site-packages\django\forms\fields.py:1096
+#: .\venv\Lib\site-packages\django\forms\models.py:1590
+msgid "Enter a list of values."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1097
+msgid "Enter a complete value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1339
+msgid "Enter a valid UUID."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1369
+msgid "Enter a valid JSON."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: .\venv\Lib\site-packages\django\forms\forms.py:97
+msgid ":"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\forms.py:239
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:61
+#, python-format
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:65
+#, python-format
+msgid "Please submit at most %(num)d form."
+msgid_plural "Please submit at most %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:70
+#, python-format
+msgid "Please submit at least %(num)d form."
+msgid_plural "Please submit at least %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:484
+#: .\venv\Lib\site-packages\django\forms\formsets.py:491
+msgid "Order"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:901
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:906
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:913
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:922
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1359
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1450
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1594
+#, python-format
+msgid "“%(pk)s” is not a valid value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\utils.py:229
+#, python-format
+msgid ""
+"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:527
+msgid "Clear"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:528
+msgid "Currently"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:529
+msgid "Change"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:866
+msgid "Unknown"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:867
+msgid "Yes"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:868
+msgid "No"
+msgstr ""
+
+#. Translators: Please do not add spaces around commas.
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:873
+msgid "yes,no,maybe"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:903
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:920
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:922
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:924
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:926
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:928
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:930
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:74
+msgid "p.m."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:75
+msgid "a.m."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:80
+msgid "PM"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:81
+msgid "AM"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:153
+msgid "midnight"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:155
+msgid "noon"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:7
+msgid "Monday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:8
+msgid "Tuesday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:9
+msgid "Wednesday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
+msgid "Thursday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:11
+msgid "Friday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:12
+msgid "Saturday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:13
+msgid "Sunday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:16
+msgid "Mon"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:17
+msgid "Tue"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:18
+msgid "Wed"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "Thu"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "Fri"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:21
+msgid "Sat"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:22
+msgid "Sun"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:25
+msgid "January"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:26
+msgid "February"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:27
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:28
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:29
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:30
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:31
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:32
+msgid "August"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:33
+msgid "September"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:34
+msgid "October"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:35
+msgid "November"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:36
+msgid "December"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:39
+msgid "jan"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:40
+msgid "feb"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:41
+msgid "mar"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:42
+msgid "apr"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:43
+msgid "may"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:44
+msgid "jun"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:45
+msgid "jul"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:46
+msgid "aug"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:47
+msgid "sep"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:48
+msgid "oct"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:49
+msgid "nov"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:50
+msgid "dec"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:53
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:54
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:55
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:56
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:57
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:58
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:59
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:60
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:61
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:62
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:63
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:64
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:67
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:68
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:69
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:70
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:71
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:72
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:73
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:74
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:75
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:76
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:77
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:78
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\ipv6.py:20
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\text.py:67
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: .\venv\Lib\site-packages\django\utils\text.py:297
+#: .\venv\Lib\site-packages\django\utils\timesince.py:135
+msgid ", "
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:8
+#, python-format
+msgid "%(num)d year"
+msgid_plural "%(num)d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:9
+#, python-format
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:10
+#, python-format
+msgid "%(num)d week"
+msgid_plural "%(num)d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:11
+#, python-format
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:12
+#, python-format
+msgid "%(num)d hour"
+msgid_plural "%(num)d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:13
+#, python-format
+msgid "%(num)d minute"
+msgid_plural "%(num)d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:29
+msgid "Forbidden"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:30
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:34
+msgid ""
+"You are seeing this message because this HTTPS site requires a “Referer "
+"header” to be sent by your web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:40
+msgid ""
+"If you have configured your browser to disable “Referer” headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for “same-"
+"origin” requests."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:45
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a "
+"rel=\"noreferrer\" …> for links to third-party sites."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:54
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:60
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for “same-origin” requests."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:66
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:44
+msgid "No year specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:64
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:115
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:214
+msgid "Date out of range"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:94
+msgid "No month specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:147
+msgid "No day specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:194
+msgid "No week specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:353
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:384
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:680
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because "
+"%(class_name)s.allow_future is False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:720
+#, python-format
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\detail.py:56
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:70
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:77
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:173
+#, python-format
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:49
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:51
+#, python-format
+msgid "“%(path)s” does not exist"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:68
+#: .\venv\Lib\site-packages\django\views\templates\directory_index.html:8
+#: .\venv\Lib\site-packages\django\views\templates\directory_index.html:11
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:204
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:206
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:208
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:217
+msgid "Django Documentation"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:218
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:226
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:227
+msgid "Get started with Django"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:235
+msgid "Django Community"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:236
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: .\venv\Lib\site-packages\timezone_field\rest_framework.py:10
+msgid "A valid timezone is required."
+msgstr ""

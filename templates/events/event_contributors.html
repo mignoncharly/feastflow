@@ -1,0 +1,341 @@
+<!-- templates/events/event_contributors.html -->
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Contributors" %} - {{ event.name }} - FeastFlow{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contributors.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="contributors-container">
+    <!-- Hero Section -->
+    <section class="contributors-hero">
+        <div class="hero-backdrop"></div>
+        <div class="hero-content">
+            <div class="event-identity">
+                <h1>{{ event.name }}</h1>
+                <div class="event-meta">
+                    <div class="event-dates">
+                        <i class="fas fa-calendar-day"></i>
+                        <span>{{ event.start_date|date:"M d, Y" }} - {{ event.end_date|date:"M d, Y" }}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="event-actions">
+                <a href="{{ event.get_absolute_url }}" class="btn secondary-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>{% trans "Back to Event" %}</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contributors Stats -->
+    <section class="stats-showcase">
+        <div class="stat-card contributors-stat" data-value="{{ total_contributors }}">
+            <div class="stat-glow"></div>
+            <div class="stat-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-details">
+                <div class="stat-counter">0</div>
+                <h3>{% trans "Contributors" %}</h3>
+            </div>
+        </div>
+        
+        <div class="stat-card contributions-stat" data-value="{{ total_contributions }}">
+            <div class="stat-glow"></div>
+            <div class="stat-icon">
+                <i class="fas fa-hands-helping"></i>
+            </div>
+            <div class="stat-details">
+                <div class="stat-counter">0</div>
+                <h3>{% trans "Contributions" %}</h3>
+            </div>
+        </div>
+        
+        <div class="stat-card items-stat" data-value="{{ total_items_contributed }}">
+            <div class="stat-glow"></div>
+            <div class="stat-icon">
+                <i class="fas fa-gift"></i>
+            </div>
+            <div class="stat-details">
+                <div class="stat-counter">0</div>
+                <h3>{% trans "Items" %}</h3>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <div class="contributors-content">
+        <!-- Contributors List -->
+        <div class="content-card contributors-card">
+            <div class="card-header">
+                <div class="header-title">
+                    <div class="header-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h2>{% trans "Event Contributors" %}</h2>
+                </div>
+                <div class="search-filter">
+                    <div class="search-input">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="contributorSearch" placeholder="{% trans 'Search contributors...' %}">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-content">
+                <div class="contributor-tabs">
+                    <button class="tab-button active" data-tab="all">{% trans "All Contributors" %} ({{ total_contributors }})</button>
+                    <button class="tab-button" data-tab="registered">{% trans "Registered Users" %} ({{ registered_contributors|length }})</button>
+                    <button class="tab-button" data-tab="anonymous">{% trans "Anonymous Users" %} ({{ anonymous_contributors|length }})</button>
+                </div>
+                
+                <div class="contributors-list">
+                    {% if contributor_details %}
+                        <div class="contributor-table">
+                            <div class="table-header">
+                                <div class="col-name">{% trans "Contributor" %}</div>
+                                <div class="col-contributions">{% trans "Contributions" %}</div>
+                                <div class="col-items">{% trans "Items" %}</div>
+                                <div class="col-actions">{% trans "Actions" %}</div>
+                            </div>
+                            
+                            <div class="table-body">
+                                {% for key, contributor in contributor_details.items %}
+                                    <div class="contributor-row {% if contributor.is_registered %}registered-user{% else %}anonymous-user{% endif %}" data-contributor-type="{% if contributor.is_registered %}registered{% else %}anonymous{% endif %}">
+                                        <div class="contributor-header">
+                                            <div class="col-name">
+                                                <div class="contributor-avatar">
+                                                    {% if contributor.is_registered %}
+                                                        <i class="fas fa-user-circle"></i>
+                                                    {% else %}
+                                                        <i class="fas fa-user"></i>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="contributor-info">
+                                                    <div class="contributor-name">{{ contributor.name }}</div>
+                                                    <div class="contributor-email">{{ contributor.email }}</div>
+                                                    <div class="contributor-badge {% if contributor.is_registered %}registered-badge{% else %}anonymous-badge{% endif %}">
+                                                        {% if contributor.is_registered %}
+                                                            <i class="fas fa-user-check"></i>
+                                                            <span>{% trans "Registered User" %}</span>
+                                                        {% else %}
+                                                            <i class="fas fa-user-tag"></i>
+                                                            <span>{% trans "Anonymous User" %}</span>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-contributions">
+                                                <div class="contribution-count">{{ contributor.contributions|length }}</div>
+                                            </div>
+                                            
+                                            <div class="col-items">
+                                                <div class="items-count">{{ contributor.total_quantity }}</div>
+                                            </div>
+                                            
+                                            <div class="col-actions">
+                                                <button class="btn-toggle-details" aria-label="Toggle details">
+                                                    <i class="fas fa-chevron-down"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="contributor-details">
+                                            <div class="details-header">
+                                                <div class="col-item">{% trans "Item" %}</div>
+                                                <div class="col-category">{% trans "Category" %}</div>
+                                                <div class="col-quantity">{% trans "Quantity" %}</div>
+                                                <div class="col-date">{% trans "Date" %}</div>
+                                                <div class="col-comment">{% trans "Comment" %}</div>
+                                            </div>
+                                            
+                                            <div class="details-body">
+                                                {% for contribution in contributor.contributions %}
+                                                    <div class="detail-row">
+                                                        <div class="col-item">{{ contribution.item_name }}</div>
+                                                        <div class="col-category">{{ contribution.category_name }}</div>
+                                                        <div class="col-quantity">
+                                                            <div class="quantity-badge">
+                                                                <i class="fas fa-plus"></i>
+                                                                <span>{{ contribution.quantity }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-date">{{ contribution.date|date:"M d, Y" }}</div>
+                                                        <div class="col-comment">{{ contribution.comment|default:"-"|truncatechars:30 }}</div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="empty-state">
+                            <div class="empty-state-animation">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>{% trans "No Contributors Yet" %}</h3>
+                            <p>{% trans "There are no contributions to this event yet. Share your event to get people involved!" %}</p>
+                            <a href="{% url 'events:generate_link' event.slug %}" class="btn primary-btn">
+                                <i class="fas fa-share-alt"></i>
+                                <span>{% trans "Generate Invite Link" %}</span>
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize counter animations
+    animateCounters();
+    
+    // Initialize accordion functionality for contributor details
+    initAccordion();
+    
+    // Initialize search functionality
+    initSearch();
+    
+    // Initialize tab functionality
+    initTabs();
+});
+
+/**
+ * Animates counter elements
+ */
+function animateCounters() {
+    const statCards = document.querySelectorAll('.stat-card');
+    
+    statCards.forEach(card => {
+        const counter = card.querySelector('.stat-counter');
+        const targetValue = parseInt(card.dataset.value);
+        
+        if (isNaN(targetValue)) return;
+        
+        const duration = 1500; // Animation duration in milliseconds
+        const framesPerSecond = 60;
+        const totalFrames = duration / 1000 * framesPerSecond;
+        let currentFrame = 0;
+        
+        const initialValue = 0;
+        const valueIncrement = (targetValue - initialValue) / totalFrames;
+        
+        counter.textContent = initialValue;
+        
+        const animate = () => {
+            currentFrame++;
+            const newValue = Math.round(initialValue + valueIncrement * currentFrame); 
+            
+            counter.textContent = newValue;
+            
+            if (currentFrame < totalFrames) {
+                requestAnimationFrame(animate);
+            } else {
+                counter.textContent = targetValue;
+            }
+        };
+        
+        setTimeout(() => {
+            animate();
+        }, 300);
+    });
+}
+
+/**
+ * Initializes accordion functionality for contributor details
+ */
+function initAccordion() {
+    const toggleButtons = document.querySelectorAll('.btn-toggle-details');
+    
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const contributorRow = this.closest('.contributor-row');
+            const details = contributorRow.querySelector('.contributor-details');
+            const icon = this.querySelector('i');
+            
+            contributorRow.classList.toggle('expanded');
+            
+            if (contributorRow.classList.contains('expanded')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+                details.style.maxHeight = details.scrollHeight + 'px';
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+                details.style.maxHeight = '0';
+            }
+        });
+    });
+}
+
+/**
+ * Initializes search functionality
+ */
+function initSearch() {
+    const searchInput = document.getElementById('contributorSearch');
+    
+    if (!searchInput) return;
+    
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const rows = document.querySelectorAll('.contributor-row');
+        
+        rows.forEach(row => {
+            const name = row.querySelector('.contributor-name').textContent.toLowerCase();
+            const email = row.querySelector('.contributor-email').textContent.toLowerCase();
+            
+            if (name.includes(searchTerm) || email.includes(searchTerm)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+}
+
+/**
+ * Initializes tab functionality
+ */
+function initTabs() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Update active tab
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filter = this.dataset.tab;
+            const rows = document.querySelectorAll('.contributor-row');
+            
+            rows.forEach(row => {
+                if (filter === 'all') {
+                    row.style.display = '';
+                } else if (filter === 'registered' && row.dataset.contributorType === 'registered') {
+                    row.style.display = '';
+                } else if (filter === 'anonymous' && row.dataset.contributorType === 'anonymous') {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+</script>
+{% endblock %}

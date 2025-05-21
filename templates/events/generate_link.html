@@ -1,0 +1,168 @@
+<!-- templates/events/generate_link.html -->
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Generate Contribution Link" %} - {{ event.name }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/generate_link.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <!-- Curved Background -->
+    <div class="curved-bg"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particles-container" id="particles-js"></div>
+    
+    <div class="container position-relative">
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb" class="custom-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'core:home' %}">{% trans "Home" %}</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'events:event_list' %}">{% trans "Events" %}</a></li>
+                <li class="breadcrumb-item"><a href="{{ event.get_absolute_url }}">{{ event.name }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{% trans "Generate Link" %}</li>
+            </ol>
+        </nav>
+        
+        <div class="main-card">
+            <div class="card-decoration-circle circle-1"></div>
+            <div class="card-decoration-circle circle-2"></div>
+            
+            <div class="card-header-custom">
+                <h1 class="card-title">{% trans "Generate Contribution Link" %}</h1>
+                <div class="header-icon">
+                    <i class="bi bi-link-45deg"></i>
+                </div>
+            </div>
+            
+            <div class="card-body-custom">
+                <p class="lead-text">{% trans "Create a shareable link that allows people to contribute to your event without logging in." %}</p>
+                
+                {% if contribution_link %}
+                    <div class="success-section">
+                        <div class="success-icon-wrapper">
+                            <div class="success-icon">
+                                <i class="bi bi-check-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="success-title">{% trans "Link Generated Successfully!" %}</h4>
+                        <p class="success-message">{% trans "Your contribution link has been created. Copy and share it with potential contributors:" %}</p>
+                        
+                        <div class="link-copy-container">
+                            <input type="text" class="link-input" id="contributionLink" value="{{ full_link_url }}" readonly>
+                            <button class="copy-button" id="copyLinkBtn" onclick="copyLink()">
+                                <i class="bi bi-clipboard"></i> <span>{% trans "Copy" %}</span>
+                            </button>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <a href="{{ event.get_absolute_url }}" class="btn-back">
+                                <span class="btn-icon"><i class="bi bi-arrow-left"></i></span>
+                                <span class="btn-text">{% trans "Back to Event" %}</span>
+                            </a>
+                            <button type="button" class="btn-qr" data-bs-toggle="modal" data-bs-target="#qrCodeModal">
+                                <span class="btn-icon"><i class="bi bi-qr-code"></i></span>
+                                <span class="btn-text">{% trans "Show QR Code" %}</span>
+                            </button>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="form-container">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="custom-form">
+                                {{ form|crispy }}
+                            </div>
+                            <div class="form-actions">
+                                <a href="{{ event.get_absolute_url }}" class="btn-cancel">
+                                    {% trans "Cancel" %}
+                                </a>
+                                <button type="submit" class="btn-generate">
+                                    <i class="bi bi-link-45deg"></i> {% trans "Generate Link" %}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}
+                
+                {% if existing_links %}
+                    <div class="existing-links-section">
+                        <h2 class="section-title">{% trans "Existing Contribution Links" %}</h2>
+                        <div class="links-table-container">
+                            <table class="links-table">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Name" %}</th>
+                                        <th>{% trans "Created" %}</th>
+                                        <th>{% trans "Link" %}</th>
+                                        <th>{% trans "Actions" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for link in existing_links %}
+                                        <tr>
+                                            <td>{{ link.name|default:link.code }}</td>
+                                            <td>{{ link.created_at|date:"M d, Y" }}</td>
+                                            <td>
+                                                <div class="table-link-copy">
+                                                    <input type="text" class="table-link-input" value="{{ link.get_full_url }}" id="link-{{ link.id }}" readonly>
+                                                    <button class="table-copy-btn" type="button" onclick="copyLinkById('link-{{ link.id }}')">
+                                                        <i class="bi bi-clipboard"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <a href="{{ link.get_absolute_url }}" class="table-action-btn" target="_blank">
+                                                        <i class="bi bi-eye"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- QR Code Modal -->
+    <div class="modal fade custom-modal" id="qrCodeModal" tabindex="-1" aria-labelledby="qrCodeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="qrCodeModalLabel">{% trans "QR Code for Your Event" %}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    {% if contribution_link %}
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={{ full_link_url|urlencode }}" alt="QR Code" class="qr-code-img">
+                        </div>
+                        <p class="qr-code-description">{% trans "Scan this QR code to access the contribution page" %}</p>
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-modal-close" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                    <a href="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data={{ full_link_url|urlencode }}" class="btn-modal-download" download="event-qr-code.png">
+                        <i class="bi bi-download"></i> {% trans "Download QR Code" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="{% static 'js/generate_link.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,56 @@
+{# templates/events/widgets/gallery_tabs_widget.html #}
+<div class="gallery-image-selection">
+    {% if widget.has_folders %}
+    <div class="gallery-folder-tabs">
+        {% for folder in widget.folders %}
+            {% if folder.count > 0 or folder.id == 'all' %}
+                <div class="folder-tab {% if forloop.first %}active{% endif %}" data-folder="{{ folder.id }}">
+                    {{ folder.name }} {% if folder.count > 0 %}<span class="badge">{{ folder.count }}</span>{% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <div class="image-gallery">
+        {% with widget.attrs.id|stringformat:"s" as widget_id %}
+        {# Empty option for "Upload your own" #}
+        {% for group, options, index in widget.optgroups %}
+            {% for option in options %}
+                {% if option.value == None or option.value == '' %}
+                    <div class="upload-option">
+                        <input type="radio" name="{{ widget.name }}" value="{{ option.value|default:'' }}" 
+                               id="{{ option.attrs.id }}" class="image-selection-radio"
+                               {% if option.selected %}checked{% endif %}>
+                        <label for="{{ option.attrs.id }}">{{ option.label }}</label>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        
+        {# Actual image options #}
+        {% for folder, options in widget.grouped_options.items %}
+            {% for option in options %}
+                {% if option.image %}
+                    <div class="gallery-image-wrapper" data-type="{{ option.image.image_type }}" data-folder="{{ folder }}">
+                        <img src="{{ option.image.get_thumbnail_url }}" alt="{{ option.image.name }}" class="gallery-image">
+                        <div class="selection-indicator">
+                            <i class="bi bi-check"></i>
+                        </div>
+                        <div class="image-name">{{ option.image.name }}</div>
+                        <input type="radio" name="{{ widget.name }}" value="{{ option.value }}" 
+                               id="{{ option.attrs.id }}" class="image-selection-radio"
+                               {% if option.selected %}checked{% endif %}>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        {% endwith %}
+        
+        {% if widget.grouped_options.all|length == 0 and widget.grouped_options.event|length == 0 and widget.grouped_options.category|length == 0 and widget.grouped_options.item|length == 0 %}
+            <div class="empty-gallery">
+                <p>{% trans "No predefined images available" %}</p>
+            </div>
+        {% endif %}
+    </div>
+</div>

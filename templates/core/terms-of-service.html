@@ -1,0 +1,274 @@
+<!-- templates/legal/terms-of-service.html -->
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Terms of Service" %} - FeastFlow{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/legal-pages.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="legal-page">
+    <!-- Header Section -->
+    <div class="legal-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="page-title">{% trans "Terms of Service" %}</h1>
+                <p class="page-subtitle">{% trans "Last Updated: May 10, 2025" %}</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div class="legal-content">
+            <div class="legal-sidebar">
+                <div class="toc-container">
+                    <h2 class="toc-title">{% trans "Table of Contents" %}</h2>
+                    <nav class="toc-nav">
+                        <ul class="toc-list">
+                            <li><a href="#introduction" class="toc-link active">{% trans "Introduction" %}</a></li>
+                            <li><a href="#definitions" class="toc-link">{% trans "Definitions" %}</a></li>
+                            <li><a href="#account" class="toc-link">{% trans "User Accounts" %}</a></li>
+                            <li><a href="#use-of-service" class="toc-link">{% trans "Use of Service" %}</a></li>
+                            <li><a href="#content" class="toc-link">{% trans "User Content" %}</a></li>
+                            <li><a href="#payments" class="toc-link">{% trans "Payments" %}</a></li>
+                            <li><a href="#proprietary-rights" class="toc-link">{% trans "Proprietary Rights" %}</a></li>
+                            <li><a href="#disclaimers" class="toc-link">{% trans "Disclaimers" %}</a></li>
+                            <li><a href="#limitation-liability" class="toc-link">{% trans "Limitation of Liability" %}</a></li>
+                            <li><a href="#indemnification" class="toc-link">{% trans "Indemnification" %}</a></li>
+                            <li><a href="#termination" class="toc-link">{% trans "Termination" %}</a></li>
+                            <li><a href="#changes" class="toc-link">{% trans "Changes to Terms" %}</a></li>
+                            <li><a href="#governing-law" class="toc-link">{% trans "Governing Law" %}</a></li>
+                            <li><a href="#contact" class="toc-link">{% trans "Contact Us" %}</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="legal-document">
+                <section id="introduction" class="legal-section">
+                    <h2 class="section-title">{% trans "Introduction" %}</h2>
+                    
+                    <div class="section-content">
+                        <p>{% trans "Welcome to FeastFlow. Please read these Terms of Service (\"Terms\", \"Terms of Service\") carefully before using our website and services (the \"Service\") operated by FeastFlow (\"us\", \"we\", or \"our\")." %}</p>
+                        
+                        <p>{% trans "By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the Service." %}</p>
+                        
+                        <div class="notice-box warning">
+                            <div class="notice-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                                </svg>
+                            </div>
+                            <div class="notice-content">
+                                <p>{% trans "These Terms constitute a legally binding agreement between you and FeastFlow. You must be at least 18 years old to use our Service." %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="definitions" class="legal-section">
+                    <h2 class="section-title">{% trans "Definitions" %}</h2>
+                    
+                    <div class="section-content">
+                        <p>{% trans "For the purposes of these Terms of Service:" %}</p>
+                        
+                        <ul class="legal-list">
+                            <li><strong>{% trans "Service" %}</strong> {% trans "refers to the FeastFlow website, applications, and all related services." %}</li>
+                            <li><strong>{% trans "User" %}</strong> {% trans "refers to the individual accessing or using the Service, or the company or other legal entity on behalf of which such individual is accessing or using the Service." %}</li>
+                            <li><strong>{% trans "Account" %}</strong> {% trans "refers to a unique account created for a User to access our Service." %}</li>
+                            <li><strong>{% trans "Content" %}</strong> {% trans "refers to data, text, information, graphics, images, videos, or any other materials that Users may create, upload, submit, post, or transmit through the Service." %}</li>
+                            <li><strong>{% trans "Personal Data" %}</strong> {% trans "refers to information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context." %}</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section id="account" class="legal-section">
+                    <h2 class="section-title">{% trans "User Accounts" %}</h2>
+                    
+                    <div class="section-content">
+                        <p>{% trans "When you create an account with us, you must provide information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service." %}</p>
+                        
+                        <p>{% trans "You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password. You agree not to disclose your password to any third party. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account." %}</p>
+                        
+                        <p>{% trans "You may not use as a username the name of another person or entity or that is not lawfully available for use, or a name or trademark that is subject to any rights of another person or entity without appropriate authorization. You may not use a username that is offensive, vulgar, or obscene." %}</p>
+                    </div>
+                </section>
+                
+                <section id="use-of-service" class="legal-section">
+                    <h2 class="section-title">{% trans "Use of Service" %}</h2>
+                    
+                    <div class="section-content">
+                        <p>{% trans "You agree to use the Service only for lawful purposes and in accordance with these Terms. You agree not to use the Service:" %}</p>
+                        
+                        <ul class="legal-list">
+                            <li>{% trans "In any way that violates any applicable local, state, national, or international law or regulation." %}</li>
+                            <li>{% trans "To engage in any conduct that restricts or inhibits anyone's use or enjoyment of the Service." %}</li>
+                            <li>{% trans "To exploit, harm, or attempt to exploit or harm minors in any way." %}</li>
+                            <li>{% trans "To transmit or procure the sending of any advertising or promotional material, including any \"junk mail\", \"chain letter,\" \"spam,\" or any other similar solicitation." %}</li>
+                            <li>{% trans "To impersonate or attempt to impersonate the company, a company employee, another user, or any other person or entity." %}</li>
+                            <li>{% trans "To engage in any activity that could disable, overburden, damage, or impair the Service or interfere with any other party's use of the Service." %}</li>
+                        </ul>
+                        
+                        <div class="notice-box info">
+                            <div class="notice-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                </svg>
+                            </div>
+                            <div class="notice-content">
+                                <p>{% trans "We reserve the right to terminate or suspend your account immediately, without prior notice or liability, for any reason, including if you breach the Terms." %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="content" class="legal-section">
+                    <h2 class="section-title">{% trans "User Content" %}</h2>
+                    
+                    <div class="section-content">
+                        <p>{% trans "Our Service allows you to create, upload, submit, post, or transmit content. You retain all rights to your content, but you grant us a license to use, copy, modify, distribute, and display the content in connection with the operation of the Service." %}</p>
+                        
+                        <p>{% trans "You are solely responsible for the content you submit through the Service. By submitting content, you warrant that:" %}</p>
+                        
+                        <ul class="legal-list">
+                            <li>{% trans "You own or have the necessary rights to the content and the right to grant the license to us." %}</li>
+                            <li>{% trans "The content does not violate the rights of any third party, including copyright, trademark, privacy, or other personal or proprietary rights." %}</li>
+                            <li>{% trans "The content does not contain material that is defamatory, obscene, indecent, abusive, offensive, harassing, violent, hateful, inflammatory, or otherwise objectionable." %}</li>
+                            <li>{% trans "The content does not promote sexually explicit material, violence, or discrimination based on race, sex, religion, nationality, disability, sexual orientation, or age." %}</li>
+                            <li>{% trans "The content does not violate any applicable law or regulation." %}</li>
+                        </ul>
+                        
+                        <p>{% trans "We reserve the right to remove any content that violates these Terms or that we determine is objectionable or harmful to others." %}</p>
+                    </div>
+                </section>
+                
+                <section id="payments" class="legal-section">
+                    <h2 class="section-title">{% trans "Payments" %}</h2>
+                    
+                    <div class="section-content">
+                        <p>{% trans "Some aspects of the Service may be provided for a fee. If you elect to use paid features of the Service, you agree to pay the applicable fees and any taxes as described on the Service. All payments are non-refundable except as required by law or as explicitly stated in these Terms." %}</p>
+                        
+                        <p>{% trans "You agree to provide accurate and complete billing information, including full name, address, state, zip code, telephone number, and valid payment method information. By submitting payment information, you authorize us to charge that payment method for the fees associated with your account." %}</p>
+                        
+                        <p>{% trans "For subscription-based services, your subscription will automatically renew unless you cancel it before the renewal date. You can cancel your subscription at any time through your account settings." %}</p>
+                        
+                        <div class="notice-box">
+                            <div class="notice-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                </svg>
+                            </div>
+                            <div class="notice-content">
+                                <p>{% trans "We may change our fees at any time by posting the changes on the Service or by notifying you directly. Continued use of the Service after a fee change constitutes your acceptance of the new fees." %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="proprietary-rights" class="legal-section">
+                    <h2 class="section-title">{% trans "Proprietary Rights" %}</h2>
+                    
+                    <div class="section-content">
+                        <p>{% trans "The Service and its original content (excluding user-submitted content), features, and functionality are and will remain the exclusive property of FeastFlow and its licensors. The Service is protected by copyright, trademark, and other laws of both the United States and foreign countries." %}</p>
+                        
+                        <p>{% trans "Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of FeastFlow." %}</p>
+                    </div>
+                </section>
+                
+                <section id="disclaimers" class="legal-section">
+                    <h2 class="section-title">{% trans "Disclaimers" %}</h2>
+                    
+                    <div class="section-content">
+                        <p>{% trans "YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED ON AN \"AS IS\" AND \"AS AVAILABLE\" BASIS. THE COMPANY EXPRESSLY DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT." %}</p>
+                        
+                        <p>{% trans "WE DO NOT WARRANT THAT (A) THE SERVICE WILL FUNCTION UNINTERRUPTED, SECURE, OR AVAILABLE AT ANY PARTICULAR TIME OR LOCATION; (B) ANY ERRORS OR DEFECTS WILL BE CORRECTED; (C) THE SERVICE IS FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS; OR (D) THE RESULTS OF USING THE SERVICE WILL MEET YOUR REQUIREMENTS." %}</p>
+                    </div>
+                </section>
+                
+                <section id="limitation-liability" class="legal-section">
+                    <h2 class="section-title">{% trans "Limitation of Liability" %}</h2>
+                    
+                    <div class="section-content">
+                        <p>{% trans "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE COMPANY, ITS AFFILIATES, DIRECTORS, EMPLOYEES, AGENTS, OR LICENSORS BE LIABLE FOR ANY INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, INCLUDING DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA, OR OTHER INTANGIBLE LOSSES, THAT RESULT FROM THE USE OF, OR INABILITY TO USE, THE SERVICE." %}</p>
+                        
+                        <p>{% trans "IN NO EVENT WILL THE COMPANY'S TOTAL LIABILITY TO YOU FOR ALL DAMAGES, LOSSES, OR CAUSES OF ACTION EXCEED THE AMOUNT YOU HAVE PAID TO THE COMPANY IN THE LAST SIX (6) MONTHS, OR, IF GREATER, ONE HUNDRED DOLLARS ($100)." %}</p>
+                        
+                        <p>{% trans "THESE LIMITATIONS OF LIABILITY APPLY EVEN IF THE COMPANY HAS BEEN EXPRESSLY ADVISED OF THE POTENTIAL LOSS." %}</p>
+                    </div>
+                </section>
+                
+                <section id="indemnification" class="legal-section">
+                    <h2 class="section-title">{% trans "Indemnification" %}</h2>
+                    
+                    <div class="section-content">
+                        <p>{% trans "You agree to defend, indemnify, and hold harmless the Company, its affiliates, licensors, and service providers, and its and their respective officers, directors, employees, contractors, agents, licensors, suppliers, successors, and assigns from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms or your use of the Service, including, but not limited to, your User Content, any use of the Service's content, services, and products other than as expressly authorized in these Terms." %}</p>
+                    </div>
+                </section>
+                
+                <section id="termination" class="legal-section">
+                    <h2 class="section-title">{% trans "Termination" %}</h2>
+                    
+                    <div class="section-content">
+                        <p>{% trans "We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms." %}</p>
+                        
+                        <p>{% trans "Upon termination, your right to use the Service will immediately cease. If you wish to terminate your account, you may simply discontinue using the Service or delete your account within the Service." %}</p>
+                        
+                        <p>{% trans "All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability." %}</p>
+                    </div>
+                </section>
+                
+                <section id="changes" class="legal-section">
+                    <h2 class="section-title">{% trans "Changes to Terms" %}</h2>
+                    
+                    <div class="section-content">
+                        <p>{% trans "We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion." %}</p>
+                        
+                        <p>{% trans "By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service." %}</p>
+                    </div>
+                </section>
+                
+                <section id="governing-law" class="legal-section">
+                    <h2 class="section-title">{% trans "Governing Law" %}</h2>
+                    
+                    <div class="section-content">
+                        <p>{% trans "These Terms shall be governed and construed in accordance with the laws of the State of Delaware, United States, without regard to its conflict of law provisions." %}</p>
+                        
+                        <p>{% trans "Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect." %}</p>
+                    </div>
+                </section>
+                
+                <section id="contact" class="legal-section">
+                    <h2 class="section-title">{% trans "Contact Us" %}</h2>
+                    
+                    <div class="section-content">
+                        <p>{% trans "If you have any questions about these Terms, please contact us:" %}</p>
+                        
+                        <div class="contact-details">
+                            <p><strong>{% trans "Email:" %}</strong> info@feastflow.com</p>
+                            <p><strong>{% trans "Address:" %}</strong> Nikolausstraße 6, 55120 Mainz, Germany</p>
+                        </div>
+                        
+                        <div class="contact-actions">
+                            <a href="{% url 'core:contact' %}" class="contact-button">
+                                <span>{% trans "Contact Us" %}</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/legal-pages.js' %}"></script>
+{% endblock %}

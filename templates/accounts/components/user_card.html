@@ -1,0 +1,50 @@
+{% load static %}
+{% load i18n %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/user_card.css' %}">
+{% endblock %}
+
+
+<div class="user-card">
+    <div class="user-avatar-container">
+        {% if user_obj.profile.profile_picture %}
+            <img src="{{ user_obj.profile.profile_picture.url }}" alt="{{ user_obj.get_full_name|default:user_obj.username }}" class="profile-picture-sm">
+        {% else %}
+            <div class="profile-picture-placeholder profile-picture-placeholder-sm">
+                {{ user_obj.get_full_name|default:user_obj.username|slice:":1"|upper }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="user-card-info">
+        <div class="user-card-name">
+            {{ user_obj.get_full_name|default:user_obj.username }}
+            <!-- Role Badge -->
+            {% if user_obj.is_organizer %}
+                <span class="badge bg-primary ms-2"><i class="bi bi-calendar-plus me-1"></i>{% trans "Organizer" %}</span>
+            {% else %}
+                <span class="badge bg-success ms-2"><i class="bi bi-gift me-1"></i>{% trans "Contributor" %}</span>
+            {% endif %}
+        </div>
+        <div class="user-card-meta">
+            {% if user_obj.profile.location %}
+                <div><i class="bi bi-geo-alt"></i> {{ user_obj.profile.location }}</div>
+            {% endif %}
+            {% if show_contribution_count %}
+                <div><i class="bi bi-gift"></i> {{ user_obj.total_contributions }} {% trans "contributions" %}</div>
+            {% endif %}
+            {% if show_member_since %}
+                <div><i class="bi bi-calendar3"></i> {% trans "Member since" %} {{ user_obj.date_joined|date:"M Y" }}</div>
+            {% endif %}
+        </div>
+    </div>
+    {% if show_actions %}
+        <div class="user-card-actions">
+            <a href="{% url 'accounts:user_profile' username=user_obj.username %}" class="btn btn-sm btn-outline-primary">
+                <i class="bi bi-person"></i> {% trans "View Profile" %}
+            </a>
+        </div>
+    {% endif %}
+</div>
+

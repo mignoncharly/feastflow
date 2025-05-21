@@ -1,0 +1,21 @@
+{# templates/events/tags/image_gallery.html #}
+{% load event_tags %}
+
+<div class="image-gallery">
+    {% for image in predefined_images %}
+        <div class="gallery-image-wrapper" data-type="{{ image.image_type }}" data-folder="{{ image.image_type }}">
+            <img src="{{ image.get_thumbnail_url }}" alt="{{ image.name }}" class="gallery-image">
+            <div class="selection-indicator">
+                <i class="bi bi-check"></i>
+            </div>
+            <div class="image-name">{{ image.name }}</div>
+            <input type="radio" name="predefined_image" value="{{ image.id }}" 
+                   class="image-selection-radio" id="image-{{ image.id }}"
+                   {% if selected_id == image.id|stringformat:"s" %}checked{% endif %}>
+        </div>
+    {% empty %}
+        <div class="empty-gallery">
+            <p>{% trans "No predefined images available" %}</p>
+        </div>
+    {% endfor %}
+</div>

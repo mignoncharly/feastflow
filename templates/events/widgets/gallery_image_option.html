@@ -1,0 +1,22 @@
+{# templates/events/widgets/gallery_image_option.html #}
+{% if option.value %}
+    {% if option.image %}
+        <div class="gallery-image-wrapper" data-type="{{ option.image.image_type }}">
+            <img src="{{ option.image.get_thumbnail_url }}" alt="{{ option.image.name }}" class="gallery-image">
+            <div class="selection-indicator">
+                <i class="bi bi-check"></i>
+            </div>
+            <div class="image-name">{{ option.image.name }}</div>
+            <input type="radio" name="{{ widget.name }}" value="{{ option.value }}" 
+                   id="{{ option.attrs.id }}" class="image-selection-radio"
+                   {% if option.selected %}checked{% endif %}>
+        </div>
+    {% endif %}
+{% else %}
+    <div class="upload-option">
+        <input type="radio" name="{{ widget.name }}" value="{{ option.value|default:'' }}" 
+               id="{{ option.attrs.id }}" class="image-selection-radio"
+               {% if option.selected %}checked{% endif %}>
+        <label for="{{ option.attrs.id }}">{{ option.label }}</label>
+    </div>
+{% endif %}

@@ -1,0 +1,358 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Make a Contribution" %} - FeastFlow{% endblock %}
+
+{% block meta_description %}{% trans "Contribute to an event by adding items or volunteering." %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contribute.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="contribute-page">
+    <!-- Background Elements -->
+    <div class="background-effects">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="pattern-overlay"></div>
+    </div>
+    
+    <div class="contribute-container">
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb-nav">
+            <ul class="breadcrumb-list">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'core:home' %}">
+                        <i class="fas fa-home"></i>
+                        <span>{% trans "Home" %}</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{% url 'events:event_detail' event.slug %}">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>{{ event.name }}</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{% url 'events:category_detail' event.slug category.slug %}">
+                        <i class="fas fa-tag"></i>
+                        <span>{{ category.name }}</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <i class="fas fa-utensils"></i>
+                    <span>{{ item.name }}</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Main Content Section -->
+        <div class="content-grid">
+            <!-- Left Column (Main Content) -->
+            <div class="main-content">
+                <div class="contribution-card">
+                    <!-- Card Header -->
+                    <div class="card-header">
+                        <div class="header-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h1 class="header-title">
+                            {% trans "Contribute" %}: <span class="item-name">{{ item.name }}</span>
+                        </h1>
+                    </div>
+                    
+                    <!-- Card Content -->
+                    <div class="card-content">
+                        <!-- Access Notification -->
+                        {% if not event.is_public %}
+                        <div class="access-alert">
+                            <div class="alert-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h3>{% trans "Access Granted" %}</h3>
+                                <p>
+                                    {% if event.is_invite_only %}
+                                        {% trans "You were invited to contribute to this event." %}
+                                    {% elif event.is_code_required %}
+                                        {% trans "You have verified the access code for this event." %}
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        <!-- Item Information -->
+                        <div class="item-details">
+                            <h2 class="section-title">
+                                <i class="fas fa-info-circle"></i>
+                                {% trans "About this item" %}
+                            </h2>
+                            
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <div class="detail-label">{% trans "Category" %}</div>
+                                    <div class="detail-value">
+                                        <i class="fas fa-tag"></i>
+                                        {{ category.name }}
+                                    </div>
+                                </div>
+                                
+                                <div class="detail-item">
+                                    <div class="detail-label">{% trans "Required Quantity" %}</div>
+                                    <div class="detail-value">
+                                        <i class="fas fa-cubes"></i>
+                                        {{ item.required_quantity }}
+                                    </div>
+                                </div>
+                                
+                                {% if item.comments %}
+                                <div class="detail-item wide">
+                                    <div class="detail-label">{% trans "Notes" %}</div>
+                                    <div class="detail-value notes">
+                                        <i class="fas fa-sticky-note"></i>
+                                        {{ item.comments }}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <!-- Contribution Form -->
+                        <div class="contribution-form-section"> 
+                            <h2 class="section-title">
+                                <i class="fas fa-hands-helping"></i>
+                                {% trans "Make Your Contribution" %} 
+                            </h2>
+                            
+                            <form method="post" class="contribution-form" id="contributionForm">
+                                {% csrf_token %}
+                                
+                                <div class="form-fields">
+                                    <!-- In the form fields section -->
+                                    {% if not user.is_authenticated %}
+                                    <div class="form-group">
+                                        <label for="{{ form.name.id_for_label }}">
+                                            <i class="fas fa-user"></i>
+                                            {% trans "Your Name" %}
+                                            <span class="required-mark">*</span>
+                                        </label>
+                                        {{ form.name }}
+                                        {% if form.name.errors %}
+                                        <div class="field-error">
+                                            {{ form.name.errors }}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+
+                                    <!-- Partial update to the email field in contribute.html -->
+                                    <div class="form-group">
+                                        <label for="{{ form.email.id_for_label }}">
+                                            <i class="fas fa-envelope"></i>
+                                            {% trans "Email Address" %}
+                                            {% if form.email.required %}
+                                                <span class="required-mark">*</span>
+                                            {% else %}
+                                                <span class="optional-mark">({% trans "optional" %})</span>
+                                            {% endif %}
+                                        </label>
+                                        {{ form.email }}
+                                        {% if form.email.errors %}
+                                        <div class="field-error">
+                                            {{ form.email.errors }}
+                                        </div>
+                                        {% endif %}
+                                        <div class="field-hint">
+                                            {% if form.email.required %}
+                                                {% trans "Your email is only used for contribution notifications" %}
+                                            {% else %}
+                                                {% trans "Optional: Your email will only be used for contribution notifications" %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                                                        
+                                    <div class="form-row">
+                                        <div class="form-group quantity-group">
+                                            <label for="{{ form.quantity.id_for_label }}">
+                                                <i class="fas fa-cubes"></i>
+                                                {% trans "Quantity" %}
+                                                <span class="required-mark">*</span>
+                                            </label>
+                                            <div class="quantity-input">
+                                                <button type="button" class="quantity-btn minus-btn">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                                                {{ form.quantity }}
+                                                <button type="button" class="quantity-btn plus-btn">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                            {% if form.quantity.errors %}
+                                            <div class="field-error">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                {{ form.quantity.errors }}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="{{ form.comment.id_for_label }}">
+                                            <i class="fas fa-comment"></i>
+                                            {% trans "Comment" %}
+                                            <span class="optional-mark">({% trans "optional" %})</span>
+                                        </label>
+                                        {{ form.comment }}
+                                        {% if form.comment.errors %}
+                                        <div class="field-error">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                            {{ form.comment.errors }}
+                                        </div>
+                                        {% endif %}
+                                        <div class="field-hint">
+                                            {% trans "Add any details about your contribution" %}
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <a href="{% url 'events:category_detail' event.slug category.slug %}" class="btn secondary-btn">
+                                        <i class="fas fa-arrow-left"></i>
+                                        <span>{% trans "Back to Category" %}</span>
+                                    </a>
+                                    <button type="submit" class="btn primary-btn">
+                                        <i class="fas fa-paper-plane"></i>
+                                        <span>{% trans "Submit Contribution" %}</span>  
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column (Sidebar) -->
+            <aside class="sidebar-content">
+                <!-- Event Access Card -->
+                <div class="sidebar-card access-card">
+                    <div class="sidebar-header">
+                        <div class="header-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h2 class="header-title">{% trans "Event Access" %}</h2>
+                    </div>
+                    
+                    <div class="sidebar-body">
+                        <div class="event-info">
+                            <div class="event-name">
+                                <i class="fas fa-calendar-day"></i>
+                                <span>{{ event.name }}</span>
+                            </div>
+                            
+                            <div class="access-type">
+                                <i class="fas fa-lock"></i>
+                                <span>{% trans "Access Type" %}:</span>
+                                {% if event.is_public %}
+                                    <span class="access-badge public">{% trans "Public" %}</span>
+                                {% elif event.is_code_required %}
+                                    <span class="access-badge code">{% trans "Code Required" %}</span>
+                                {% elif event.is_invite_only %}
+                                    <span class="access-badge invite">{% trans "Invite Only" %}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="event-dates">
+                            <div class="date-item">
+                                <div class="date-label">{% trans "Start Date" %}</div>
+                                <div class="date-value">
+                                    <i class="fas fa-calendar-day"></i>
+                                    {{ event.start_date|date:"M d, Y" }}
+                                </div>
+                            </div>
+                            
+                            {% if event.end_date %}
+                            <div class="date-item">
+                                <div class="date-label">{% trans "End Date" %}</div>
+                                <div class="date-value">
+                                    <i class="fas fa-calendar-check"></i>
+                                    {{ event.end_date|date:"M d, Y" }}
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="organizer-info">
+                            <div class="organizer-label">{% trans "Organized by" %}</div>
+                            <div class="organizer-value">
+                                <i class="fas fa-user"></i>
+                                {{ event.organizer.get_full_name|default:event.organizer.username }}
+                            </div>
+                        </div>
+                        
+                        <div class="access-actions">
+                            <a href="{{ event.get_absolute_url }}" class="btn outline-btn full-width">
+                                <i class="fas fa-arrow-left"></i>
+                                <span>{% trans "Back to Event" %}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contributors Card -->
+                <div class="sidebar-card contributors-card">
+                    <div class="sidebar-header">
+                        <div class="header-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h2 class="header-title">{% trans "Current Contributors" %}</h2>
+                    </div>
+                    
+                    <div class="sidebar-body">
+                        {% if contributions %}
+                            <ul class="contributors-list">
+                                {% for contribution in contributions %}
+                                    <li class="contributor-item">
+                                        <div class="contributor-info">
+                                            <div class="contributor-name">
+                                                <i class="fas fa-user-circle"></i>
+                                                {{ contribution.name }}
+                                            </div>
+                                            {% if contribution.comment %}
+                                                <div class="contributor-comment">
+                                                    <i class="fas fa-quote-left"></i>
+                                                    {{ contribution.comment|truncatechars:50 }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="contribution-quantity">
+                                            <span>{{ contribution.quantity }}</span>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <div class="empty-state">
+                                <div class="empty-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <p>{% trans "No contributions yet. Be the first to contribute!" %}</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/contribute.js' %}"></script> 
+{% endblock %}

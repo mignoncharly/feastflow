@@ -1,0 +1,286 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{{ category.name }} - {{ category.event.name }} - FeastFlow{% endblock %}
+
+{% block meta_description %}{% if category.description %}{{ category.description|truncatewords:25 }}{% else %}{% trans "View items needed for" %} {{ category.name }} {% trans "at" %} {{ category.event.name }}{% endif %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/category_detail.css' %}">
+<style>
+    /* Additional styles for the updated layout */
+    .item-image {
+        width: 32px;
+        height: 32px;
+        border-radius: var(--border-radius-sm);
+        margin-right: 12px;
+        object-fit: cover;
+        background-color: var(--neutral-200);
+    }
+    
+    .item-name-container {
+        display: flex;
+        align-items: center;
+    }
+    
+    .item-info {
+        flex: 1;
+    }
+    
+    .item-name {
+        margin-bottom: 0.25rem;
+        font-weight: 500;
+        display: block;
+    }
+    
+    .edit-item-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.875rem;
+        color: var(--neutral-500);
+        margin-left: 8px;
+        opacity: 0.7;
+        transition: all 0.2s ease;
+    }
+    
+    .edit-item-link:hover {
+        color: var(--primary-color);
+        opacity: 1;
+    }
+    
+    .action-buttons {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-wrapper">
+    <!-- Event Info Header -->
+    <div class="event-header">
+        <div class="container">
+            <div class="event-breadcrumbs">
+                <a href="{% url 'core:home' %}" class="breadcrumb-item">
+                    <i class="bi bi-house"></i>
+                </a>
+                <i class="bi bi-chevron-right separator"></i>
+                <a href="{% url 'events:event_list' %}" class="breadcrumb-item">{% trans "Events" %}</a>
+                <i class="bi bi-chevron-right separator"></i>
+                <a href="{{ category.event.get_absolute_url }}" class="breadcrumb-item">{{ category.event.name }}</a>
+                <i class="bi bi-chevron-right separator"></i>
+                <span class="breadcrumb-item active">{{ category.name }}</span>
+            </div>
+            <div class="event-title-container">
+                <h1 class="event-title">{{ category.name }}</h1>
+                {% if user.is_authenticated and user == category.event.organizer %}
+                <a href="{% url 'events:category_update' category.event.slug category.slug %}" class="edit-category-btn">
+                    <i class="bi bi-pencil"></i> {% trans "Edit Category" %}
+                </a>
+                {% endif %}
+            </div>
+            <div class="event-meta">
+                <div class="event-badge">
+                    <i class="bi bi-calendar-event"></i>
+                    <span>{% trans "Part of" %}: <a href="{{ category.event.get_absolute_url }}">{{ category.event.name }}</a></span> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        <div class="content-grid">
+            <!-- Left Column: Categories and Items -->
+            <div class="main-column">
+                {% if category.description %}
+                <div class="description-card">
+                    <p>{{ category.description }}</p>
+                </div>
+                {% endif %}
+
+                <!-- Access Restricted Notice -->
+                {% if not has_access and event.status != 'completed' %}
+                <div class="restricted-access-card">
+                    <div class="restricted-icon">
+                        <i class="bi bi-shield-lock"></i>
+                    </div>
+                    <div class="restricted-content">
+                        <h3>{% trans "Restricted Access" %}</h3>
+                        <p>{% trans "This event requires an access code to contribute. You can browse items, but you'll need the code to contribute." %}</p>  
+                        <a href="{% url 'events:verify_access' event.slug %}?next={{ request.path }}" class="access-code-btn">
+                            <i class="bi bi-key"></i> {% trans "Enter Access Code" %}
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Items Table -->
+                <div class="items-card">
+                    <div class="card-header">
+                        <h2 class="card-title">{% trans "Items Needed" %}</h2>
+                        {% if user.is_authenticated and user == category.event.organizer %}
+                        <a href="{% url 'events:item_create' category.event.slug category.slug %}" class="add-item-btn"> 
+                            <i class="bi bi-plus-circle"></i> {% trans "Add Item" %}
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <div class="card-body">
+                        {% if items %}
+                        <div class="items-table">
+                            <div class="table-header">
+                                <div class="th-item">{% trans "Item" %}</div>
+                                <div class="th-required">{% trans "Required" %}</div>
+                                <div class="th-contributed">{% trans "Contributed" %}</div>
+                                <div class="th-progress">{% trans "Progress" %}</div>
+                                <div class="th-action">{% trans "Action" %}</div>
+                            </div>
+
+                            <div class="table-body">
+                                {% for item in items %}
+                                <div class="table-row">
+                                    <div class="td-item">
+                                        <div class="item-name-container">
+                                            {% if item.image %}
+                                            <img src="{{ item.image.url }}" alt="{{ item.name }}" class="item-image">
+                                            {% else %}
+                                            <div class="item-image">
+                                                <i class="bi bi-box"></i>
+                                            </div>
+                                            {% endif %}
+                                            <div class="item-info">
+                                                <div class="item-name">{{ item.name }}</div>
+                                                {% if item.comments %}
+                                                <div class="item-comments">{{ item.comments|truncatechars:100 }}</div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td-required">{{ item.required_quantity }}</div>
+                                    <div class="td-contributed">
+                                        <span class="contribution-count {% if item.contributed >= item.required_quantity %}completed{% endif %}">
+                                            {{ item.contributed }}
+                                        </span>
+                                    </div>
+                                    <div class="td-progress">
+                                        <div class="progress-bar-container">
+                                            <div class="progress-bar-fill" style="width: {{ item.progress_percentage }}%"></div>
+                                        </div>
+                                        <div class="progress-text">{{ item.progress_percentage }}%</div>
+                                    </div>
+                                    <div class="td-action">
+                                        <div class="action-buttons">
+                                            {% if category.event.status != 'completed' %}
+                                                {% if has_access %}
+                                                    {% if item.contributed >= item.required_quantity %}
+                                                        <button class="contribute-btn disabled" disabled>
+                                                            <i class="bi bi-check-circle"></i> {% trans "Completed" %}
+                                                        </button>
+                                                    {% else %}
+                                                        <a href="{% url 'contributions:contribute' item.id %}" class="contribute-btn">
+                                                            <i class="bi bi-gift"></i> {% trans "Contribute" %}
+                                                        </a>
+                                                    {% endif %}
+                                                {% else %}
+                                                    <a href="{% url 'events:verify_access' event.slug %}?next={{ request.path }}" class="enter-code-btn"> 
+                                                        <i class="bi bi-key"></i> {% trans "Enter Code" %}
+                                                    </a>
+                                                {% endif %}
+                                            {% else %}
+                                                <span class="completed-label">{% trans "Completed" %}</span>
+                                            {% endif %}
+                                            
+                                            {% if user.is_authenticated and user == category.event.organizer %}
+                                            <a href="{% url 'events:item_update' category.event.slug category.slug item.id %}" class="edit-item-link">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <i class="bi bi-inbox"></i>
+                            </div>
+                            <p>{% trans "No items available yet" %}</p>
+                            {% if user.is_authenticated and user == category.event.organizer %}
+                            <a href="{% url 'events:item_create' category.event.slug category.slug %}" class="empty-action-btn">
+                                <i class="bi bi-plus-circle"></i> {% trans "Add the first item" %}
+                            </a>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Other Categories -->
+                <div class="other-categories-card">
+                    <div class="card-header">
+                        <h2 class="card-title">{% trans "Other Categories" %}</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="categories-grid">
+                            {% for other_category in category.event.categories.all %}
+                                {% if other_category.id != category.id %}
+                                <a href="{% url 'events:category_detail' category.event.slug other_category.slug %}" class="category-card">
+                                    <div class="category-image">
+                                        {% if other_category.image %}
+                                            <img src="{{ other_category.image.url }}" alt="{{ other_category.name }}">
+                                        {% else %}
+                                            <div class="category-icon"><i class="bi bi-collection"></i></div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="category-info">
+                                        <h3>{{ other_category.name }}</h3>
+                                    </div>
+                                </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Category Image Card -->
+            <div class="sidebar-column">
+                <div class="category-progress-card">
+                    {% if category.image %}
+                    <div class="category-visual">
+                        <img src="{{ category.image.url }}" alt="{{ category.name }}" class="category-image">
+                    </div>
+                    {% else %}
+                    <div class="category-visual">
+                        <div class="category-illustration">
+                            <svg width="250" height="180" viewBox="0 0 250 180">
+                                <!-- Simplified bottles illustration -->
+                                <rect x="40" y="20" width="50" height="140" fill="#2a7e19" rx="5" />
+                                <circle cx="65" cy="100" r="15" fill="#4a194d" />
+                                <rect x="50" y="150" width="30" height="10" fill="#e63946" />
+                                
+                                <rect x="100" y="10" width="60" height="160" fill="#a7d8c9" rx="8" />
+                                <rect x="115" y="60" width="30" height="30" fill="#e63946" />
+                                <rect x="115" y="100" width="30" height="10" fill="#f1faee" />
+                                
+                                <rect x="170" y="30" width="50" height="130" fill="#e6922f" rx="5" />
+                                <rect x="170" y="100" width="50" height="30" fill="#2c2b4b" />
+                                <rect x="180" y="110" width="30" height="10" fill="#f1faee" /> 
+                            </svg>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/category_detail.js' %}"></script>
+{% endblock %}

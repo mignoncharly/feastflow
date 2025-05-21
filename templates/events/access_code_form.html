@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Verify Access Code" %} - {{ event.name }} - FeastFlow{% endblock %}
+
+{% block meta_description %}{% trans "Enter the access code to contribute to this event." %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/access_code_form.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="access-verification-page">
+    <!-- Header Section with Animated Gradient -->
+    <div class="header-section">
+        <div class="gradient-overlay"></div>
+        <div class="container position-relative">
+            <div class="breadcrumb-wrapper fade-in">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb custom-breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'core:home' %}"><i class="bi bi-house"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'events:event_list' %}">{% trans "Events" %}</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'events:event_detail' event.slug %}">{{ event.name }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans "Verify Access" %}</li>
+                    </ol>
+                </nav>
+            </div>
+            
+            <h1 class="display-4 text-white mb-0 fade-in" style="animation-delay: 0.1s">{% trans "Verify Access" %}</h1>
+            <div class="header-decoration"></div>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        <div class="access-card-container slide-up">
+            <div class="access-card">
+                <div class="event-identity">
+                    <div class="event-image-container">
+                        {% if event.image %}
+                            <img src="{{ event.image.url }}" alt="{{ event.name }}" class="event-image">
+                        {% else %}
+                            <div class="event-image-placeholder">
+                                <i class="bi bi-calendar-event"></i>
+                            </div>
+                        {% endif %}
+                        <div class="event-image-overlay">
+                            <div class="overlay-content">
+                                <i class="bi bi-lock-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-details">
+                        <h2 class="event-name">{{ event.name }}</h2>
+                        <p class="event-description">{{ event.description|truncatechars:120 }}</p>
+                        
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="bi bi-calendar3"></i>
+                                <span>{{ event.start_date|date:"M d, Y" }}</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="bi bi-geo-alt"></i>
+                                <span>{{ event.location|default:"Online Event" }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="access-form-container">
+                    <div class="access-intro">
+                        <div class="lock-icon">
+                            <div class="lock-circle">
+                                <i class="bi bi-shield-lock"></i>
+                            </div>
+                        </div>
+                        <h3>{% trans "Private Event" %}</h3>
+                        <p>{% trans "This event requires an access code to contribute" %}</p>
+                    </div>
+                    
+                    <form method="post" class="access-form">
+                        {% csrf_token %}
+                        
+                        <div class="code-input-container">
+                            <label for="{{ form.access_code.id_for_label }}">{% trans "Access Code" %}</label>
+                            {{ form.access_code }}
+                            {% if form.access_code.errors %}
+                                <div class="error-message">
+                                    <i class="bi bi-exclamation-circle"></i>
+                                    {{ form.access_code.errors }}
+                                </div>
+                            {% endif %}
+                            <p class="input-help">{% trans "Enter the access code provided by the event organizer." %}</p>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn-verify">
+                                <span class="btn-text">{% trans "Verify Access Code" %}</span>
+                                <span class="btn-icon"><i class="bi bi-unlock"></i></span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="access-help">
+                        <div class="help-icon">
+                            <i class="bi bi-question-circle"></i>
+                        </div>
+                        <div class="help-content">
+                            <h4>{% trans "Don't have an access code?" %}</h4>
+                            <p>{% trans "Contact the event organizer to request access." %}</p>
+                            {% if event.organizer_contact %}
+                                <a href="mailto:{{ event.organizer_contact }}" class="contact-link">
+                                    <i class="bi bi-envelope"></i>
+                                    <span>{{ event.organizer_contact }}</span>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="access-footer">
+                    <a href="{{ event.get_absolute_url }}" class="btn-back">
+                        <i class="bi bi-arrow-left"></i>
+                        <span>{% trans "Back to Event" %}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/access_code_form.js' %}"></script>
+{% endblock %}

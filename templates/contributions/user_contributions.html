@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{% trans "My Contributions" %} - FeastFlow{% endblock %}
+
+{% block meta_description %}{% trans "View all your contributions to various events." %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/user_contributions.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid contribution-dashboard">
+    <!-- Header Section with Animated Gradient -->
+    <div class="header-section">
+        <div class="gradient-overlay"></div>
+        <div class="container position-relative">
+            <h1 class="display-4 text-white mb-0 fade-in">{% trans "My Contributions" %}</h1>
+            <div class="header-decoration"></div>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        <!-- Stats Cards Row -->
+        <div class="row stats-row">
+            <div class="col-md-4 mb-4">
+                <div class="stat-card total-contributions slide-up">
+                    <div class="stat-icon">
+                        <i class="bi bi-gift-fill"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-label">{% trans "Total Contributions" %}</div>
+                        <div class="stat-value counter">{{ total_contributions }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-card events-contributed slide-up" style="animation-delay: 0.2s">
+                    <div class="stat-icon">
+                        <i class="bi bi-calendar-event-fill"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-label">{% trans "Events Contributed" %}</div>
+                        <div class="stat-value counter">{{ total_events }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-card contribution-streak slide-up" style="animation-delay: 0.4s">
+                    <div class="stat-icon">
+                        <i class="bi bi-fire"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-label">{% trans "Contribution Streak" %}</div>
+                        <div class="stat-value counter">{{ contribution_streak }}</div>
+                        <div class="stat-suffix">{% trans "days" %}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row content-row">
+            <!-- Recent Contributions -->
+            <div class="col-lg-7 mb-4">
+                <div class="content-card recent-contributions fade-in">
+                    <div class="card-header-custom">
+                        <h2>{% trans "Recent Contributions" %}</h2>
+                        <div class="header-decoration"></div>
+                    </div>
+                    <div class="card-body-custom">
+                        {% if contributions %}
+                            <div class="contributions-list">
+                                {% for contribution in contributions %}
+                                    <div class="contribution-item">
+                                        <div class="contribution-icon">
+                                            <div class="icon-wrapper">
+                                                <i class="bi bi-box-seam"></i>
+                                            </div>
+                                        </div>
+                                        <div class="contribution-content">
+                                            <div class="contribution-header">
+                                                <h3 class="item-name">{{ contribution.item.name }}</h3>
+                                                <span class="time-ago">{{ contribution.created_at|timesince }} {% trans "ago" %}</span>
+                                            </div>
+                                            <div class="contribution-details">
+                                                <div class="detail-item">
+                                                    <span class="detail-label">{% trans "Event" %}:</span>
+                                                    <a href="{{ contribution.item.category.event.get_absolute_url }}" class="detail-value event-link">
+                                                        {{ contribution.item.category.event.name }}
+                                                    </a>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">{% trans "Category" %}:</span>
+                                                    <span class="detail-value">{{ contribution.item.category.name }}</span>
+                                                </div>
+                                                <div class="detail-item">
+                                                    <span class="detail-label">{% trans "Quantity" %}:</span>
+                                                    <span class="detail-value quantity">{{ contribution.quantity }}</span>
+                                                </div>
+                                            </div>
+                                            {% if contribution.comment %}
+                                                <div class="contribution-comment">
+                                                    <i class="bi bi-quote"></i>
+                                                    <span>{{ contribution.comment }}</span>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="empty-state">
+                                <div class="empty-icon">
+                                    <i class="bi bi-inbox"></i>
+                                </div>
+                                <p>{% trans "You haven't made any contributions yet." %}</p>
+                                <a href="{% url 'events:event_list' %}" class="btn btn-primary btn-explore">
+                                    <i class="bi bi-search me-2"></i>
+                                    {% trans "Browse Events" %}
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Participations -->
+            <div class="col-lg-5 mb-4">
+                <div class="content-card event-participations fade-in" style="animation-delay: 0.3s">
+                    <div class="card-header-custom">
+                        <h2>{% trans "Event Participations" %}</h2>
+                        <div class="header-decoration"></div>
+                    </div>
+                    <div class="card-body-custom">
+                        {% if event_participations %}
+                            <div class="participations-list">
+                                {% for event in event_participations %}
+                                    <div class="participation-item">
+                                        <div class="participation-header">
+                                            <h3>
+                                                <a href="{{ event.get_absolute_url }}">{{ event.name }}</a>
+                                            </h3>
+                                            {% if event.status == 'ongoing' %}
+                                                <span class="status-badge ongoing">{% trans "Ongoing" %}</span>
+                                            {% elif event.status == 'upcoming' %}
+                                                <span class="status-badge upcoming">{% trans "Upcoming" %}</span>
+                                            {% else %}
+                                                <span class="status-badge completed">{% trans "Completed" %}</span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="participation-stats">
+                                            <div class="stat-label">{% trans "Contributions" %}: {{ event.contribution_count }}</div>
+                                            <div class="progress-container">
+                                                <div class="progress-track">
+                                                    <div class="progress-fill" style="width: {{ event.contribution_percentage }}%" data-percentage="{{ event.contribution_percentage }}"></div>
+                                                </div>
+                                                <div class="progress-percentage">{{ event.contribution_percentage }}%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="empty-state">
+                                <div class="empty-icon">
+                                    <i class="bi bi-calendar-x"></i>
+                                </div>
+                                <p>{% trans "You're not participating in any events yet." %}</p>
+                                <a href="{% url 'events:event_list' %}" class="btn btn-primary btn-explore">
+                                    <i class="bi bi-calendar-plus me-2"></i>
+                                    {% trans "Join Events" %}
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    {% if is_paginated %}
+        <div class="container">
+            <div class="custom-pagination">
+                <nav aria-label="{% trans 'Page navigation' %}">
+                    <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item first">
+                                <a class="page-link" href="?page=1" aria-label="First">
+                                    <i class="bi bi-chevron-double-left"></i>
+                                </a>
+                            </li>
+                            <li class="page-item prev">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                    <i class="bi bi-chevron-left"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                        
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if page_obj.has_next %}
+                            <li class="page-item next">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                    <i class="bi bi-chevron-right"></i>
+                                </a>
+                            </li>
+                            <li class="page-item last">
+                                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
+                                    <i class="bi bi-chevron-double-right"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/user_contributions.js' %}"></script>
+{% endblock %}

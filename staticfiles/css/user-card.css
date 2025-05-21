@@ -1,0 +1,190 @@
+/*
+ * FeastFlow - User Card Component Stylesheet
+ */
+
+ .user-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--ff-bg);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--ff-border);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.user-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--ff-primary-light);
+}
+
+.user-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--ff-primary), var(--ff-secondary));
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.user-card:hover::before {
+    opacity: 1;
+}
+
+.user-avatar-container {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.profile-picture-sm {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--ff-primary);
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.2);
+    transition: all var(--transition-normal);
+}
+
+.user-card:hover .profile-picture-sm {
+    border-color: var(--ff-secondary);
+    transform: scale(1.05);
+}
+
+.profile-picture-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--ff-primary) 0%, var(--ff-secondary) 100%);
+    color: white;
+    font-weight: 600;
+    transition: all var(--transition-normal);
+}
+
+.profile-picture-placeholder-sm {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+
+.user-card:hover .profile-picture-placeholder {
+    transform: scale(1.05);
+}
+
+.user-card-info {
+    flex: 1;
+    min-width: 0; /* Ensures text truncation works */
+}
+
+.user-card-name {
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--ff-text);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.user-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    color: var(--ff-text-light);
+    font-size: 0.85rem;
+}
+
+.user-card-meta div {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    white-space: nowrap;
+}
+
+.user-card-meta i {
+    color: var(--ff-primary);
+    font-size: 0.9rem;
+}
+
+.user-card-actions {
+    margin-left: auto;
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 500;
+    border-radius: var(--border-radius-md);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge.bg-primary {
+    background-color: var(--ff-primary) !important;
+    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
+}
+
+.badge.bg-success {
+    background-color: var(--ff-success) !important;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+}
+
+/* Button styles */
+.btn-outline-primary {
+    color: var(--ff-primary);
+    border-color: var(--ff-primary);
+    background-color: transparent;
+    transition: all var(--transition-normal);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--ff-primary);
+    color: white;
+    border-color: var(--ff-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+/* Responsive styles */
+@media (max-width: 575.98px) {
+    .user-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: var(--spacing-lg);
+    }
+    
+    .user-card-name {
+        justify-content: center;
+    }
+    
+    .user-card-meta {
+        justify-content: center;
+    }
+    
+    .user-card-actions {
+        margin-left: 0;
+        margin-top: var(--spacing-md);
+    }
+    
+    .user-card::before {
+        width: 100%;
+        height: 4px;
+        top: 0;
+        left: 0;
+    }
+}

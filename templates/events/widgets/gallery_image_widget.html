@@ -1,0 +1,38 @@
+{# templates/events/widgets/gallery_image_widget.html #}
+<div class="gallery-image-selection">
+    <div class="image-gallery">
+        {% with widget.attrs.id|stringformat:"s" as widget_id %}
+        {# Empty option for "Upload your own" #}
+        {% for group, options, index in widget.optgroups %}
+            {% for option in options %}
+                {% if option.value == None or option.value == '' %}
+                    <div class="upload-option">
+                        <input type="radio" name="{{ widget.name }}" value="{{ option.value|default:'' }}" 
+                               id="{{ option.attrs.id }}" class="image-selection-radio"
+                               {% if option.selected %}checked{% endif %}>
+                        <label for="{{ option.attrs.id }}">{{ option.label }}</label>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        
+        {# Actual image options #}
+        {% for folder, options in widget.grouped_options.items %}
+            {% for option in options %}
+                {% if option.image %}
+                    <div class="gallery-image-wrapper" data-type="{{ option.image.image_type }}" data-folder="{{ folder }}">
+                        <img src="{{ option.image.get_thumbnail_url }}" alt="{{ option.image.name }}" class="gallery-image">
+                        <div class="selection-indicator">
+                            <i class="bi bi-check"></i>
+                        </div>
+                        <div class="image-name">{{ option.image.name }}</div>
+                        <input type="radio" name="{{ widget.name }}" value="{{ option.value }}" 
+                               id="{{ option.attrs.id }}" class="image-selection-radio"
+                               {% if option.selected %}checked{% endif %}>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        {% endwith %}
+    </div>
+</div>

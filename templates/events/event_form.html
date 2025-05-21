@@ -1,0 +1,419 @@
+<!--
+HTML Modifications Summary for create_event.html
+
+The template structure is preserved, but we've enhanced the styling and interactions.
+Here are the key modifications we recommend:
+
+1. Add custom fonts (Inter and Outfit) to your base template or this template
+2. Add appropriate meta tags for mobile responsiveness
+3. Adjust form elements to work with the new JavaScript enhancements
+4. Add appropriate ARIA attributes for accessibility
+
+Below is the enhanced template with all necessary modifications.
+-->
+
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load event_tags %}
+
+{% block title %}{% if event.id %}{% trans "Edit" %} {{ event.name }}{% else %}{% trans "Create Event" %}{% endif %} - FeastFlow{% endblock %}
+
+{% block meta_description %}{% if event.id %}{% trans "Edit event details for" %} {{ event.name }}{% else %}{% trans "Create a new event and start collecting contributions." %}{% endif %}{% endblock %}
+
+{% block extra_css %}
+<!-- Add custom fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Main CSS files -->
+<link rel="stylesheet" href="{% static 'css/event_form.css' %}">
+<link rel="stylesheet" href="{% static 'css/image_selection.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="create-event-page">
+    <!-- Header Section with Animated Gradient --> 
+    <div class="header-section">
+        <div class="gradient-overlay"></div>
+        <div class="container position-relative">
+            <div class="breadcrumb-wrapper fade-in">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb custom-breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'core:home' %}"><i class="bi bi-house"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'events:event_list' %}">{% trans "Events" %}</a></li>
+                        {% if event.id %}
+                            <li class="breadcrumb-item"><a href="{{ event.get_absolute_url }}">{{ event.name }}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{% trans "Edit" %}</li>
+                        {% else %}
+                            <li class="breadcrumb-item active" aria-current="page">{% trans "Create Event" %}</li>
+                        {% endif %}
+                    </ol>
+                </nav>
+            </div>
+            
+            <h1 class="display-4 text-white mb-0 fade-in" data-delay="1">
+                {% if event.id %}
+                    {% trans "Edit Event" %}
+                {% else %}
+                    {% trans "Create New Event" %}
+                {% endif %}
+            </h1> 
+            <div class="header-decoration"></div>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        <div class="content-layout">
+            <!-- Form Section -->
+            <div class="form-container slide-up">
+                <div class="form-card">
+                    <div class="form-header">
+                        <div class="header-icon">
+                            <i class="bi bi-{% if event.id %}pencil-square{% else %}calendar-plus{% endif %}"></i>
+                        </div>
+                        <div class="header-text">
+                            <h2>
+                                {% if event.id %}
+                                    {% trans "Edit Event Details" %}
+                                {% else %}
+                                    {% trans "Event Details" %}
+                                {% endif %}
+                            </h2>
+                            <p>
+                                {% if event.id %}
+                                    {% trans "Update the details of your event" %}
+                                {% else %}
+                                    {% trans "Fill in the details to create a new event" %}
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-body">
+                        <form method="post" enctype="multipart/form-data" class="event-create-form">
+                            {% csrf_token %}
+                            
+                            <div class="form-sections">
+                                <div class="form-section active" data-section="1">
+                                    <div class="section-title">
+                                        <span class="section-number">1</span>
+                                        <h3>{% trans "Basic Information" %}</h3>
+                                    </div>
+                                    
+                                    <div class="custom-form-fields">
+                                        {{ form.name|as_crispy_field }}
+                                        {{ form.event_type|as_crispy_field }}
+                                        {{ form.description|as_crispy_field }}
+                                        
+                                        <!-- Enhanced Image Selection -->
+                                        <div class="image-selection-container">
+                                            <div class="image-source-selector">
+                                                <div class="source-option" id="option-upload">
+                                                    <i class="bi bi-cloud-arrow-up"></i>
+                                                    <span class="option-label">{% trans "Upload Image" %}</span>
+                                                </div>
+                                                <div class="source-option" id="option-gallery">
+                                                    <i class="bi bi-images"></i>
+                                                    <span class="option-label">{% trans "Choose from Gallery" %}</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Upload Container -->
+                                            <div id="upload-container">
+                                                <div class="image-upload-area" id="image-upload-area"> 
+                                                    <div class="upload-icon">
+                                                        <i class="bi bi-cloud-arrow-up"></i>
+                                                    </div>
+                                                    <div class="upload-text">
+                                                        {% trans "Drag & drop your image here" %}
+                                                    </div>
+                                                    <div class="upload-subtext">
+                                                        {% trans "or click to browse files" %}
+                                                    </div>
+                                                    {{ form.image }}
+                                                </div>
+                                                
+                                                <div id="image-preview-container" class="image-preview">
+                                                    {% if form.instance.image %}
+                                                        <div class="preview-container">
+                                                            <img src="{{ form.instance.image.url }}" alt="{{ form.instance.name }}" class="preview-image">
+                                                            <div class="preview-overlay">
+                                                                <i class="bi bi-arrow-repeat"></i>
+                                                                <span>{% trans "Change image" %}</span>
+                                                            </div>
+                                                            <div class="remove-preview" id="remove-preview">
+                                                                <i class="bi bi-x"></i>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Gallery Container -->
+                                            <div id="gallery-container" style="display: none;">
+                                                <div class="image-gallery-title">
+                                                    <i class="bi bi-collection"></i>
+                                                    <span>
+                                                        {% if 'event' in request.path %}
+                                                            {% trans "Select an image for your event" %}
+                                                        {% elif 'category' in request.path %}
+                                                            {% trans "Select an image for your category" %}
+                                                        {% elif 'item' in request.path %}
+                                                            {% trans "Select an image for your item" %}
+                                                        {% else %}
+                                                            {% trans "Select an image from the gallery" %}
+                                                        {% endif %}
+                                                    </span>
+                                                </div>
+                                                
+                                                <!-- Add folder tabs for different image types -->
+                                                <div class="gallery-folder-tabs">
+                                                    <div class="folder-tab active" data-folder="all">{% trans "All" %}</div>
+                                                    <div class="folder-tab" data-folder="event">{% trans "Events" %}</div>
+                                                    <div class="folder-tab" data-folder="category">{% trans "Categories" %}</div>
+                                                    <div class="folder-tab" data-folder="item">{% trans "Items" %}</div>
+                                                </div>
+                                                
+                                                <div class="image-gallery">
+                                                    {% for image in form.predefined_image.field.queryset %}
+                                                        <div class="gallery-image-wrapper" data-type="{{ image.image_type }}">
+                                                            <img src="{{ image.get_thumbnail_url }}" alt="{{ image.name }}" class="gallery-image">
+                                                            <div class="selection-indicator">
+                                                                <i class="bi bi-check"></i>
+                                                            </div>
+                                                            <div class="image-name">{{ image.name }}</div>
+                                                            <input type="radio" name="predefined_image" value="{{ image.id }}" class="image-selection-radio" id="image-{{ image.id }}" 
+                                                            {% if form.predefined_image.value|stringformat:"s" == image.id|stringformat:"s" %}checked{% endif %}>
+                                                        </div>
+                                                    {% empty %}
+                                                        <div class="empty-gallery">
+                                                            <p>{% trans "No predefined images available" %}</p>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="section-actions">
+                                        <button type="button" class="btn-next" data-next="2">
+                                            <span>{% trans "Next: Date & Time" %}</span>
+                                            <i class="bi bi-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-section" data-section="2">
+                                    <div class="section-title">
+                                        <span class="section-number">2</span>
+                                        <h3>{% trans "Date & Time" %}</h3>
+                                    </div>
+                                    
+                                    <div class="custom-form-fields">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                {{ form.start_date|as_crispy_field }}
+                                            </div>
+                                            <div class="col-md-6">
+                                                {{ form.end_date|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                {{ form.start_time|as_crispy_field }}
+                                            </div>
+                                            <div class="col-md-6">
+                                                {{ form.end_time|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                        {{ form.timezone|as_crispy_field }}
+                                    </div>
+                                    
+                                    <div class="section-actions">
+                                        <button type="button" class="btn-prev" data-prev="1">
+                                            <i class="bi bi-arrow-left"></i>
+                                            <span>{% trans "Previous" %}</span>
+                                        </button>
+                                        <button type="button" class="btn-next" data-next="3">
+                                            <span>{% trans "Next: Location & Access" %}</span>
+                                            <i class="bi bi-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-section" data-section="3">
+                                    <div class="section-title">
+                                        <span class="section-number">3</span>
+                                        <h3>{% trans "Location & Access Settings" %}</h3>
+                                    </div>
+                                    
+                                    <div class="custom-form-fields">
+                                        {{ form.location|as_crispy_field }}
+                                        {{ form.access_mode|as_crispy_field }}
+                                        {{ form.access_code|as_crispy_field }}
+                                        
+                                        <div class="access-mode-info">
+                                            <div class="info-card public-info">
+                                                <div class="info-icon">
+                                                    <i class="bi bi-globe"></i>
+                                                </div>
+                                                <div class="info-content">
+                                                    <h4>{% trans "Public Event" %}</h4>
+                                                    <p>{% trans "Anyone can view and contribute to your event." %}</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="info-card code-info">
+                                                <div class="info-icon">
+                                                    <i class="bi bi-key"></i>
+                                                </div>
+                                                <div class="info-content">
+                                                    <h4>{% trans "Access Code Required" %}</h4>
+                                                    <p>{% trans "Only people with the access code can contribute." %}</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="info-card invite-info">
+                                                <div class="info-icon">
+                                                    <i class="bi bi-envelope"></i>
+                                                </div>
+                                                <div class="info-content">
+                                                    <h4>{% trans "Invite Only" %}</h4>
+                                                    <p>{% trans "Only people with an invitation link can contribute." %}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="section-actions">
+                                        <button type="button" class="btn-prev" data-prev="2">
+                                            <i class="bi bi-arrow-left"></i>
+                                            <span>{% trans "Previous" %}</span>
+                                        </button>
+                                        <button type="submit" class="btn-create">
+                                            <i class="bi bi-{% if event.id %}check-circle{% else %}plus-circle{% endif %}"></i>
+                                            <span>
+                                                {% if event.id %}
+                                                    {% trans "Save Changes" %}
+                                                {% else %}
+                                                    {% trans "Create Event" %}
+                                                {% endif %}
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-progress">
+                                <div class="progress-indicator">
+                                    <div class="progress-step active completed" data-step="1">
+                                        <div class="step-circle">1</div>
+                                        <div class="step-label">{% trans "Basic Info" %}</div>
+                                    </div>
+                                    <div class="progress-connector"></div>
+                                    <div class="progress-step" data-step="2">
+                                        <div class="step-circle">2</div>
+                                        <div class="step-label">{% trans "Date & Time" %}</div>
+                                    </div>
+                                    <div class="progress-connector"></div>
+                                    <div class="progress-step" data-step="3">
+                                        <div class="step-circle">3</div>
+                                        <div class="step-label">{% trans "Access" %}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <a href="{% if event.id %}{{ event.get_absolute_url }}{% else %}{% url 'events:event_list' %}{% endif %}" class="btn-cancel">
+                                    <i class="bi bi-x-circle"></i>
+                                    <span>{% trans "Cancel" %}</span>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Help Section -->
+            <div class="help-container fade-in" data-delay="2">
+                <div class="help-card">
+                    <div class="help-header">
+                        <i class="bi bi-lightbulb"></i>
+                        <h3>{% trans "Tips for Creating Events" %}</h3>
+                    </div>
+                    
+                    <div class="help-body">
+                        <div class="help-item">
+                            <div class="help-icon">
+                                <i class="bi bi-card-heading"></i>
+                            </div>
+                            <div class="help-content">
+                                <h4>{% trans "Choose a Clear Name" %}</h4>
+                                <p>{% trans "Select a name that clearly conveys the purpose of your event." %}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="help-item">
+                            <div class="help-icon">
+                                <i class="bi bi-card-text"></i>
+                            </div>
+                            <div class="help-content">
+                                <h4>{% trans "Describe in Detail" %}</h4>
+                                <p>{% trans "Provide a detailed description of what your event is for and what contributions you need." %}</p>
+                            </div>
+                        </div>
+                    
+                        
+                        <div class="help-item">
+                            <div class="help-icon">
+                                <i class="bi bi-shield-lock"></i>
+                            </div>
+                            <div class="help-content">
+                                <h4>{% trans "Choose the Right Access Level" %}</h4>
+                                <p>{% trans "Public events are best for wide participation, while code or invite-only events provide more control." %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="features-card fade-in" data-delay="3">
+                    <div class="features-header">
+                        <i class="bi bi-stars"></i>
+                        <h3>{% trans "FeastFlow Features" %}</h3>
+                    </div>
+                    
+                    <div class="features-body">
+                        <div class="feature-item">
+                            <i class="bi bi-graph-up"></i>
+                            <span>{% trans "Real-time progress tracking" %}</span>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <i class="bi bi-people"></i>
+                            <span>{% trans "Easy contribution management" %}</span>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <i class="bi bi-bell"></i>
+                            <span>{% trans "Automated notifications" %}</span> 
+                        </div>
+                        
+                        <div class="feature-item">
+                            <i class="bi bi-share"></i>
+                            <span>{% trans "Simple sharing options" %}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/event_form.js' %}"></script>
+<script src="{% static 'js/image_selection.js' %}"></script>  
+{% endblock %}

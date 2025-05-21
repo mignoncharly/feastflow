@@ -1,0 +1,293 @@
+<!-- templates/events/item_form.html -->
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load event_tags %}
+
+{% block title %}{% if item.id %}{% trans "Edit" %} {{ item.name }}{% else %}{% trans "Add Item" %}{% endif %} - FeastFlow{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/item_form.css' %}">
+<link rel="stylesheet" href="{% static 'css/image_selection.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="page-wrapper">
+    <!-- Interactive Background Elements -->
+    <div class="interactive-bg">
+        <div class="float-element circle-1"></div>
+        <div class="float-element circle-2"></div>
+        <div class="float-element circle-3"></div>
+        <div class="float-element donut-1"></div>
+        <div class="float-element donut-2"></div>
+        <div class="gradient-overlay"></div>
+    </div>
+    
+    <div class="container content-wrapper">
+        <!-- Enhanced Breadcrumbs -->
+        <nav aria-label="breadcrumb" class="breadcrumb-wrapper">
+            <ol class="breadcrumb-path">
+                <li class="breadcrumb-segment"><a href="{% url 'core:home' %}" class="breadcrumb-link"><i class="bi bi-house-door"></i> <span class="breadcrumb-text">{% trans "Home" %}</span></a></li>
+                <li class="breadcrumb-segment"><a href="{% url 'events:event_list' %}" class="breadcrumb-link"><i class="bi bi-calendar-event"></i> <span class="breadcrumb-text">{% trans "Events" %}</span></a></li>
+                <li class="breadcrumb-segment"><a href="{{ category.event.get_absolute_url }}" class="breadcrumb-link">{{ category.event.name }}</a></li>
+                <li class="breadcrumb-segment"><a href="{% url 'events:category_detail' category.event.slug category.slug %}" class="breadcrumb-link">{{ category.name }}</a></li>
+                {% if item.id %}
+                    <li class="breadcrumb-segment current" aria-current="page">{% trans "Edit" %} {{ item.name }}</li>
+                {% else %}
+                    <li class="breadcrumb-segment current" aria-current="page">{% trans "Add Item" %}</li>
+                {% endif %}
+            </ol>
+        </nav>
+        
+        <div class="card-grid">
+            <!-- Redesigned Form Card -->
+            <div class="card primary-card elevation-3">
+                <div class="card-header">
+                    {% if item.id %}
+                        <div class="header-icon edit-icon">
+                            <i class="bi bi-pencil-square"></i>
+                        </div>
+                    {% else %}
+                        <div class="header-icon add-icon">
+                            <i class="bi bi-plus-circle"></i>
+                        </div>
+                    {% endif %}
+                    
+                    <div class="header-content">
+                        <h1 class="title-text">
+                            {% if item.id %}
+                                {% trans "Edit Item" %}: <span class="accent-text">{{ item.name }}</span>
+                            {% else %}
+                                {% trans "Add Item to" %}: <span class="accent-text">{{ category.name }}</span>
+                            {% endif %}
+                        </h1>
+                        <p class="subtitle-text">{% trans "Complete the form below to create or update an item for your event." %}</p>
+                    </div>
+                </div>
+                
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data" class="item-form">
+                        {% csrf_token %}
+                        
+                        <div class="form-layout">
+                            <div class="form-content">
+                                <div class="field-group">
+                                    <div class="field-wrapper">
+                                        {{ form.name|as_crispy_field }}
+                                    </div>
+                                    
+                                    <div class="field-wrapper quantity-field">
+                                        {{ form.required_quantity|as_crispy_field }}
+                                    </div>
+                                    
+                                    <div class="field-wrapper">
+                                        {{ form.comments|as_crispy_field }}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-media">
+                                <!-- Enhanced Image Selection -->
+                                <div class="image-selection-container">
+                                    <div class="image-source-selector">
+                                        <div class="source-option" id="option-upload">
+                                            <i class="bi bi-cloud-arrow-up"></i>
+                                            <span class="option-label">{% trans "Upload Image" %}</span>
+                                        </div>
+                                        <div class="source-option" id="option-gallery">
+                                            <i class="bi bi-images"></i>
+                                            <span class="option-label">{% trans "Choose from Gallery" %}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Upload Container -->
+                                    <div id="upload-container">
+                                        <div class="image-upload-area" id="image-upload-area">
+                                            <div class="upload-icon">
+                                                <i class="bi bi-cloud-arrow-up"></i>
+                                            </div>
+                                            <div class="upload-text">
+                                                {% trans "Drag & drop your image here" %}
+                                            </div>
+                                            <div class="upload-subtext">
+                                                {% trans "or click to browse files" %}
+                                            </div>
+                                            {{ form.image }}
+                                        </div>
+                                        
+                                        <div id="image-preview-container" class="image-preview">
+                                            {% if form.instance.image %}
+                                                <div class="preview-container">
+                                                    <img src="{{ form.instance.image.url }}" alt="{{ form.instance.name }}" class="preview-image">
+                                                    <div class="preview-overlay">
+                                                        <i class="bi bi-arrow-repeat"></i>
+                                                        <span>{% trans "Change image" %}</span>
+                                                    </div>
+                                                    <div class="remove-preview" id="remove-preview">
+                                                        <i class="bi bi-x"></i>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Gallery Container -->
+                                    <div id="gallery-container" style="display: none;">
+                                        <div class="image-gallery-title">
+                                            <i class="bi bi-collection"></i>
+                                            <span>
+                                                {% if 'event' in request.path %}
+                                                    {% trans "Select an image for your event" %}
+                                                {% elif 'category' in request.path %}
+                                                    {% trans "Select an image for your category" %}
+                                                {% elif 'item' in request.path %}
+                                                    {% trans "Select an image for your item" %}
+                                                {% else %}
+                                                    {% trans "Select an image from the gallery" %}
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                        
+                                        <!-- Add folder tabs for different image types -->
+                                        <div class="gallery-folder-tabs">
+                                            <div class="folder-tab active" data-folder="all">{% trans "All" %}</div>
+                                            <div class="folder-tab" data-folder="event">{% trans "Events" %}</div>
+                                            <div class="folder-tab" data-folder="category">{% trans "Categories" %}</div>
+                                            <div class="folder-tab" data-folder="item">{% trans "Items" %}</div>
+                                        </div>
+                                        
+                                        <div class="image-gallery">
+                                            {% for image in form.predefined_image.field.queryset %}
+                                                <div class="gallery-image-wrapper" data-type="{{ image.image_type }}">
+                                                    <img src="{{ image.get_thumbnail_url }}" alt="{{ image.name }}" class="gallery-image">
+                                                    <div class="selection-indicator">
+                                                        <i class="bi bi-check"></i>
+                                                    </div>
+                                                    <div class="image-name">{{ image.name }}</div>
+                                                    <input type="radio" name="predefined_image" value="{{ image.id }}" class="image-selection-radio" id="image-{{ image.id }}"  
+                                                    {% if form.predefined_image.value|stringformat:"s" == image.id|stringformat:"s" %}checked{% endif %}>
+                                                </div>
+                                            {% empty %}
+                                                <div class="empty-gallery">
+                                                    <p>{% trans "No predefined images available" %}</p>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <a href="{% url 'events:category_detail' category.event.slug category.slug %}" class="btn cancel-btn"> 
+                                <i class="bi bi-x-circle"></i>
+                                <span>{% trans "Cancel" %}</span>
+                            </a>
+                            <button type="submit" class="btn submit-btn">
+                                {% if item.id %}
+                                    <i class="bi bi-check-circle"></i>
+                                    <span>{% trans "Save Changes" %}</span>
+                                {% else %}
+                                    <i class="bi bi-plus-circle"></i>
+                                    <span>{% trans "Create Item" %}</span>
+                                {% endif %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            {% if item.id %}
+                <!-- Redesigned Contributions Card -->
+                <div class="card secondary-card elevation-2">
+                    <div class="card-header contributions-header">
+                        <div class="header-icon contributions-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <div class="header-content">
+                            <h2 class="title-text">{% trans "Item Contributions" %}</h2>
+                            <p class="subtitle-text">{% trans "Track who's bringing what to your event" %}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        {% if item.contributions.all %}
+                            <div class="contribution-progress">
+                                <div class="progress-ring-container">
+                                    <div class="progress-ring" data-progress="{{ item.get_fulfillment_percentage }}">
+                                        <svg class="progress-circle" width="120" height="120" viewBox="0 0 120 120">
+                                            <circle class="progress-circle-bg" cx="60" cy="60" r="54" />
+                                            <circle class="progress-circle-fill" cx="60" cy="60" r="54" />
+                                        </svg>
+                                        <div class="progress-value">{{ item.get_fulfillment_percentage }}%</div>
+                                    </div>
+                                    <div class="progress-stats">
+                                        <div class="stat-item">
+                                            <div class="stat-label">{% trans "Required" %}</div>
+                                            <div class="stat-value">{{ item.required_quantity }}</div>
+                                        </div>
+                                        <div class="stat-item">
+                                            <div class="stat-label">{% trans "Contributed" %}</div>
+                                            <div class="stat-value">{{ item.get_contributed_quantity }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="contributions-table">
+                                <div class="table-header">
+                                    <div class="th-contributor">{% trans "Contributor" %}</div>
+                                    <div class="th-quantity">{% trans "Quantity" %}</div>
+                                    <div class="th-date">{% trans "Date" %}</div>
+                                    <div class="th-comment">{% trans "Comment" %}</div>
+                                </div>
+                                
+                                <div class="table-body">
+                                    {% for contribution in item.contributions.all %}
+                                        <div class="table-row">
+                                            <div class="td-contributor">
+                                                <div class="avatar">{{ contribution.name|slice:":1" }}</div>
+                                                <div class="name">{{ contribution.name }}</div>
+                                            </div>
+                                            <div class="td-quantity">
+                                                <span class="quantity-chip">{{ contribution.quantity }}</span>
+                                            </div>
+                                            <div class="td-date">
+                                                <i class="bi bi-calendar3"></i>
+                                                <span>{{ contribution.created_at|date:"M d, Y" }}</span>
+                                            </div>
+                                            <div class="td-comment" title="{{ contribution.comment }}">
+                                                {{ contribution.comment|default:"-"|truncatechars:50 }} 
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="empty-contributions">
+                                <div class="empty-illustration">
+                                    <i class="bi bi-inbox"></i>
+                                </div>
+                                <p class="empty-message">{% trans "No contributions for this item yet." %}</p>
+                            </div>
+                        {% endif %}
+                        
+                        <div class="contribution-actions">
+                            <a href="{% url 'contributions:contribute' item.id %}" class="btn contribute-btn"> 
+                                <i class="bi bi-plus-circle"></i>
+                                <span>{% trans "Add Contribution" %}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/item_form.js' %}"></script>
+<script src="{% static 'js/image_selection.js' %}"></script> 
+{% endblock %}

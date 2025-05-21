@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{% trans "Events" %} - FeastFlow{% endblock %}
+
+{% block meta_description %}{% trans "Browse all events and find opportunities to contribute." %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/event_list.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="events-list-page">
+    <!-- Header Section with Animated Gradient -->
+    <div class="header-section">
+        <div class="gradient-overlay"></div>
+        <div class="container position-relative">
+            <div class="header-content fade-in">
+                <h1 class="display-4 text-white">{% trans "Discover Events" %}</h1>
+                <div class="header-decoration"></div>
+                <p class="header-subtitle">{% trans "Find events that need your contributions" %}</p>
+                
+                {% if user.is_authenticated %}
+                    <a href="{% url 'events:event_create' %}" class="btn-create-event">
+                        <i class="bi bi-plus-circle"></i>
+                        <span>{% trans "Create Event" %}</span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        <!-- Filter Section -->
+        <div class="filter-section slide-up">
+            <div class="filter-card">
+                <form method="get" class="filter-form">
+                    <div class="search-field">
+                        <label for="search">
+                            <i class="bi bi-search"></i>
+                            <span>{% trans "Search" %}</span>
+                        </label>
+                        <input type="text" id="search" name="q" value="{{ current_query }}" placeholder="{% trans 'Search for events...' %}">
+                    </div>
+                    
+                    <div class="status-field">
+                        <label for="status">
+                            <i class="bi bi-funnel"></i>
+                            <span>{% trans "Status" %}</span>
+                        </label>
+                        <div class="status-options">
+                            <div class="status-option {% if not current_status %}active{% endif %}" data-value="">
+                                <span class="status-indicator all"></span>
+                                <span class="status-text">{% trans "All" %}</span>
+                            </div>
+                            <div class="status-option {% if current_status == 'ongoing' %}active{% endif %}" data-value="ongoing">
+                                <span class="status-indicator ongoing"></span>
+                                <span class="status-text">{% trans "Ongoing" %}</span>
+                            </div>
+                            <div class="status-option {% if current_status == 'upcoming' %}active{% endif %}" data-value="upcoming">
+                                <span class="status-indicator upcoming"></span>
+                                <span class="status-text">{% trans "Upcoming" %}</span>
+                            </div>
+                            <div class="status-option {% if current_status == 'completed' %}active{% endif %}" data-value="completed">
+                                <span class="status-indicator completed"></span>
+                                <span class="status-text">{% trans "Completed" %}</span>
+                            </div>
+                        </div>
+                        <select id="status" name="status" class="visually-hidden">
+                            <option value="" {% if not current_status %}selected{% endif %}>{% trans "All" %}</option>
+                            <option value="ongoing" {% if current_status == 'ongoing' %}selected{% endif %}>{% trans "Ongoing" %}</option>
+                            <option value="upcoming" {% if current_status == 'upcoming' %}selected{% endif %}>{% trans "Upcoming" %}</option>
+                            <option value="completed" {% if current_status == 'completed' %}selected{% endif %}>{% trans "Completed" %}</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-actions">
+                        <button type="submit" class="btn-filter">
+                            <i class="bi bi-funnel-fill"></i>
+                            <span>{% trans "Apply Filters" %}</span>
+                        </button>
+                        {% if current_query or current_status %}
+                            <a href="{% url 'events:event_list' %}" class="btn-clear">
+                                <i class="bi bi-x-circle"></i>
+                                <span>{% trans "Clear Filters" %}</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Events Grid -->
+        <div class="events-grid-section fade-in" style="animation-delay: 0.3s">
+            {% if events %}
+                <div class="events-count-display">
+                    <span class="events-count">{{ events|length }}</span>
+                    <span class="events-count-text">{% trans "events found" %}</span>
+                    
+                    <div class="view-options">
+                        <button type="button" class="btn-view grid active" data-view="grid">
+                            <i class="bi bi-grid-3x3-gap-fill"></i>
+                        </button>
+                        <button type="button" class="btn-view list" data-view="list">
+                            <i class="bi bi-list-ul"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="events-grid grid-view">
+                    {% for event in events %}
+                        <div class="event-card">
+                            <div class="event-image-wrapper">
+                                {% if event.image %}
+                                    <img src="{{ event.image.url }}" alt="{{ event.name }}" class="event-image">
+                                {% else %}
+                                    <div class="event-image-placeholder">
+                                        <i class="bi bi-calendar-event"></i>
+                                    </div>
+                                {% endif %}
+                                <div class="event-status">
+                                    {% if event.status == 'ongoing' %}
+                                        <span class="status-badge ongoing">{% trans "Ongoing" %}</span>
+                                    {% elif event.status == 'upcoming' %}
+                                        <span class="status-badge upcoming">{% trans "Upcoming" %}</span>
+                                    {% else %}
+                                        <span class="status-badge completed">{% trans "Completed" %}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="event-content">
+                                <h2 class="event-title">{{ event.name }}</h2>
+                                
+                                <div class="event-date">
+                                    <i class="bi bi-calendar3"></i>
+                                    <span>
+                                        {% if event.start_date == event.end_date %}
+                                            {{ event.start_date|date:"M d, Y" }}
+                                        {% else %}
+                                            {{ event.start_date|date:"M d" }} - {{ event.end_date|date:"M d, Y" }}
+                                        {% endif %}
+                                    </span>
+                                </div>
+                                
+                                <p class="event-description">{{ event.description|truncatechars:120 }}</p>
+                                
+                                <div class="event-meta">
+                                    <div class="organizer">
+                                        <i class="bi bi-person"></i>
+                                        <span>{{ event.organizer.get_full_name|default:event.organizer.username }}</span>
+                                    </div>
+                                    
+                                    {% if event.location %}
+                                        <div class="location">
+                                            <i class="bi bi-geo-alt"></i>
+                                            <span>{{ event.location }}</span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <a href="{{ event.get_absolute_url }}" class="btn-view-event">
+                                    <span>{% trans "View Details" %}</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-events">
+                    <div class="empty-icon">
+                        <i class="bi bi-calendar-x"></i>
+                    </div>
+                    <h3>
+                        {% if current_query or current_status %}
+                            {% trans "No events found matching your filters." %}
+                        {% else %}
+                            {% trans "No events available yet." %}
+                        {% endif %}
+                    </h3>
+                    <p>
+                        {% if current_query or current_status %}
+                            {% trans "Try adjusting your filters or create your own event." %}
+                        {% else %}
+                            {% trans "Be the first to create an event and start collecting contributions." %}
+                        {% endif %}
+                    </p>
+                    
+                    <div class="empty-actions">
+                        {% if current_query or current_status %}
+                            <a href="{% url 'events:event_list' %}" class="btn-clear-filters">
+                                <i class="bi bi-x-circle"></i>
+                                <span>{% trans "Clear Filters" %}</span>
+                            </a>
+                        {% endif %}
+                        
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'events:event_create' %}" class="btn-create">
+                                <i class="bi bi-plus-circle"></i>
+                                <span>{% trans "Create Event" %}</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        
+        <!-- Pagination -->
+        {% if is_paginated %}
+            <div class="pagination-section fade-in" style="animation-delay: 0.4s">
+                <div class="custom-pagination">
+                    <div class="pagination-info">
+                        <span>{% trans "Page" %} {{ page_obj.number }} {% trans "of" %} {{ page_obj.paginator.num_pages }}</span> 
+                    </div>
+                    
+                    <nav aria-label="{% trans 'Page navigation' %}">
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item first">
+                                    <a class="page-link" href="?page=1{% if current_query %}&q={{ current_query }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}" aria-label="First">
+                                        <i class="bi bi-chevron-double-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item prev">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if current_query %}&q={{ current_query }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}" aria-label="Previous">
+                                        <i class="bi bi-chevron-left"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            
+                            {% for num in page_obj.paginator.page_range %}
+                                {% if page_obj.number == num %}
+                                    <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
+                                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ num }}{% if current_query %}&q={{ current_query }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}">{{ num }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                            
+                            {% if page_obj.has_next %} 
+                                <li class="page-item next">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if current_query %}&q={{ current_query }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}" aria-label="Next">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item last">
+                                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% if current_query %}&q={{ current_query }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}" aria-label="Last">
+                                        <i class="bi bi-chevron-double-right"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/event_list.js' %}"></script>
+{% endblock %}

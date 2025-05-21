@@ -1,0 +1,287 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load event_tags %}
+
+{% block title %}{% if category.id %}{% trans "Edit" %} {{ category.name }}{% else %}{% trans "Add Category" %}{% endif %} - FeastFlow{% endblock %}
+
+{% block meta_description %}{% if category.id %}{% trans "Edit category details for" %} {{ category.name }}{% else %}{% trans "Add a new category to" %} {{ event.name }}{% endif %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/category_form.css' %}">
+<link rel="stylesheet" href="{% static 'css/image_selection.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="category-form-page">
+    <!-- Header Section with Animated Gradient -->
+    <div class="header-section">
+        <div class="gradient-overlay"></div>
+        <div class="container position-relative">
+            <!-- Breadcrumbs -->
+            <div class="breadcrumb-wrapper fade-in">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb custom-breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'core:home' %}"><i class="bi bi-house"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'events:event_list' %}">{% trans "Events" %}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ event.get_absolute_url }}">{{ event.name }}</a></li>
+                        {% if category.id %}
+                            <li class="breadcrumb-item"><a href="{% url 'events:category_detail' event.slug category.slug %}">{{ category.name }}</a></li> 
+                            <li class="breadcrumb-item active" aria-current="page">{% trans "Edit" %}</li>
+                        {% else %}
+                            <li class="breadcrumb-item active" aria-current="page">{% trans "Add Category" %}</li>
+                        {% endif %}
+                    </ol>
+                </nav>
+            </div>
+            
+            <h1 class="display-4 text-white mb-0 fade-in" style="animation-delay: 0.1s">
+                {% if category.id %}
+                    {% trans "Edit Category" %}
+                {% else %}
+                    {% trans "Add Category" %}
+                {% endif %}
+            </h1>
+            <div class="header-decoration"></div>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        <div class="form-help-container">
+            <div class="form-container slide-up">
+                <div class="form-card">
+                    <div class="form-header">
+                        <div class="header-icon">
+                            <i class="bi bi-collection"></i>
+                        </div>
+                        <div class="header-text">
+                            <h2>
+                                {% if category.id %}
+                                    {% trans "Edit Category" %}
+                                {% else %}
+                                    {% trans "Add Category to Event" %}
+                                {% endif %}
+                            </h2>
+                            <p class="event-name">{{ event.name }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-body">
+                        <form method="post" enctype="multipart/form-data" class="category-edit-form">
+                            {% csrf_token %}
+                            
+                            <div class="custom-form-fields">
+                                <!-- Basic Fields -->
+                                {{ form.name|as_crispy_field }}
+                                {{ form.category_type|as_crispy_field }}
+                                {{ form.slug|as_crispy_field }}
+                                {{ form.description|as_crispy_field }}
+                                
+                                <!-- Enhanced Image Selection -->
+                                <div class="image-selection-container">
+                                    <div class="image-source-selector">
+                                        <div class="source-option" id="option-upload">
+                                            <i class="bi bi-cloud-arrow-up"></i>
+                                            <span class="option-label">{% trans "Upload Image" %}</span>
+                                        </div>
+                                        <div class="source-option" id="option-gallery">
+                                            <i class="bi bi-images"></i>
+                                            <span class="option-label">{% trans "Choose from Gallery" %}</span> 
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Upload Container -->
+                                    <div id="upload-container">
+                                        <div class="image-upload-area" id="image-upload-area">
+                                            <div class="upload-icon">
+                                                <i class="bi bi-cloud-arrow-up"></i>
+                                            </div>
+                                            <div class="upload-text">
+                                                {% trans "Drag & drop your image here" %}
+                                            </div>
+                                            <div class="upload-subtext">
+                                                {% trans "or click to browse files" %}
+                                            </div>
+                                            {{ form.image }}
+                                        </div>
+                                        
+                                        <div id="image-preview-container" class="image-preview">
+                                            {% if form.instance.image %}
+                                                <div class="preview-container">
+                                                    <img src="{{ form.instance.image.url }}" alt="{{ form.instance.name }}" class="preview-image">
+                                                    <div class="preview-overlay">
+                                                        <i class="bi bi-arrow-repeat"></i>
+                                                        <span>{% trans "Change image" %}</span>
+                                                    </div>
+                                                    <div class="remove-preview" id="remove-preview">
+                                                        <i class="bi bi-x"></i>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Gallery Container -->
+                                    <div id="gallery-container" style="display: none;">
+                                        <div class="image-gallery-title">
+                                            <i class="bi bi-collection"></i>
+                                            <span>
+                                                {% if 'event' in request.path %}
+                                                    {% trans "Select an image for your event" %}
+                                                {% elif 'category' in request.path %}
+                                                    {% trans "Select an image for your category" %}
+                                                {% elif 'item' in request.path %}
+                                                    {% trans "Select an image for your item" %}
+                                                {% else %}
+                                                    {% trans "Select an image from the gallery" %}
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                        
+                                        <!-- Add folder tabs for different image types -->
+                                        <div class="gallery-folder-tabs">
+                                            <div class="folder-tab active" data-folder="all">{% trans "All" %}</div>
+                                            <div class="folder-tab" data-folder="event">{% trans "Events" %}</div>
+                                            <div class="folder-tab" data-folder="category">{% trans "Categories" %}</div>
+                                            <div class="folder-tab" data-folder="item">{% trans "Items" %}</div>
+                                        </div>
+                                        
+                                        <div class="image-gallery">
+                                            {% for image in form.predefined_image.field.queryset %}
+                                                <div class="gallery-image-wrapper" data-type="{{ image.image_type }}">
+                                                    <img src="{{ image.get_thumbnail_url }}" alt="{{ image.name }}" class="gallery-image">
+                                                    <div class="selection-indicator">
+                                                        <i class="bi bi-check"></i>
+                                                    </div>
+                                                    <div class="image-name">{{ image.name }}</div>
+                                                    <input type="radio" name="predefined_image" value="{{ image.id }}" class="image-selection-radio" id="image-{{ image.id }}" 
+                                                    {% if form.predefined_image.value|stringformat:"s" == image.id|stringformat:"s" %}checked{% endif %}>
+                                                </div>
+                                            {% empty %}
+                                                <div class="empty-gallery">
+                                                    <p>{% trans "No predefined images available" %}</p>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <a href="{{ event.get_absolute_url }}" class="btn-cancel">
+                                    <i class="bi bi-x-circle"></i>
+                                    <span>{% trans "Cancel" %}</span>
+                                </a>
+                                <button type="submit" class="btn-save">
+                                    <i class="bi bi-{% if category.id %}check-circle{% else %}plus-circle{% endif %}"></i>
+                                    <span>
+                                        {% if category.id %}
+                                            {% trans "Save Changes" %}
+                                        {% else %}
+                                            {% trans "Create Category" %}
+                                        {% endif %}
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                {% if category.id %}
+                    <div class="category-items fade-in" style="animation-delay: 0.3s">
+                        <div class="items-card">
+                            <div class="items-header">
+                                <h3>
+                                    <i class="bi bi-list-check"></i>
+                                    {% trans "Category Items" %}
+                                </h3>
+                                <a href="{% url 'events:item_create' event.slug category.slug %}" class="btn-add-item">
+                                    <i class="bi bi-plus-circle"></i>
+                                    <span>{% trans "Add Item" %}</span>
+                                </a>
+                            </div>
+                            
+                            <div class="items-body">
+                                {% if category.items.all %}
+                                    <ul class="items-list">
+                                        {% for item in category.items.all %}
+                                            <li class="item-entry">
+                                                <div class="item-info">
+                                                    <div class="item-name">{{ item.name }}</div>
+                                                    <div class="item-quantity">
+                                                        <span class="quantity-label">{% trans "Quantity" %}:</span>
+                                                        <span class="quantity-badge">{{ item.required_quantity }}</span>
+                                                    </div>
+                                                    {% if item.comments %}
+                                                        <div class="item-comments">{{ item.comments|truncatechars:100 }}</div>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="item-actions">
+                                                    <a href="{% url 'events:item_update' event.slug category.slug item.id %}" class="btn-edit-item">
+                                                        <i class="bi bi-pencil"></i>
+                                                        <span>{% trans "Edit" %}</span>
+                                                    </a>
+                                                    <a href="#" class="btn-delete-item">
+                                                        <i class="bi bi-trash"></i>
+                                                        <span>{% trans "Delete" %}</span>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <div class="empty-items">
+                                        <div class="empty-icon">
+                                            <i class="bi bi-box"></i>
+                                        </div>
+                                        <p>{% trans "No items in this category yet." %}</p>
+                                        <a href="{% url 'events:item_create' event.slug category.slug %}" class="btn-add-first">
+                                            <i class="bi bi-plus-circle"></i>
+                                            <span>{% trans "Add First Item" %}</span>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="form-help fade-in" style="animation-delay: 0.2s">
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="bi bi-lightbulb"></i>
+                    </div>
+                    <div class="help-content">
+                        <h3>{% trans "Tips for Creating Categories" %}</h3>
+                        <ul class="tips-list">
+                            <li>
+                                <i class="bi bi-check-circle"></i>
+                                <span>{% trans "Use clear, descriptive names for your categories" %}</span>
+                            </li>
+                            <li>
+                                <i class="bi bi-check-circle"></i>
+                                <span>{% trans "Add a detailed description to help contributors understand what items belong in this category" %}</span>
+                            </li>
+                            <li>
+                                <i class="bi bi-check-circle"></i>
+                                <span>{% trans "Upload an image related to the category to make it visually distinctive" %}</span>
+                            </li>
+                            <li>
+                                <i class="bi bi-check-circle"></i>
+                                <span>{% trans "Group similar items together in the same category" %}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/category_form.js' %}"></script>
+<script src="{% static 'js/image_selection.js' %}"></script> 
+{% endblock %}

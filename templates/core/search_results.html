@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Search Results" %} - FeastFlow{% endblock %}
+
+{% block meta_description %}{% trans "Search results for your query." %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/search_results.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="search-results-page">
+    <!-- Header Section with Animated Gradient -->
+    <div class="header-section">
+        <div class="gradient-overlay"></div>
+        <div class="container position-relative">
+            <div class="search-header-content">
+                <h1 class="display-4 text-white mb-0 fade-in">{% trans "Search Results" %}</h1>
+                <div class="header-decoration"></div>
+                
+                {% if query %}
+                    <div class="search-query-container fade-in" style="animation-delay: 0.2s">
+                        <div class="search-query-box">
+                            <i class="bi bi-search"></i>
+                            <span class="query-text">{{ query }}</span>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        {% if events %}
+            <div class="result-stats slide-up">
+                <div class="result-count">
+                    <i class="bi bi-calendar-event"></i>
+                    <span class="count">{{ events|length }}</span>
+                    <span class="label">{% trans "Events Found" %}</span>
+                </div>
+                <div class="result-actions">
+                    <div class="view-toggle">
+                        <button type="button" class="btn btn-view grid active" data-view="grid">
+                            <i class="bi bi-grid-3x3-gap-fill"></i>
+                        </button>
+                        <button type="button" class="btn btn-view list" data-view="list">
+                            <i class="bi bi-list-ul"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-results-container grid-view">
+                {% for event in events %}
+                    <div class="event-card fade-in" style="animation-delay: {{ forloop.counter0|divisibleby:3 }}00ms">
+                        <div class="card-decoration"></div>
+                        
+                        <div class="event-status">
+                            {% if event.status == 'ongoing' %}
+                                <span class="status-badge ongoing">{% trans "Ongoing" %}</span>
+                            {% elif event.status == 'upcoming' %}
+                                <span class="status-badge upcoming">{% trans "Upcoming" %}</span>
+                            {% else %}
+                                <span class="status-badge completed">{% trans "Completed" %}</span>
+                            {% endif %}
+                        </div>
+                        
+                        <h2 class="event-title">{{ event.name }}</h2>
+                        
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="bi bi-calendar3"></i>
+                                <span>{{ event.start_date|date:"M d, Y" }}</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="bi bi-geo-alt"></i>
+                                <span>{{ event.location|default:"Online Event" }}</span>
+                            </div>
+                        </div>
+                        
+                        <p class="event-description">{{ event.description|truncatechars:120 }}</p>
+                        
+                        <div class="event-tags">
+                            {% for tag in event.tags.all|slice:":3" %}
+                                <span class="event-tag">{{ tag.name }}</span>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="event-participation">
+                            <div class="participation-progress">
+                                <div class="progress-label">
+                                    <span>{% trans "Contributions" %}</span>
+                                    <span class="progress-percentage">{{ event.contribution_percentage|default:"0" }}%</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width: {{ event.contribution_percentage|default:"0" }}%" data-percentage="{{ event.contribution_percentage|default:"0" }}"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-actions">
+                            <a href="{{ event.get_absolute_url }}" class="btn btn-primary btn-view-details">
+                                <span>{% trans "View Details" %}</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                            <button type="button" class="btn btn-secondary btn-favorite" data-event-id="{{ event.id }}">
+                                <i class="bi bi-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-results-container fade-in">
+                <div class="empty-illustration">
+                    <i class="bi bi-search"></i>
+                </div>
+                <h2>{% trans "No results found" %}</h2>
+                <p>{% trans "We couldn't find any events matching your search criteria." %}</p>
+                <div class="empty-actions">
+                    <a href="{% url 'events:event_list' %}" class="btn btn-primary btn-browse">
+                        <i class="bi bi-grid-3x3-gap-fill me-2"></i>
+                        {% trans "Browse All Events" %}
+                    </a>
+                    <a href="javascript:history.back()" class="btn btn-outline-secondary btn-back">
+                        <i class="bi bi-arrow-left me-2"></i>
+                        {% trans "Go Back" %}
+                    </a>
+                </div>
+                <div class="search-suggestions">
+                    <h3>{% trans "Try searching for:" %}</h3>
+                    <div class="suggestion-tags">
+                        <a href="?q=fundraiser" class="suggestion">fundraiser</a>
+                        <a href="?q=community" class="suggestion">community</a>
+                        <a href="?q=volunteer" class="suggestion">volunteer</a>
+                        <a href="?q=food drive" class="suggestion">food drive</a>
+                        <a href="?q=donation" class="suggestion">donation</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/search_results.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Thank You" %} - FeastFlow{% endblock %}
+
+{% block meta_description %}{% trans "Thank you for your contribution to the event." %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contribution_thanks.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="thanks-page">
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="confetti-container" id="confettiCanvas"></div>
+        <div class="shape-blob blob-1"></div>
+        <div class="shape-blob blob-2"></div>
+        <div class="shape-blob blob-3"></div>
+        <div class="pattern-overlay"></div>
+    </div>
+    
+    <div class="thanks-container">
+        <!-- Success Card -->
+        <div class="thanks-card">
+            <!-- Card Header -->
+            <div class="card-header">
+                <div class="success-badge">
+                    <i class="fas fa-check"></i>
+                </div>
+            </div>
+            
+            <!-- Card Content -->
+            <div class="card-content">
+                <div class="success-animation">
+                    <div class="checkmark-circle">
+                        <div class="checkmark draw"></div>
+                    </div>
+                </div>
+                
+                <h1 class="thanks-title">{% trans "Thank You!" %}</h1>
+                <p class="thanks-message">{% trans "Your contribution has been successfully recorded" %}</p>
+                
+                <div class="contribution-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <div class="detail-content">
+                            <div class="detail-label">{% trans "Event" %}</div>
+                            <div class="detail-value">{{ event.name }}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <div class="detail-content">
+                            <div class="detail-label">{% trans "Contribution" %}</div>
+                            <div class="detail-value">{{ contribution.item.name }}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <div class="detail-content">
+                            <div class="detail-label">{% trans "Quantity" %}</div>
+                            <div class="detail-value">{{ contribution.quantity }}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="success-message">
+                    <i class="fas fa-heart pulse-heart"></i>
+                    <p>{% trans "Thank you for helping to make this event a success!" %}</p>
+                </div>
+                
+                <div class="action-buttons">
+                    <a href="{{ event.get_absolute_url }}" class="btn primary-btn">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>{% trans "Return to Event" %}</span>
+                    </a>
+                    <a href="{% url 'contributions:user_contributions' %}" class="btn secondary-btn">
+                        <i class="fas fa-list"></i>
+                        <span>{% trans "View My Contributions" %}</span>
+                    </a>
+                </div>
+                
+                <div class="share-section">
+                    <div class="share-label">{% trans "Share your contribution" %}:</div>
+                    <div class="share-buttons">
+                        <button class="share-btn facebook-btn" aria-label="Share on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button class="share-btn twitter-btn" aria-label="Share on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </button>
+                        <button class="share-btn email-btn" aria-label="Share via Email">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                        <button class="share-btn copy-btn" aria-label="Copy link" id="copyLinkBtn">
+                            <i class="fas fa-link"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Decorative Wave -->
+            <div class="card-footer-decoration">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                    <path fill="rgba(60, 179, 113, 0.1)" fill-opacity="1" d="M0,128L48,138.7C96,149,192,171,288,165.3C384,160,480,128,576,112C672,96,768,96,864,117.3C960,139,1056,181,1152,186.7C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- Next Steps Card -->
+        <div class="next-steps-card">
+            <div class="card-header">
+                <h2>{% trans "What's Next?" %}</h2>
+            </div>
+            
+            <div class="card-content">
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>{% trans "Explore More Events" %}</h3>
+                            <p>{% trans "Discover other events in your community that need contributions." %}</p>
+                            <a href="{% url 'events:event_list' %}" class="step-link">
+                                <span>{% trans "Browse Events" %}</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>{% trans "Track Your Contributions" %}</h3>
+                            <p>{% trans "Keep track of all your contributions across different events." %}</p>
+                            <a href="{% url 'contributions:user_contributions' %}" class="step-link">
+                                <span>{% trans "View History" %}</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>{% trans "Update Your Profile" %}</h3>
+                            <p>{% trans "Complete your profile to get personalized event recommendations." %}</p>
+                            <a href="{% url 'accounts:profile_edit' %}" class="step-link">
+                                <span>{% trans "Edit Profile" %}</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notification Toast for Copy Link -->
+    <div class="toast-notification" id="copyToast">
+        <div class="toast-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="toast-message">{% trans "Link copied to clipboard!" %}</div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/contribution_thanks.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+{% endblock %}

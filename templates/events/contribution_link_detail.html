@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{{ event.name }} - {% trans "Contribute to this Event" %}{% endblock %}
+
+{% block meta_description %}{% trans "Contribute to " %}{{ event.name }}. {{ event.description|truncatewords:20 }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contribution_link_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="contribution-link-page">
+    <!-- Header Section with Animated Gradient -->
+    <div class="header-section">
+        <div class="gradient-overlay"></div>
+        <div class="container position-relative">
+            <h1 class="display-4 text-white mb-0 fade-in">{{ event.name }}</h1>
+            <div class="header-decoration"></div>
+            
+            <div class="event-badges fade-in" style="animation-delay: 0.2s">
+                <span class="event-status-badge {% if event.status == 'ongoing' %}ongoing{% elif event.status == 'upcoming' %}upcoming{% else %}completed{% endif %}">
+                    {{ event.get_status_display }}
+                </span>
+                <span class="event-date-badge">
+                    <i class="bi bi-calendar-event"></i>
+                    {% if event.start_date == event.end_date %}
+                        {{ event.start_date|date:"F j, Y" }}
+                    {% else %}
+                        {{ event.start_date|date:"F j" }} - {{ event.end_date|date:"F j, Y" }}
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        <!-- Event Overview -->
+        <div class="event-overview slide-up">
+            <div class="event-card">
+                <div class="event-content">
+                    <div class="event-description">
+                        <p>{{ event.description }}</p>
+                    </div>
+                    
+                    <div class="event-image-container">
+                        {% if event.image %}
+                            <img src="{{ event.image.url }}" alt="{{ event.name }}" class="event-image">
+                        {% else %}
+                            <div class="event-image-placeholder">
+                                <i class="bi bi-calendar-event"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Invitation Message -->
+        <div class="invitation-section fade-in" style="animation-delay: 0.3s">
+            <div class="invitation-card">
+                <div class="invitation-icon">
+                    <i class="bi bi-envelope-paper"></i>
+                </div>
+                <div class="invitation-content">
+                    <h2>{% trans "You've been invited to contribute" %}</h2>
+                    <p>{% trans "Thank you for joining this event! Below you'll find different categories of items needed. Choose a category to see specific items you can contribute." %}</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Categories Section -->
+        <div class="categories-section fade-in" style="animation-delay: 0.5s">
+            <div class="section-header">
+                <h2>{% trans "Categories" %}</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            {% if categories %}
+                <div class="categories-grid">
+                    {% for category in categories %}
+                        <div class="category-card">
+                            <div class="category-image-wrapper">
+                                {% if category.image %}
+                                    <img src="{{ category.image.url }}" alt="{{ category.name }}" class="category-image">
+                                {% else %}
+                                    <div class="category-image-placeholder">
+                                        <i class="bi bi-collection"></i>
+                                    </div>
+                                {% endif %}
+                                <div class="category-progress-overlay">
+                                    <div class="progress-circle" data-value="{{ category.fulfillment }}">
+                                        <div class="progress-circle-inner">
+                                            <div class="progress-value">{{ category.fulfillment }}%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="category-content">
+                                <h3>{{ category.name }}</h3>
+                                {% if category.description %}
+                                    <p class="category-description">{{ category.description|truncatechars:100 }}</p>
+                                {% endif %}
+                                
+                                <div class="category-progress">
+                                    <div class="progress-track">
+                                        <div class="progress-fill" role="progressbar" 
+                                             style="width: {{ category.fulfillment }}%;" 
+                                             aria-valuenow="{{ category.fulfillment }}" 
+                                             aria-valuemin="0" 
+                                             aria-valuemax="100"
+                                             data-percentage="{{ category.fulfillment }}"></div>
+                                    </div>
+                                    <div class="progress-labels">
+                                        <span class="progress-text">{% trans "Progress" %}</span>
+                                        <span class="progress-percentage">{{ category.fulfillment }}%</span>
+                                    </div>
+                                </div>
+                                
+                                <a href="{% url 'events:category_detail' event.slug category.slug %}?link={{ link.code }}" class="btn-view-items">
+                                    <span>{% trans "View Items" %}</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-categories">
+                    <div class="empty-icon">
+                        <i class="bi bi-grid"></i>
+                    </div>
+                    <h3>{% trans "No categories available" %}</h3>
+                    <p>{% trans "There are no categories available for this event yet. Please check back later as the organizer may add categories soon." %}</p>
+                </div>
+            {% endif %}
+        </div>
+        
+        <!-- Event Details -->
+        <div class="event-details-section fade-in" style="animation-delay: 0.7s">
+            <div class="details-card">
+                <div class="details-header">
+                    <h2>{% trans "Event Details" %}</h2>
+                </div>
+                <div class="details-content">
+                    <div class="details-item">
+                        <div class="details-icon">
+                            <i class="bi bi-geo-alt"></i>
+                        </div>
+                        <div class="details-text">
+                            <span class="details-label">{% trans "Location" %}</span>
+                            <span class="details-value">{{ event.location|default:"Online Event" }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="details-item">
+                        <div class="details-icon">
+                            <i class="bi bi-person-circle"></i>
+                        </div>
+                        <div class="details-text">
+                            <span class="details-label">{% trans "Organizer" %}</span>
+                            <span class="details-value">{{ event.organizer.get_full_name|default:event.organizer.username }}</span>
+                        </div>
+                    </div>
+                    
+                    {% if event.contact_email %}
+                        <div class="details-item">
+                            <div class="details-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div class="details-text">
+                                <span class="details-label">{% trans "Contact" %}</span>
+                                <a href="mailto:{{ event.contact_email }}" class="details-value email-link">{{ event.contact_email }}</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                    
+                    <div class="share-event">
+                        <span class="share-label">{% trans "Share this event" %}</span>
+                        <div class="share-buttons">
+                            <button type="button" class="btn-share copy" title="{% trans 'Copy link' %}" data-link="{{ request.build_absolute_uri }}">
+                                <i class="bi bi-link-45deg"></i>
+                            </button>
+                            <a href="mailto:?subject={% trans 'Contribute to' %} {{ event.name }}&body={% trans 'I thought you might want to contribute to this event:' %}%0D%0A{{ request.build_absolute_uri }}" class="btn-share email" title="{% trans 'Share by email' %}">
+                                <i class="bi bi-envelope"></i>
+                            </a>
+                            <a href="https://wa.me/?text={% trans 'Contribute to' %} {{ event.name }}:%0D%0A{{ request.build_absolute_uri }}" target="_blank" rel="noopener" class="btn-share whatsapp" title="{% trans 'Share on WhatsApp' %}">
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/contribution_link_detail.js' %}"></script>
+{% endblock %}
