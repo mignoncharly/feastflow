@@ -1,116 +1,129 @@
-# FeastFlow 🍽️
+# 🥘 FeastFlow
 
-**A streamlined web app for managing food sharing, meal planning, and event coordination.**
-
-FeastFlow helps communities, churches, and social groups easily coordinate shared meals, track contributions, and simplify event logistics. Designed with clarity and community in mind.
+**FeastFlow** is a web application designed to streamline the organization of shared meals, events, and contributions—ideal for churches, community groups, or families. It offers role-based access, real-time overviews, and multilingual support to bring people together through hospitality and order.
 
 ---
 
-## 🚀 Features
+## 📁 Project Structure
 
-* ✅ **User Registration & Authentication**
-  Secure sign-up and login system for different user roles (e.g., admin, contributor, guest).
-
-* 🍛 **Meal/Event Management**
-  Create, update, and track food events and contributions.
-
-* 📊 **Contribution Dashboard**
-  View real-time summaries of who brings what, quantities, and categories.
-
-* 🧑‍🍳 **Role-Based Access Control**
-  Admins can manage users, while regular users can view or contribute items.
-
-* 🌍 **Multi-language Support**
-  Built-in localization for multilingual audiences.
-
-* 📅 **Calendar & RSVP Integration**
-  Easily track upcoming events and participants.
-
----
-
-## 🧱 Tech Stack
-
-* **Backend**: Django (Python)
-* **Frontend**: HTML/CSS, JavaScript, Bootstrap
-* **Database**: SQLite in development
-* **Authentication**: Django Auth with custom user roles
-* **Localization**: JSON-based i18n (e.g., en, fr, de, es)
+```
+FeastFlow/
+├── apps/               # Django apps (e.g., users, events, meals)
+├── config/             # Project-level settings and URLs
+├── locale/             # Language files for i18n
+├── media/              # Uploaded files (e.g., images, attachments)
+├── static/             # Custom static files (CSS, JS, images)
+├── staticfiles/        # Collected static files for deployment
+├── templates/          # HTML templates
+├── .vscode/            # Editor configuration (optional)
+├── venv/               # Python virtual environment (excluded from repo)
+├── db.sqlite3          # Default SQLite database (development)
+├── manage.py           # Django management script
+├── requirements.txt    # Python dependencies
+├── README.md           # Project documentation
+└── .gitattributes      # Git settings
+```
 
 ---
 
-## ⚙️ Installation
+## 🚀 Key Features
 
-### Requirements
+* 🔐 **Role-Based Access**: Admins manage users, events, and settings; contributors can RSVP or bring meals.
+* 🍽️ **Meal/Event Coordination**: Plan who brings what, track quantities, and avoid overlaps.
+* 🌐 **Localization**: Multilingual interface (powered by Django’s `locale/` and `.po` files).
+* 📊 **Real-Time Dashboards**: See contributions and participation at a glance.
+* 💾 **File Uploads**: Manage media (menus, images, or resources) via the `media/` folder.
+
+---
+
+## ⚙️ Setup & Installation
+
+### ✅ Requirements
 
 * Python 3.10+
-* pip
+* pip (Python package manager)
 * Git
-* Node.js (optional, if using Webpack or JS bundlers)
+* (Optional) virtualenv or venv
 
-### Setup
+### 🔧 Quickstart
 
 ```bash
 git clone https://github.com/yourusername/feastflow.git
 cd feastflow
-python -m venv env
-source env/bin/activate  # On Windows: env\Scripts\activate
+python -m venv venv
+source venv/bin/activate       # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
 
-Visit `http://127.0.0.1:8000` to explore the app locally.
+Visit `http://127.0.0.1:8000` in your browser.
 
 ---
 
-## 🌐 Localization
+## 🌍 Localization
 
-Translation files are located in `/locale/` and use Django’s `.po` format. Add new languages via:
+FeastFlow supports multiple languages via Django's translation system. To add or compile messages:
 
 ```bash
-django-admin makemessages -l de  # example for German
+# Create message file for a new language (e.g., German)
+django-admin makemessages -l de
+
+# After editing .po files in /locale/
 django-admin compilemessages
 ```
 
----
-
-## 🛡️ Roles & Permissions
-
-| Role        | Capabilities                           |
-| ----------- | -------------------------------------- |
-| Admin       | Manage users, events, and data         |
-| Manager     | Create/edit events, assign roles       |
-| Contributor | Add meal contributions, RSVP to events |
-| Guest       | View-only access                       |
+All translation files are located under `/locale/`.
 
 ---
 
-## 📁 Folder Structure
+## 👥 Roles & Permissions
 
-```
-feastflow/
-├── feastflow_project/   # Django project settings
-├── meals/               # App for event/meal management
-├── users/               # Custom user management
-├── templates/
-├── static/
-└── locale/              # Translations
-```
+| Role         | Description                                   |
+| ------------ | --------------------------------------------- |
+| Admin        | Full access, can create/edit users and events |
+| Contributor  | Can RSVP and assign items to themselves       |
+| Viewer/Guest | Read-only access to view events and menus     |
+
+Roles are enforced through custom middleware and decorators (typically in your `apps/users/`).
 
 ---
 
-## 🙌 Contributing
+## 📦 Deployment Notes
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you'd like to change.
+* Use `collectstatic` for production static files.
+* You may configure Gunicorn + Nginx or deploy to platforms like **Render**, **Heroku**, or **Docker**.
+* Environment variables (e.g., `SECRET_KEY`, `DEBUG`, `ALLOWED_HOSTS`) should be defined securely using `.env` or in deployment settings.
+
+---
+
+## 🛠️ Technologies Used
+
+* Django (Backend Framework)
+* HTML/CSS/JavaScript (Frontend)
+* Bootstrap (UI Styling)
+* SQLite (Dev Database) — PostgreSQL recommended for production
+* Django’s built-in Auth System
+* Django i18n for Localization
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Create a new Pull Request
 
 ---
 
 ## 📜 License
 
-MIT License. See `LICENSE` file for details.
+This project is open-source under the **MIT License**. See the `LICENSE` file for details.
 
 ---
 
-## ✝️ Inspired By
+## ✝️ Vision
 
-FeastFlow is part of a broader vision to serve Christian and community-based groups with tools for connection, stewardship, and generosity.
+FeastFlow reflects a vision of shared community, hospitality, and stewardship—especially for Christian fellowships and mission-driven groups.
