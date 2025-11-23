@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
+    # if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
 
     env:
       DJANGO_SETTINGS_MODULE: config.settings.settings_local
@@ -27,15 +27,13 @@ jobs:
 
       - name: Install dependencies (ASK Charly why requirements not all deps)
         run: |
-          python -m pip install --upgrade pip
-          pip install pipenv
+          python -m pip install --upgrade pip         
           pip freeze > requirements-dev.txt
           pip install -r requirements-dev.txt
+          cat requirements-dev.txt
       
       - name: Ghis is trying to print Debug working directory
-        run: pwd && ls -R    
-   
-          
+        run: pwd && ls -R              
 
       - name: Run migrations to ensure build run correctly
         run: |
