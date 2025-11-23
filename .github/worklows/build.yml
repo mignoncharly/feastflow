@@ -13,7 +13,7 @@ jobs:
 
     env:
       DJANGO_SETTINGS_MODULE: feastflow.settings
-      SECRET_KEY: test-secret-key           # ✔ use a dummy key, safe for forks (FAKE KEY)
+      SECRET_KEY: test-secret-key   # ✔ use a dummy key, safe for forks (FAKE KEY)
       PYTHONUNBUFFERED: 1
 
     steps:
