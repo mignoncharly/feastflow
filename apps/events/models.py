@@ -1,25 +1,19 @@
 # apps/events/models.py
-
-from django.db import models
-from django.conf import settings
-from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
-from django.utils import timezone
-from django.utils.text import slugify
+import logging
 import uuid
-from django.utils.http import urlsafe_base64_encode
-from django.utils.encoding import force_bytes
-from timezone_field import TimeZoneField 
+
+from django.conf import settings
+from django.db import models
+from django.urls import reverse
+from django.utils import timezone
 from django.utils.crypto import get_random_string
+from django.utils.text import slugify
+from django.utils.translation import gettext_lazy as _
+from timezone_field import TimeZoneField
 
-# Create TimeStampedModel here - don't import it
-class TimeStampedModel(models.Model):
-    """Abstract base model with created and modified timestamps.""" 
-    created_at = models.DateTimeField(_('Created at'), auto_now_add=True)  
-    updated_at = models.DateTimeField(_('Updated at'), auto_now=True)
+from apps.core.models import TimeStampedModel
 
-    class Meta:
-        abstract = True
+logger = logging.getLogger(__name__)
 
 
 class Event(TimeStampedModel):
@@ -278,7 +272,12 @@ class Category(TimeStampedModel):
         verbose_name = _('Category')
         verbose_name_plural = _('Categories')
         ordering = ['name']
-        unique_together = ['event', 'slug']
+        constraints = [
+            models.UniqueConstraint(
+                fields=['event', 'slug'],
+                name='unique_event_category_slug',
+            ),
+        ]
         
     def __str__(self):
         return f'{self.event.name} - {self.name}'
@@ -433,8 +432,23 @@ class PredefinedImage(TimeStampedModel):
         # Using sorl-thumbnail if available
         try:
             from sorl.thumbnail import get_thumbnail
-            return get_thumbnail(self.image, '150x150', crop='center', quality=85).url
-        except (ImportError, Exception):
+
+            return get_thumbnail(
+                self.image, '150x150', crop='center', quality=85
+            ).url
+        except ImportError:
+            # sorl-thumbnail not installed
+            return self.image.url
+        except (IOError, OSError, ValueError) as e:
+            # Image file issues (missing file, invalid format, etc.)
+            import logging
+
+            logger = logging.getLogger(__name__)
+            logger.warning(
+                "Failed to generate thumbnail for PredefinedImage %s: %s",
+                self.pk,
+                e
+            )
             return self.image.url
     
     def get_folder_name(self):
