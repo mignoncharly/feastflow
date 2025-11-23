@@ -1,23 +1,37 @@
 # apps/events/views.py - Updated class-based views for image selection
-
-from django.shortcuts import get_object_or_404
-from django.utils.translation import gettext_lazy as _
-from django.contrib import messages
-from django.core.files.base import ContentFile
+import logging
 import os
 
-from apps.contributions.models import Contribution
-from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.utils.decorators import method_decorator
-from django.views.decorators.http import require_POST
-from django.db.models import Q, Sum, Count
-from apps.accounts.mixins import OrganizerRequiredMixin
-from .models import Event, Category, Item, ContributionLink, PredefinedImage
-from .forms import EventForm, CategoryForm, ItemForm, ContributionLinkForm, AccessCodeForm
-from django.urls import reverse
+from django.contrib import messages
+from django.core.files.base import ContentFile
+from django.db.models import Count, Q, Sum
 from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
+from django.utils.http import url_has_allowed_host_and_scheme
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import (
+    CreateView,
+    DetailView,
+    FormView,
+    ListView,
+    UpdateView,
+)
+
+from apps.accounts.mixins import OrganizerRequiredMixin
+from apps.contributions.models import Contribution
+
+from .forms import (
+    AccessCodeForm,
+    CategoryForm,
+    ContributionLinkForm,
+    EventForm,
+    ItemForm,
+)
+from .models import Category, ContributionLink, Event, Item, PredefinedImage
+
+logger = logging.getLogger(__name__)
 
 
 class EventListView(ListView):
@@ -101,40 +115,46 @@ class CategoryDetailView(DetailView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
-        # Get items with contribution data
-        items = self.object.items.all()
-        
-        # For each item, get its contributed quantity and calculate progress 
+
+        # Get items with contributions prefetched to avoid N+1 queries
+        items = list(
+            self.object.items.prefetch_related('contributions').annotate(
+                contributed_total=Sum('contributions__quantity'),
+                contributors_total=Count('contributions'),
+            )
+        )
+
+        # Calculate progress for each item using annotated data
         for item in items:
-            # Get all contributions for this item
-            contributions = list(item.contributions.all())
-            contributed_quantity = item.get_contributed_quantity()
-            
-            # Store fresh calculations on the item object
+            contributed_quantity = item.contributed_total or 0
             item.contributed = contributed_quantity
-            item.contributors_count = len(contributions)
-            
+            item.contributors_count = item.contributors_total or 0
+
             # Calculate progress percentage
             if item.required_quantity > 0:
-                item.progress_percentage = min(100, int((contributed_quantity / item.required_quantity) * 100))
+                item.progress_percentage = min(
+                    100,
+                    int((contributed_quantity / item.required_quantity) * 100)
+                )
             else:
                 item.progress_percentage = 0
-        
+
         context['items'] = items
-        
+
         # Add event to context
         event = self.object.event
-        
+
         context['event'] = event
-        context['has_access'] = event.can_user_contribute(self.request.user, self.request.session)
+        context['has_access'] = event.can_user_contribute(
+            self.request.user, self.request.session
+        )
         context['is_code_required'] = event.is_code_required()
         context['is_invite_only'] = event.is_invite_only()
-        
+
         # Add access code form if needed
         if event.is_code_required() and not context['has_access']:
             context['access_code_form'] = AccessCodeForm(event=event)
-        
+
         return context
 
 
@@ -452,12 +472,19 @@ class VerifyAccessCodeView(FormView):
     def form_valid(self, form):
         # Store access in session
         self.request.session[f'event_access_{self.event.id}'] = True
-        
-        messages.success(self.request, _("Access code verified successfully. You can now contribute to this event!"))
-        
-        # Redirect back to the event or category
+
+        messages.success(
+            self.request,
+            _("Access code verified successfully. You can now contribute to this event!")
+        )
+
+        # Redirect back to the event or category (with validation)
         redirect_url = self.request.GET.get('next')
-        if redirect_url:
+        if redirect_url and url_has_allowed_host_and_scheme(
+            url=redirect_url,
+            allowed_hosts={self.request.get_host()},
+            require_https=self.request.is_secure(),
+        ):
             return HttpResponseRedirect(redirect_url)
         return HttpResponseRedirect(self.event.get_absolute_url())
     
