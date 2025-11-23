@@ -36,6 +36,16 @@ jobs:
   
   nextjob:
     runs-on: ubuntu-latest
+    needs: migration
+    steps:
+      - name: Just for testing
+        run: | 
+             ls
+  
+
+  lastjob:
+    runs-on: ubuntu-latest
+    needs: nextjob
     steps:
       - name: Just for testing
         run: | 
