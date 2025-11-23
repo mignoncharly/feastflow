@@ -12,7 +12,7 @@ jobs:
     if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
 
     env:
-      DJANGO_SETTINGS_MODULE: feastflow.settings
+      DJANGO_SETTINGS_MODULE: feastflow.config.settings.settings_local
       SECRET_KEY: test-secret-key   # ✔ use a dummy key, safe for forks (FAKE KEY)
       PYTHONUNBUFFERED: 1
 
