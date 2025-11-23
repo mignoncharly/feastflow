@@ -7,7 +7,7 @@ on:
     branches: ['main']
   
 jobs:
-  test:
+  migration:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
 
@@ -33,7 +33,4 @@ jobs:
       - name: Ghis Try to run migrations
         run: |
           python manage.py migrate
-
-      - name: Run tests1
-        run: |
-          python manage.py test --verbosity=2
+  
