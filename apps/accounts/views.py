@@ -1,21 +1,31 @@
 # apps/accounts/views.py
+import logging
+
 from django.contrib.auth import login
-from django.shortcuts import redirect, render
-from django.contrib import messages
-from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, TemplateView, UpdateView
-from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-from apps.events.models import Event
-from apps.contributions.models import Contribution
-from .models import User
-from .forms import UserRegistrationForm, ProfileUpdateForm, CustomAuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import (
-    LoginView, LogoutView,
-    PasswordResetView, PasswordResetDoneView, 
-    PasswordResetConfirmView, PasswordResetCompleteView
+    LoginView,
+    LogoutView,
+    PasswordResetCompleteView,
+    PasswordResetConfirmView,
+    PasswordResetDoneView,
+    PasswordResetView,
 )
+from django.contrib import messages
+from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.utils.http import url_has_allowed_host_and_scheme
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import CreateView, TemplateView, UpdateView
+
+from apps.contributions.models import Contribution
+from apps.events.models import Event
+
+from .forms import CustomAuthenticationForm, ProfileUpdateForm, UserRegistrationForm
+from .models import User
+
+logger = logging.getLogger(__name__)
 
 
 
@@ -26,9 +36,13 @@ class CustomLoginView(LoginView):
     form_class = CustomAuthenticationForm  
     
     def get_success_url(self):
-        """Redirect to dashboard if next parameter is not provided"""
+        """Redirect to dashboard if next parameter is not provided."""
         next_url = self.request.GET.get('next')
-        if next_url:
+        if next_url and url_has_allowed_host_and_scheme(
+            url=next_url,
+            allowed_hosts={self.request.get_host()},
+            require_https=self.request.is_secure(),
+        ):
             return next_url
         return reverse_lazy('accounts:dashboard')
     
@@ -53,8 +67,8 @@ class RegisterView(CreateView):
         return redirect(self.success_url)
     
     def form_invalid(self, form):
-        # Debug: Print form errors
-        print(f"Form errors: {form.errors}")
+        """Handle invalid registration form submission."""
+        logger.warning("Registration form errors: %s", form.errors)
         return super().form_invalid(form)
     
 
@@ -108,43 +122,52 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
 
 @login_required
 def dashboard(request):
+    """Display user dashboard with events and contributions."""
     user = request.user
-    
-    # Get user's events (if they're an organizer)
-    user_events = Event.objects.filter(organizer=user).order_by('-start_date')[:5]
-    user_events_count = Event.objects.filter(organizer=user).count()
-    
-    # Get user's contributions
-    recent_contributions = Contribution.objects.filter(user=user).select_related(
-        'item__category__event'
-    ).order_by('-created_at')[:5]
-    user_contributions_count = Contribution.objects.filter(user=user).count()
-    
+
+    # Get user's events with a single optimized query
+    # Use a base queryset to avoid duplicate queries
+    user_events_qs = Event.objects.filter(organizer=user)
+    user_events = list(user_events_qs.order_by('-start_date')[:5])
+    user_events_count = user_events_qs.count()
+
+    # Get user's contributions with optimized query
+    user_contributions_qs = Contribution.objects.filter(user=user)
+    recent_contributions = list(
+        user_contributions_qs.select_related(
+            'item__category__event'
+        ).order_by('-created_at')[:5]
+    )
+    user_contributions_count = user_contributions_qs.count()
+
     # Get upcoming events the user might like
     upcoming_events = Event.objects.filter(
         status='upcoming'
     ).exclude(organizer=user).order_by('start_date')[:3]
-    
-    # Example activity feed - in a real app, you'd have an Activity model
-    # This is just a placeholder
+
+    # Build activity feed
+    # Note: In production, consider using a dedicated Activity model
     activities = []
-    
-    # For now, we'll create some dummy activities based on contributions
+
+    # Add contribution activities (data already loaded via select_related)
     for contrib in recent_contributions:
         activities.append({
             'type': 'contribution',
-            'description': f'You contributed {contrib.quantity} {contrib.item.name} to {contrib.item.category.event.name}',
-            'timestamp': contrib.created_at
+            'description': (
+                f'You contributed {contrib.quantity} {contrib.item.name} '
+                f'to {contrib.item.category.event.name}'
+            ),
+            'timestamp': contrib.created_at,
         })
-    
-    # Add some dummy event creation activities if the user has events
+
+    # Add event creation activities
     for event in user_events[:2]:
         activities.append({
             'type': 'event_created',
             'description': f'You created the event {event.name}',
-            'timestamp': event.created_at
+            'timestamp': event.created_at,
         })
-    
+
     # Sort activities by timestamp
     activities = sorted(activities, key=lambda x: x['timestamp'], reverse=True)
     
