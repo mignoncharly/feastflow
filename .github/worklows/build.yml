@@ -2,9 +2,13 @@ name: Django CI (SQLite)
 
 on:
   push:
-    branches: ["main","feature/ci"]
+    branches: 
+       - main
+       - 'feature/*'
   pull_request:
-    branches: ["main"]
+    branches: 
+       - main
+       - 'feature/*'
 
 jobs:
   test:
