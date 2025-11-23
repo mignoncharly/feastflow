@@ -1,12 +1,16 @@
-from django.db import models
+import logging
+
+from django.conf import settings
 from django.contrib.auth.models import AbstractUser
-from django.utils.translation import gettext_lazy as _
-from django.db.models import Count, Q
+from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
-from apps.events.models import TimeStampedModel, Event
-from django.conf import settings
+from django.utils.translation import gettext_lazy as _
+
+from apps.core.models import TimeStampedModel
+
+logger = logging.getLogger(__name__)
 
 
 
@@ -57,6 +61,9 @@ class User(AbstractUser):
 
     def total_events(self):
         """Get total number of events user has contributed to."""
+        # Import locally to avoid circular imports
+        from apps.events.models import Event
+
         return Event.objects.filter(
             categories__items__contributions__user=self
         ).distinct().count()
@@ -122,9 +129,12 @@ class Profile(TimeStampedModel):
     
     def update_contribution_stats(self):
         """Update all contribution-related statistics for the user."""
+        # Import locally to avoid circular imports
+        from apps.events.models import Event
+
         # Update total contributions count
         self.total_contributions = self.user.contributions.count()
-        
+
         # Update total unique events participated in
         self.total_events = Event.objects.filter(
             categories__items__contributions__user=self.user
@@ -158,9 +168,27 @@ class Profile(TimeStampedModel):
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
+    """Create a profile when a new user is created."""
     if created:
         Profile.objects.create(user=instance)
+        logger.debug("Created profile for user %s", instance.email)
+
 
 @receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+def save_user_profile(sender, instance, created, **kwargs):
+    """
+    Save user profile when user is saved.
+
+    Only saves the profile if:
+    - The user was not just created (profile is created by create_user_profile)
+    - The user has a profile (guard against AttributeError)
+    """
+    if not created and hasattr(instance, 'profile'):
+        try:
+            instance.profile.save()
+        except Exception as e:
+            logger.warning(
+                "Failed to save profile for user %s: %s",
+                instance.email,
+                e
+            )
