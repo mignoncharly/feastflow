@@ -30,7 +30,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Ghis Try to run migrations
+      - name: Ghis is trying to run migrations to ensure build run correctly
         run: |
           python manage.py migrate
   
+  nextjob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Just for testing
+        run: | 
+             ls
