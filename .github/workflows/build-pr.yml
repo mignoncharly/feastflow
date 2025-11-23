@@ -33,6 +33,10 @@ jobs:
       - name: Ghis is trying to print Debug working directory
         run: pwd && ls -R
 
+      - name: MakeMigrations
+        run: |
+          python manage.py makemigrations
+
 
       - name: Run migrations to ensure build run correctly
         run: |
