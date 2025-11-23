@@ -1,4 +1,4 @@
-name: Django CI (SQLite)
+name: PR-Django CI (SQLite)
 
 on:
   push:
